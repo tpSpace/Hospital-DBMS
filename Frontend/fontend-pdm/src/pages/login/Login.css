@@ -1,6 +1,43 @@
+*{
+    border-radius: 4px;
+    border-width: 1px;
+    font-family: Arial;
+}
+.title{
+    margin-bottom: 3px;
+
+}
+.body{
+    display: grid;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 300px;
+    height: 350px;
+    border: 2px;
+    border-style: solid;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);
+}
+.User-name, .password{
+    font-size: 14px;
+    width: 250px;
+    height: 30px;
+    padding: 6px;
+    margin: 3px;
+}
+.submit-button{
+    width: 100px;
+    height: 30px;
+    background-color: lightblue;
+    border: 0;
+    transition: opacity 0.15s;
+}
+.submit-button:hover{
+    opacity: 0.8;
 }
