@@ -4,6 +4,7 @@ import './Login.css';
 const Login = () => {
     const Login = (userName, pass) =>{
         /* code gi do de noi toi api trong cai function nay */
+        // tao nghĩ thêm chức năng nấu như account tồn tại trong db thì mình lưu account đó vào local storage 
     }
     const submit = () => {
         const textBox = document.getElementById('User-name');

@@ -1,6 +1,5 @@
 *{
-    border-radius: 4px;
-    border-width: 1px;
+    
     font-family: Arial;
 }
 .title{
@@ -8,7 +7,7 @@
 
 }
 .body{
-    display: grid;
+    display: flex;
     height: 100vh;
     align-items: center;
     justify-content: center;
@@ -18,8 +17,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     width: 300px;
     height: 350px;
+    
     border: 2px;
     border-style: solid;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);

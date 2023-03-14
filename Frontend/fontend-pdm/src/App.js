@@ -33,6 +33,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid #2E3440;
 `;
 
 const Ul = styled.ul`
