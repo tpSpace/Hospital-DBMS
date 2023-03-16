@@ -16,8 +16,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     width: 300px;
     height: 350px;
+    
     border: 2px;
     border-style: solid;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);

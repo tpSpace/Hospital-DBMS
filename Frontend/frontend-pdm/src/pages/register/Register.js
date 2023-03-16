@@ -1,9 +1,10 @@
 import React from 'react';
 import './register.css';
+
 const Register = () => {
     return (
         <>
-            <div class="container">
+            <div class="Container">
             
                 <div class="register">
                     <h1>Register</h1>
@@ -38,10 +39,7 @@ const Register = () => {
                             <input id="female" type="radio" value="female" name="sex"/>
                             Female
                         </label><br/>
-                   
-                        
-                        
-                        
+                                          
                         <button type="submit" value="Submit" id="submit">Submit</button>
                     </form>
                 </div>
