@@ -14,12 +14,12 @@ const Login = () => {
         Login(userName, pass);
     }
     return (
-        <div className='body'>
-            <div className='container'>
-                <h1 className='title'>Login</h1>
-                <input type="text" placeholder='Email or phone number' className='User-name' id='User-name'></input>
-                <input type='password' placeholder='Password' className='password' id='password'></input>
-                <button type='submit' onClick={submit} className='submit-button'>Log in</button>
+        <div className='body-login'>
+            <div className='container-login'>
+                <h1 className='title-login'>Login</h1>
+                <input type="text" placeholder='Email or phone number' className='User-name-login' id='User-name-login'></input>
+                <input type='password' placeholder='Password' className='password-login' id='password-login'></input>
+                <button type='submit' onClick={submit} className='submit-button-login'>Log in</button>
             </div>
         </div>
     );
