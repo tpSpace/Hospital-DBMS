@@ -1,18 +1,17 @@
 *{
-    
     font-family: Arial;
 }
-.title{
+.title-login{
     margin-bottom: 3px;
 
 }
-.body{
-    display: flex;
+.body-login{
+    display: grid;
     height: 100vh;
     align-items: center;
     justify-content: center;
 }
-.container{
+.container-login{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,14 +24,15 @@
     border-style: solid;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.35);
 }
-.User-name, .password{
+.User-name-login, .password-login{
     font-size: 14px;
     width: 250px;
     height: 30px;
     padding: 6px;
     margin: 3px;
+    border-radius: 4px;
 }
-.submit-button{
+.submit-button-login{
     width: 100px;
     height: 30px;
     background-color: lightblue;
@@ -40,6 +40,6 @@
     transition: opacity 0.15s;
     cursor: pointer;
 }
-.submit-button:hover{
+.submit-button-login:hover{
     opacity: 0.8;
 }
