@@ -34,10 +34,11 @@ const Login = () => {
                     <form className='container-login' onSubmit={handleSubmit}>
                         <h1 className='title-login'>Sign In</h1>
                         <br></br>
-                        <label htmlFor='username-login'>Username:</label>
+                        <label htmlFor='username-login'>Username</label>
                         <input
                             type='text'
                             id='username-login'
+                            placeholder='Enter your username'
                             ref={userRef}
                             autoComplete='off'
                             onChange={(e) => setUser(e.target.value)}
@@ -45,16 +46,17 @@ const Login = () => {
                             required
                         />
 
-                        <label htmlFor='password-login'>Password:</label>
+                        <label htmlFor='password-login'>Password</label>
                         <input
                             type='password'
                             id='password-login'
+                            placeholder='Enter your password'
                             onChange={(e) => setPwd(e.target.value)}
                             value={pwd}
                             required
                         />
 
-                        <button className='submit-button-login'>Sign in</button>
+                        <button type='submit' value='submit' className='submit-button-login'>Sign in</button>
                     </form>
                 </section>
             )}
