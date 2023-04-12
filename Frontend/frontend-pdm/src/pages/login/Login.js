@@ -1,28 +1,64 @@
 import React from 'react';
 import './Login.css';
+import { useState, useRef, useEffect } from 'react';
 
 const Login = () => {
-    const Login = (userName, pass) =>{
-        /* code gi do de noi toi api trong cai function nay */
-        // tao nghĩ thêm chức năng nấu như account tồn tại trong db thì mình lưu account đó vào local storage 
-    }
-    const submit = () => {
-        const textBox = document.getElementById('User-name');
-        const userName = textBox.value;
+    const userRef = useRef();
+    const errRef = useRef();
 
-        const password = document.getElementById('password');
-        const pass = password.value;
-        Login(userName, pass);
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, []);
+
+    useEffect(() => {
+        setErrMsg('');
+    },[user, pwd]);
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
     }
     return (
-        <div className='body-login'>
-            <div className='container-login'>
-                <h1 className='title-login'>Login</h1>
-                <input type="text" placeholder='Email or phone number' className='User-name-login' id='User-name-login'></input>
-                <input type='password' placeholder='Password' className='password-login' id='password-login'></input>
-                <button type='submit' onClick={submit} className='submit-button-login'>Log in</button>
-            </div>
-        </div>
+        <>
+            {success ? (
+                <section className='body-login'>
+                    <h1 className='title-login'>You are logged in!</h1>
+                </section>
+            ) : (
+                <section className='body-login'>
+                    <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errMsg}</p>
+                    <form className='container-login' onSubmit={handleSubmit}>
+                        <h1 className='title-login'>Sign In</h1>
+                        <br></br>
+                        <label htmlFor='username-login'>Username:</label>
+                        <input
+                            type='text'
+                            id='username-login'
+                            ref={userRef}
+                            autoComplete='off'
+                            onChange={(e) => setUser(e.target.value)}
+                            value={user}
+                            required
+                        />
+
+                        <label htmlFor='password-login'>Password:</label>
+                        <input
+                            type='password'
+                            id='password-login'
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+
+                        <button className='submit-button-login'>Sign in</button>
+                    </form>
+                </section>
+            )}
+        </>
     );
 };
 
