@@ -28,17 +28,8 @@ const Register = () => {
                         <label for="password2">Confirm Password</label><br/>
                         <input type="password" id="password2" name="password2" placeholder="Confirm your password" required/><br/>
 
-                        <p>Sex</p><br/>
                         
-                        <label for="male" class="sex">
-                            <input id="male" type="radio" value="male" name="sex"/>
-                            Male
-                        </label><br/>
                         
-                        <label for="female" class="sex">
-                            <input id="female" type="radio" value="female" name="sex"/>
-                            Female
-                        </label><br/>
                                           
                         <button type="submit" value="Submit" id="submit">Submit</button>
                     </form>
