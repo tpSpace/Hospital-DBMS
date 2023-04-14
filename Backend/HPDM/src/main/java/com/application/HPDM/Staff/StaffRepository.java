@@ -1,6 +1,5 @@
-package com.hung.testspring.repository;
+package com.application.HPDM.Staff;
 
-import com.hung.testspring.entity.Staff;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
