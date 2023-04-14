@@ -29,4 +29,11 @@ public class DoctorController {
     public void deleteDoctor(@PathVariable("doctorId") Long doctorId){
         doctorService.deleteDoctor(doctorId);
     }
+
+    @PutMapping(path = "{doctorId}")
+    public void updateDoctor(@PathVariable("doctorId") Long doctorId,
+                             @RequestParam(required = false) String name,
+                             @RequestParam(required = false) String phoneNum){
+        doctorService.updateDoctor(doctorId, name, phoneNum);
+    }
 }
