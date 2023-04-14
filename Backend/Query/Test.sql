@@ -12,6 +12,8 @@ CREATE TABLE Patient (
     patientMedicalRecord VARCHAR(400) NOT NULL,
     patientPhone VARCHAR(15) NOT NULL,
 
+    patientEmail VARCHAR(100) NOT NULL,
+    patientPassword VARCHAR(100) NOT NULL,
     PRIMARY KEY (patientId)
 );
 
@@ -21,6 +23,9 @@ CREATE TABLE Doctor (
     doctorDob DATE NOT NULL,
     doctorDepartmentId int NOT NULL REFERENCES Department(departmentId),
     doctorPhone smallint,
+
+    doctorEmail VARCHAR(100) NOT NULL,
+    doctorPassword VARCHAR(100) NOT NULL,
     PRIMARY KEY (doctorId)
 );
 
@@ -32,6 +37,8 @@ CREATE TABLE Staff (
     staffDepartmentId int NOT NULL REFERENCES Department(departmentId),
     staffPhone VARCHAR(15),
 
+    staffEmail VARCHAR(100) NOT NULL,
+    staffPassword VARCHAR(100) NOT NULL,
     PRIMARY KEY (staffId)
 );
 CREATE TABLE Nurse (
@@ -41,6 +48,8 @@ CREATE TABLE Nurse (
     nurseDepartmentId INT NOT NULL REFERENCES Department(departmentId),
     nursePhone VARCHAR(15),
 
+    nurseEmail VARCHAR(100) NOT NULL,
+    nursePassword VARCHAR(100) NOT NULL,
     PRIMARY KEY (nurseId)
 );
 
