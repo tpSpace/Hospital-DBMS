@@ -18,4 +18,5 @@ public class PatientController {
         return patientRepository.findAll();
     }
 
+
 }
