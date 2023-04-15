@@ -29,7 +29,7 @@ public class Department {
     public Department(String departmentName) {
         this.departmentName = departmentName;
     }
-    public String getDepartmentName() {
+        public String getDepartmentName() {
         return departmentName;
     }
 

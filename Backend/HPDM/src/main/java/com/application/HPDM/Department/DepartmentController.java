@@ -24,8 +24,8 @@ public class DepartmentController {
         departmentService.addNewDepartment(department);
     }
 
-    @DeleteMapping(path= "{studentID}")
-    public void deleteDepartment(@PathVariable("studentID") Long departmentid){
+    @DeleteMapping(path= "{departmentID}")
+    public void deleteDepartment(@PathVariable("departmentID") Long departmentid){
         departmentService.deleteDepartment(departmentid);
     }
 }

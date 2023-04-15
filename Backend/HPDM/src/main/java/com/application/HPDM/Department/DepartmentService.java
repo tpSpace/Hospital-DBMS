@@ -20,18 +20,18 @@ public class DepartmentService {
 
     public void addNewDepartment(Department department){
         Optional<Department> departmentOptional=
-            departmentRepository.findDepartmentByName(department.getDepartmentName());
+            departmentRepository.findDepartmentBydepartmentName(department.getDepartmentName());
         if(departmentOptional.isPresent()){
             throw new IllegalStateException("Department name already exists");
         }
         departmentRepository.save(department);
     }
 
-    public void deleteDepartment(Long departmentid){
-        boolean exists = departmentRepository.existsById(departmentid);
+    public void deleteDepartment(Long departmentID){
+        boolean exists = departmentRepository.existsById(departmentID);
         if(!exists){
-            throw new IllegalStateException("Department with id" + departmentid + "doesn't exist");
+            throw new IllegalStateException("Department with id" + departmentID + "doesn't exist");
         }
-        departmentRepository.deleteById(departmentid);
+        departmentRepository.deleteById(departmentID);
     }
 }
