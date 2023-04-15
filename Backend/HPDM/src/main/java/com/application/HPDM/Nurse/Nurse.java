@@ -27,14 +27,16 @@ public class Nurse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long nurseID;
-    @NotBlank(message = "Please enter nurese name")
+    @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String nurseName;
     @NotBlank(message = "Please enter DoB")
     private Date nurseDoB;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nurseDepartmentID", referencedColumnName = "departmentId")
     private Department nurseDepartmentID;
+
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String nursePhone;
