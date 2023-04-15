@@ -31,6 +31,16 @@ public class Patient {
     private String patientEmail;
     private String patientPassword;
 
+    public Patient(Long patientId, String patientName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.patientDob = patientDob;
+        this.patientGender = patientGender;
+        this.patientMedicalRecord = patientMedicalRecord;
+        this.patientPhone = patientPhone;
+        this.patientEmail = patientEmail;
+        this.patientPassword = patientPassword;
+    }
 
     public Long getPatientId() {
         return patientId;
