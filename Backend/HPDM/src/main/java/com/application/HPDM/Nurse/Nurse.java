@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -30,15 +31,26 @@ public class Nurse {
     @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String nurseName;
-    @NotBlank(message = "Please enter DoB")
-    private Date nurseDoB;
 
-    @OneToOne(cascade = CascadeType.ALL)
+//    @NotBlank(message = "Please enter DoB")
+    private LocalDate nurseDoB;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nurseDepartmentID", referencedColumnName = "departmentId")
-    private Department nurseDepartmentID;
+    private Department departmentID;
 
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String nursePhone;
 
+    public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB, Department departmentID) {
+        this.nurseName = nurseName;
+        this.nurseDoB = nurseDoB;
+        this.nursePhone = nursePhone;
+        this.setDepartmentId(departmentID);
+    }
+
+    public void setDepartmentId(Department departmentId) {
+        this.departmentID = departmentId;
+    }
 }

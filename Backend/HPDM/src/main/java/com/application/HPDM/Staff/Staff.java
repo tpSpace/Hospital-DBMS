@@ -32,9 +32,11 @@ public class Staff {
     private String staffName;
     @NotBlank(message = "Please enter DoB")
     private Date staffDoB;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
-    private Department staffDepartmentID;
+    private Department departmentID;
+
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String staffPhone;
