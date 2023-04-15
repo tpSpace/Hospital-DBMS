@@ -1,5 +1,7 @@
 package com.application.HPDM.Patient;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,7 +24,7 @@ public class Patient {
     @GeneratedValue()
     private Long patientId;
     private String patientName;
-    private String patientDob;
+    private LocalDate patientDob;
     private String patientGender;
     private String patientMedicalRecord;
     private String patientPhone;
@@ -46,11 +48,11 @@ public class Patient {
         this.patientName = patientName;
     }
 
-    public String getPatientDob() {
+    public LocalDate getPatientDob() {
         return patientDob;
     }
 
-    public void setPatientDob(String patientDob) {
+    public void setPatientDob(LocalDate patientDob) {
         this.patientDob = patientDob;
     }
 
