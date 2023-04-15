@@ -23,9 +23,8 @@ public class DepartmentController {
     public void registerNewDepartment(@RequestBody Department department){
         departmentService.addNewDepartment(department);
     }
-
-    @DeleteMapping(path= "{studentID}")
-    public void deleteDepartment(@PathVariable("studentID") Long departmentid){
+    @DeleteMapping(path= "{departmentID}")
+    public void deleteDepartment(@PathVariable("departmentID") Long departmentid){
         departmentService.deleteDepartment(departmentid);
     }
 }
