@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NurseRepository extends JpaRepository<Nurse, Long> {
-    public Nurse findByStaffNameIgnoreCase(String nurseName);
+    public Nurse findByNurseNameIgnoreCase(String nurseName);
 
 }
