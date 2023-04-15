@@ -21,6 +21,11 @@ public class PatientController {
         return patientRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));
     }
 
+    @PostMapping("/patients")
+    public Patient createPatient(@RequestBody Patient patient) {
+        return patientRepository.save(patient);
+    }
+
     @PutMapping("/patients/{id}")
     public Patient updatePatient(@RequestBody Patient newPatient, @PathVariable Long id) {
         return patientRepository.findById(id).map(patient -> {
