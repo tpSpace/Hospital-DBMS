@@ -1,6 +1,5 @@
 package com.application.HPDM.Department;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
@@ -29,7 +28,7 @@ public class Department {
     public Department(String departmentName) {
         this.departmentName = departmentName;
     }
-        public String getDepartmentName() {
+    public String getDepartmentName() {
         return departmentName;
     }
 
