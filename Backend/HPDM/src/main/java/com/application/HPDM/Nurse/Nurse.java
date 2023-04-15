@@ -26,7 +26,7 @@ public class Nurse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long nurseID;
-    @NotBlank(message = "Please enter nurese name")
+    @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String nurseName;
     @NotBlank(message = "Please enter DoB")
