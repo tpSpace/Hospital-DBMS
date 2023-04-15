@@ -3,14 +3,21 @@ package com.application.HPDM.Patient;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="patient")
 public class Patient {
+//    patientId SERIAL NOT NULL,
 //    patientName VARCHAR(100) NOT NULL,
 //    patientDob DATE NOT NULL,
 //    patientGender VARCHAR(10) NOT NULL,
 //    patientMedicalRecord VARCHAR(400) NOT NULL,
-//    patientPhone smallint,
+//    patientPhone VARCHAR(15) NOT NULL,
+//
+//    patientEmail VARCHAR(100) NOT NULL,
+//    patientPassword VARCHAR(100) NOT NULL,
+//    PRIMARY KEY (patientId)
     @Id
     @GeneratedValue()
     private Long patientId;
@@ -19,6 +26,9 @@ public class Patient {
     private String patientGender;
     private String patientMedicalRecord;
     private String patientPhone;
+    private String patientEmail;
+    private String patientPassword;
+
 
     public Long getPatientId() {
         return patientId;
@@ -66,5 +76,21 @@ public class Patient {
 
     public void setPatientPhone(String patientPhone) {
         this.patientPhone = patientPhone;
+    }
+
+    public String getPatientEmail() {
+        return patientEmail;
+    }
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
+    }
+
+    public String getPatientPassword() {
+        return patientPassword;
+    }
+
+    public void setPatientPassword(String patientPassword) {
+        this.patientPassword = patientPassword;
     }
 }
