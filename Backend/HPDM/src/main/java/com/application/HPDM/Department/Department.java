@@ -16,33 +16,33 @@ public class Department {
             generator = "department_sequence"
     )
     @Column(
-            name ="DepartmentID",
+            name ="departmentID",
             updatable = false
     )
-    private Long DepartmentID;
+    private Long departmentID;
     @Column(
-            name = "DepartmentName",
+            name = "departmentName",
             nullable = false
     )
-    private String DepartmentName;
+    private String departmentName;
 
     public Department(){};
     public Department(String departmentName) {
-        DepartmentName = departmentName;
+        this.departmentName = departmentName;
     }
     public String getDepartmentName() {
-        return DepartmentName;
+        return this.departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
-        DepartmentName = departmentName;
+        this.departmentName = departmentName;
     }
 
     @Override
     public String toString() {
         return "Department{" +
-                "DepartmentID=" + DepartmentID +
-                ", DepartmentName='" + DepartmentName + '\'' +
+                "DepartmentID=" + departmentID +
+                ", DepartmentName='" + departmentName + '\'' +
                 '}';
     }
 }

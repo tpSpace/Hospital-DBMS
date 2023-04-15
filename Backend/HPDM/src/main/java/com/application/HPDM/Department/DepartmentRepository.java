@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface DepartmentRepository
         extends JpaRepository<Department,Long> {
 //    @Query("SELECT d FROM Department d WHERE d.name=?1")
-    Optional<Department> findDepartmentByName(String DepartmentName);
+    Optional<Department> findDepartmentByDepartmentName(String departmentName);
 }
