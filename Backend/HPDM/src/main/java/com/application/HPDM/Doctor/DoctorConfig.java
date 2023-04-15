@@ -12,7 +12,7 @@ import java.util.List;
 @Configuration
 public class DoctorConfig {
     @Bean
-    CommandLineRunner commandLineRunner(DoctorRepository doctorRepository){
+    CommandLineRunner doctorCommandLineRunner(DoctorRepository doctorRepository){
         return args -> {
             Doctor Alex = new Doctor("Alex", "0903696969", LocalDate.of(1996, Month.JANUARY, 25), 1L);
             doctorRepository.saveAll(List.of(Alex));
