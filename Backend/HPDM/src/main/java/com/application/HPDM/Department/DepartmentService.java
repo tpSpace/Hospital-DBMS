@@ -20,7 +20,7 @@ public class DepartmentService {
 
     public void addNewDepartment(Department department){
         Optional<Department> departmentOptional=
-            departmentRepository.findDepartmentByDepartmentName(department.getDepartmentName());
+            departmentRepository.findDepartmentByName(department.getDepartmentName());
         if(departmentOptional.isPresent()){
             throw new IllegalStateException("Department name already exists");
         }

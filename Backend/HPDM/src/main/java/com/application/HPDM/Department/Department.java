@@ -1,5 +1,6 @@
 package com.application.HPDM.Department;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table
@@ -15,33 +16,33 @@ public class Department {
             generator = "department_sequence"
     )
     @Column(
-            name ="departmentID",
+            name ="DepartmentID",
             updatable = false
     )
     private Long DepartmentID;
     @Column(
-            name = "departmentName",
+            name = "DepartmentName",
             nullable = false
     )
-    private String departmentName;
+    private String DepartmentName;
 
     public Department(){};
     public Department(String departmentName) {
-        this.departmentName = departmentName;
+        DepartmentName = departmentName;
     }
     public String getDepartmentName() {
-        return departmentName;
+        return DepartmentName;
     }
 
     public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+        DepartmentName = departmentName;
     }
 
     @Override
     public String toString() {
         return "Department{" +
                 "DepartmentID=" + DepartmentID +
-                ", DepartmentName='" + departmentName + '\'' +
+                ", DepartmentName='" + DepartmentName + '\'' +
                 '}';
     }
 }

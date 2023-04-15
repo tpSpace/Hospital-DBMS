@@ -9,7 +9,7 @@ import java.util.List;
 @Configuration
 public class DepartmentConfig {
     @Bean
-    CommandLineRunner departmentCommandLineRunner(DepartmentRepository Repository){
+    CommandLineRunner commandLineRunner(DepartmentRepository Repository){
         return args -> {
             Department Health = new Department("Health");
             Department chet = new Department("chet");
