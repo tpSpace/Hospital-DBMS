@@ -84,3 +84,37 @@ CREATE TABLE InCharge(
     NurseID INT NOT NUll REFERENCES Nurse(nurseId), 
     PRIMARY KEY (RoomID,NurseID) 
 );
+-- 1st Example
+INSERT INTO Patient (patientFirstName, patientLastName, patientMiddleName, patientDob, patientGender, patientMedicalRecord, patientAddress, patientPhone, patientEmail, patientPassword) VALUES
+('Sarah', 'Lee', 'Kim', '1993-06-20', 'Female', 'N/A', '789 Oak St', '555-6789', 'sarahlee@example.com', 'password123'),
+('David', 'Lee', 'Choi', '1989-03-15', 'Male', 'N/A', '246 Maple Ave', '555-5678', 'david.lee@example.com', 'password456');
+
+INSERT INTO Department (departmentName) VALUES
+('Orthopedics'),
+('Neurology'),
+('Oncology');
+
+INSERT INTO Doctor (doctorName, doctorDob, doctorDepartmentId, doctorPhone, doctorEmail, doctorPassword) VALUES
+('Dr. Elizabeth Kim', '1985-08-08', 1, '555-4321', 'elizabeth.kim@example.com', 'password789'),
+('Dr. David Lee', '1978-02-28', 2, '555-2468', 'david.lee@example.com', 'password012');
+
+INSERT INTO Staff (staffName, staffDob, staffDepartmentId, staffPhone, staffEmail, staffPassword) VALUES
+('James Kim', '1991-12-10', 3, '555-6789', 'james.kim@example.com', 'password345'),
+('Karen Lee', '1987-06-05', 1, '555-1234', 'karen.lee@example.com', 'password678');
+
+INSERT INTO Nurse (nurseName, nurseDob, nurseDepartmentId, nursePhone, nurseEmail, nursePassword) VALUES
+('John Smith', '1997-01-01', 2, '555-1357', 'john.smith@example.com', 'password901'),
+('Emily Davis', '1994-08-25', 3, '555-9876', 'emily.davis@example.com', 'password234');
+
+INSERT INTO Room (roomType, roomStatus, roomDepartmentId) VALUES
+('Private', 'Occupied', 1),
+('Semi-Private', 'Available', 2),
+('General', 'Available', 3);
+
+INSERT INTO Appointment (appointmentDate, appointmentTime, appointmentPatientId, appointmentDoctorId, appointmentRoomId) VALUES
+('2023-04-19', '10:00:00', 1, 1, 1),
+('2023-04-20', '12:00:00', 2, 2, 2);
+
+INSERT INTO Prescription (prescriptionDate, prescriptionTime, prescriptionDoctorId, prescriptionPatientId, prescriptionMedicine, prescriptionDuration) VALUES
+('2023-04-19', '11:00:00', 1, 1, 'Ibuprofen', '2 days'),
+('2023-04-20', '13:00:00', 2, 2, 'Acetaminophen', '4 days');
