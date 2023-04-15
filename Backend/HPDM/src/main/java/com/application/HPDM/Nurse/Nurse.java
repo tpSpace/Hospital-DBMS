@@ -32,7 +32,7 @@ public class Nurse {
     @NotBlank(message = "Please enter DoB")
     private Date nurseDoB;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "departmentID", referencedColumnName = "nurseDeparmentID")
+    //@JoinColumn(name = "departmentID", referencedColumnName = "nurseDepartmentID")
     private Long nurseDepartmentID;
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
