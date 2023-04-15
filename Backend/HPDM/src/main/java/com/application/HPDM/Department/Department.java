@@ -1,5 +1,9 @@
 package com.application.HPDM.Department;
 import jakarta.persistence.*;
+<<<<<<< HEAD
+=======
+import org.hibernate.annotations.GenericGenerator;
+>>>>>>> master
 
 @Entity
 @Table
@@ -7,7 +11,12 @@ public class Department {
     @Id
     @SequenceGenerator(
             name = "department_sequence",
+<<<<<<< HEAD
             sequenceName = "department_sequence"
+=======
+            sequenceName = "department_sequence",
+            allocationSize = 1
+>>>>>>> master
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -29,11 +38,15 @@ public class Department {
         this.departmentName = departmentName;
     }
     public String getDepartmentName() {
+<<<<<<< HEAD
         return departmentName;
     }
 
     public Long getDepartmentID() {
         return departmentID;
+=======
+        return this.departmentName;
+>>>>>>> master
     }
 
     public void setDepartmentName(String departmentName) {
