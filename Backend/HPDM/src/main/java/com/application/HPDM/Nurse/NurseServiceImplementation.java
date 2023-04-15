@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -41,6 +42,16 @@ public class NurseServiceImplementation implements NurseService{
 
     @Override
     public Nurse updateNurse(Long nurseID, Nurse nurse) {
-        return null;
+        Nurse nurseDb = nurseRepository.findById(nurseID).get();
+
+        if(Objects.nonNull(nurse.getNurseName()) &&
+        !"".equalsIgnoreCase(nurse.getNurseName())) {
+            nurseDb.setNurseName(nurse.getNurseName());
+        }
+        if(Objects.nonNull(nurse.getNursePhone()) &&
+                !"".equalsIgnoreCase(nurse.getNursePhone())) {
+            nurseDb.setNursePhone(nurse.getNursePhone());
+        }
+        return nurseRepository.save(nurseDb);
     }
 }
