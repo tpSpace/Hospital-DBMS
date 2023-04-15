@@ -1,6 +1,10 @@
 package com.application.HPDM.Department;
+import com.application.HPDM.Doctor.Doctor;
+import com.application.HPDM.Nurse.Nurse;
+import com.application.HPDM.Staff.Staff;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -26,12 +30,28 @@ public class Department {
     )
     private String departmentName;
 
+    @OneToMany(mappedBy = "departmentID")
+    private List<Doctor>  doctors;
+    @OneToMany(mappedBy = "departmentID")
+    private List<Nurse>  nurses;
+    @OneToMany(mappedBy = "departmentID")
+    private List<Staff>  staff;
+
     public Department(){};
+
     public Department(String departmentName) {
         this.departmentName = departmentName;
     }
     public String getDepartmentName() {
-        return this.departmentName;
+        return departmentName;
+    }
+
+    public Long getDepartmentID() {
+        return departmentID;
+    }
+
+    public void setDepartmentID(Long departmentID) {
+        this.departmentID = departmentID;
     }
 
     public void setDepartmentName(String departmentName) {

@@ -1,5 +1,6 @@
 package com.application.HPDM.Doctor;
 
+import com.application.HPDM.Department.Department;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -21,15 +22,18 @@ public class Doctor {
     private String name;
     private String phoneNum;
     private LocalDate dob;
-    private Long departmentId;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "DoctorDepartmentID", referencedColumnName = "departmentID")
+    private Department departmentID;
 
     public Doctor(){}
 
-    public Doctor(String name, String phoneNum, LocalDate dob, Long departmentId){
+    public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID){
         this.name = name;
         this.phoneNum = phoneNum;
         this.dob = dob;
-        this.departmentId = departmentId;
+        this.setDepartmentId(departmentID);
     }
 
     public Long getId() {
@@ -64,11 +68,11 @@ public class Doctor {
         this.dob = dob;
     }
 
-    public Long getDepartmentId() {
-        return departmentId;
+    public Department getDepartmentId() {
+        return departmentID;
     }
 
-    public void setDepartmentId(Long departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentId(Department departmentId) {
+        this.departmentID = departmentId;
     }
 }

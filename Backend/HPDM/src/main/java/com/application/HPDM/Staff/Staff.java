@@ -1,5 +1,6 @@
 package com.application.HPDM.Staff;
 
+import com.application.HPDM.Department.Department;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -31,9 +32,11 @@ public class Staff {
     private String staffName;
     @NotBlank(message = "Please enter DoB")
     private Date staffDoB;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "departmentID", referencedColumnName = "staffDeparmentID")
-    private Long staffDepartmentID;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
+    private Department departmentID;
+
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String staffPhone;

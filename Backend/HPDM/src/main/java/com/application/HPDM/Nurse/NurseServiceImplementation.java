@@ -26,7 +26,7 @@ public class NurseServiceImplementation implements NurseService{
 
     @Override
     public Nurse fetchNurseByName(String nurseName) {
-        return nurseRepository.findByStaffNameIgnoreCase(nurseName);
+        return nurseRepository .findByNurseNameIgnoreCase(nurseName);
     }
 
     @Override
