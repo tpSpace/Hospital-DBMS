@@ -22,7 +22,7 @@ public class DoctorService {
     }
 
     public void addNewDoctor(Doctor doctor){
-        Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByPhoneNum(doctor.getPhoneNum());
+        Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(doctor.getPhoneNum());
         if(optionalDoctor.isPresent()){
             throw new IllegalStateException("The phone number is taken");
         }
@@ -46,7 +46,7 @@ public class DoctorService {
             doctor.setName(name);
         }
         if(phoneNum != null && phoneNum.length() > 0 && !Objects.equals(doctor.getPhoneNum(), phoneNum)){
-            Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByPhoneNum(phoneNum);
+            Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(phoneNum);
             if(optionalDoctor.isPresent()){
                 throw new IllegalStateException("phone number is taken");
             }
