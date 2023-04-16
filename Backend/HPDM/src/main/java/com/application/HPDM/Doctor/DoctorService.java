@@ -21,10 +21,19 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
+    public Doctor findDoctorById(Long doctorId) {
+        return doctorRepository.findById(doctorId)
+                .orElseThrow(() -> new IllegalStateException("Doctor with id: " + doctorId + " does not exists"));
+    }
+
     public void addNewDoctor(Doctor doctor){
-        Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(doctor.getPhoneNum());
+        Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(doctor.getDoctorPhoneNum());
         if(optionalDoctor.isPresent()){
             throw new IllegalStateException("The phone number is taken");
+        }
+        optionalDoctor = doctorRepository.findDoctorByDoctorEmail(doctor.getDoctorEmail());
+        if(optionalDoctor.isPresent()){
+            throw new IllegalStateException("email is taken");
         }
         doctorRepository.save(doctor);
     }
@@ -38,19 +47,26 @@ public class DoctorService {
     }
 
     @Transactional
-    public void updateDoctor(Long doctorId, String name, String phoneNum){
+    public void updateDoctor(Long doctorId, String name, String phoneNum, String email){
         Doctor doctor = doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new IllegalStateException("doctor with id: " + doctorId + " does not exists"));
 
-        if(name != null && name.length() > 0 && !Objects.equals(doctor.getName(), name)){
-            doctor.setName(name);
+        if(name != null && name.length() > 0 && !Objects.equals(doctor.getDoctorName(), name)){
+            doctor.setDoctorName(name);
         }
-        if(phoneNum != null && phoneNum.length() > 0 && !Objects.equals(doctor.getPhoneNum(), phoneNum)){
+        if(phoneNum != null && phoneNum.length() > 0 && !Objects.equals(doctor.getDoctorPhoneNum(), phoneNum)){
             Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(phoneNum);
             if(optionalDoctor.isPresent()){
                 throw new IllegalStateException("phone number is taken");
             }
-            doctor.setPhoneNum(phoneNum);
+            doctor.setDoctorPhoneNum(phoneNum);
+        }
+        if(email != null && email.length() > 0 && !Objects.equals(doctor.getDoctorEmail(), email)){
+            Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorEmail(email);
+            if(optionalDoctor.isPresent()){
+                throw new IllegalStateException("email is taken");
+            }
+            doctor.setDoctorEmail(email);
         }
     }
 

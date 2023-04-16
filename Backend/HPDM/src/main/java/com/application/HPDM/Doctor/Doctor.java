@@ -4,6 +4,7 @@ import com.application.HPDM.Department.Department;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 
@@ -20,7 +21,7 @@ public class Doctor {
             strategy = GenerationType.SEQUENCE,
             generator = "doctor_sequence"
     )
-    private Long Id;
+    private Long doctorId;
 
     @NotBlank(message = "Please enter doctor name")
     @Length(max = 100, min = 1)
@@ -54,35 +55,35 @@ public class Doctor {
         this.doctorPassword = doctorPassword;
     }
 
-    public Long getId() {
-        return Id;
+    public Long getDoctorId() {
+        return this.doctorId;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public String getName() {
+    public String getDoctorName() {
         return this.doctorName;
     }
 
-    public void setName(String name) {
-        this.doctorName = name;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public String getPhoneNum() {
+    public String getDoctorPhoneNum() {
         return this.doctorPhoneNum;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.doctorPhoneNum = phoneNum;
+    public void setDoctorPhoneNum(String doctorPhoneNum) {
+        this.doctorPhoneNum = doctorPhoneNum;
     }
 
-    public LocalDate getDob() {
+    public LocalDate getDoctorDob() {
         return this.doctorDob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDoctorDob(LocalDate dob) {
         this.doctorDob = dob;
     }
 
