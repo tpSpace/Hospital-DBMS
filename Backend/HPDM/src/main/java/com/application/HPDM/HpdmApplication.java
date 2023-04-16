@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HpdmApplication {
 	public static void main(String[] args) {
+
+
 		SpringApplication.run(HpdmApplication.class, args);
 	}
 }
