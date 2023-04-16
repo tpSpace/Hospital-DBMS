@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -28,7 +30,6 @@ public class Patient {
     @Length(max = 25, min=1)
     @NotBlank(message = "Please enter patient's last name")
     private String patientLastName;
-    @NotBlank(message = "Please enter patient dob")
     private LocalDate patientDob;
     @Length(max = 20, min=4)
     private String patientGender;
