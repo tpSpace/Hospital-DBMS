@@ -1,13 +1,12 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
-import com.application.HPDM.Department.DepartmentService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import java.time.LocalDate;
 import java.time.Month;
-
 import java.util.List;
 
 @Configuration
@@ -18,11 +17,11 @@ public class DoctorConfig {
             Department ngu = new Department("ngu");
             Department vl = new Department("vl");
             Doctor Alex = new Doctor("Alex","0903696969",
-                    LocalDate.of(1996, Month.JANUARY, 2), ngu );
+                    LocalDate.of(1996, Month.JANUARY, 2), ngu , "alex@gmail.com", "alex123");
             Doctor amongus = new Doctor("sus","42096969",
-                    LocalDate.of(26, Month.JANUARY, 1), ngu );
+                    LocalDate.of(26, Month.JANUARY, 1), ngu, "amongus69@gmail.com", "AMONGUS" );
             Doctor vaidan = new Doctor("vd","445969",
-                    LocalDate.of(2604, Month.JANUARY, 1), vl );
+                    LocalDate.of(2604, Month.JANUARY, 1), vl , "kkmanman@gmail.com", "choll123");
             doctorRepository.saveAll(List.of(Alex,amongus,vaidan));
         };
     }

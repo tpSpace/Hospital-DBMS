@@ -1,9 +1,12 @@
 package com.application.HPDM.Patient;
 
-import com.application.HPDM.Appointment.Appointment;
-import jakarta.persistence.*;
+import java.time.LocalDate;
 
-import java.util.List;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name="patient")
@@ -20,38 +23,71 @@ public class Patient {
 //    PRIMARY KEY (patientId)
     @Id
     @GeneratedValue()
-    private Long patientID;
-    private String patientName;
-    private String patientDob;
+    private Long patientId;
+    @Length(max = 25, min=1)
+    @NotBlank(message = "Please enter patient's first name")
+    private String patientFirstName;
+    @Length(max = 25, min=1)
+    @NotBlank(message = "Please enter patient's last name")
+    private String patientLastName;
+    private LocalDate patientDob;
+    @Length(max = 20, min=4)
     private String patientGender;
+    @Length(max = 200,min=1)
     private String patientMedicalRecord;
+    @NotBlank(message = "Please enter patient phone number")
+    @Column(unique=true)
+    @Length(max = 15)
     private String patientPhone;
+    @NotBlank(message = "Please enter patient email")
+    @Column(unique=true)
+    @Length(max = 50)
     private String patientEmail;
+    @NotBlank(message = "Please enter patient password at least 8 characters")
+    @Length(max = 50, min = 8)
     private String patientPassword;
 
-    @OneToMany(mappedBy = "patientID")
-    private List<Appointment> appointments;
-    public Long getPatientID() {
-        return patientID;
+    public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
+
+        this.patientFirstName = patientFirstName;
+        this.patientLastName = patientLastName;
+        this.patientDob = patientDob;
+        this.patientGender = patientGender;
+        this.patientMedicalRecord = patientMedicalRecord;
+        this.patientPhone = patientPhone;
+        this.patientEmail = patientEmail;
+        this.patientPassword = patientPassword;
     }
 
-    public void setPatientId(Long patientID) {
-        this.patientID = patientID;
+    public Long getPatientId() {
+        return patientId;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public String getPatientFirstName() {
+        return patientFirstName;
     }
 
-    public String getPatientDob() {
+    public void setPatientFirstName(String patientFirstName) {
+        this.patientFirstName = patientFirstName;
+    }
+
+    public String getPatientLastName() {
+        return patientLastName;
+    }
+
+    public void setPatientLastName(String patientLastName) {
+        this.patientLastName = patientLastName;
+    }
+
+    public LocalDate getPatientDob() {
         return patientDob;
     }
 
-    public void setPatientDob(String patientDob) {
+    public void setPatientDob(LocalDate patientDob) {
         this.patientDob = patientDob;
     }
 
