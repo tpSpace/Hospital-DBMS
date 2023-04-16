@@ -1,10 +1,12 @@
 package com.application.HPDM.Staff;
 
 
+import org.hibernate.type.descriptor.java.ObjectJavaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -36,8 +38,17 @@ public class StaffServiceImplementation implements StaffService{
 
     @Override
     public Staff updateStaff(Long staffID, Staff staff) {
+        Staff staffDb = staffRepository.findById(staffID).get();
 
-        return null;
+        if(Objects.nonNull(staffDb.getStaffName()) &&
+        !"".equalsIgnoreCase(staff.getStaffName())) {
+            staffDb.setStaffName(staff.getStaffName());
+        }
+        if(Objects.nonNull(staffDb.getStaffPhone()) &&
+                !"".equalsIgnoreCase(staff.getStaffPhone())) {
+            staffDb.setStaffPhone(staff.getStaffPhone());
+        }
+        return staffRepository.save(staffDb);
     }
 
     @Override
