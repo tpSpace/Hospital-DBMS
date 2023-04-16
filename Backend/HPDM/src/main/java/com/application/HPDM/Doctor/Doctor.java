@@ -2,6 +2,9 @@ package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 
@@ -18,54 +21,70 @@ public class Doctor {
             strategy = GenerationType.SEQUENCE,
             generator = "doctor_sequence"
     )
-    private Long Id;
-    private String name;
-    private String phoneNum;
-    private LocalDate dob;
+    private Long doctorId;
+
+    @NotBlank(message = "Please enter doctor name")
+    @Length(max = 100, min = 1)
+    private String doctorName;
+
+    @NotBlank(message = "Please enter doctor's phone number")
+    @Length(max = 15, min = 1)
+    private String doctorPhoneNum;
+    private LocalDate doctorDob;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "DoctorDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
+    @NotBlank(message = "Please enter doctor email")
+    @Length(max = 50, min = 8)
+    private String doctorEmail;
+
+    @NotBlank(message = "Please enter doctor password")
+    @Length(max = 50, min = 1)
+    private String doctorPassword;
+
     public Doctor(){}
 
-    public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID){
-        this.name = name;
-        this.phoneNum = phoneNum;
-        this.dob = dob;
+    public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID, String doctorEmail, String doctorPassword){
+        this.doctorName = name;
+        this.doctorPhoneNum = phoneNum;
+        this.doctorDob = dob;
         this.setDepartmentId(departmentID);
+        this.doctorEmail = doctorEmail;
+        this.doctorPassword = doctorPassword;
     }
 
-    public Long getId() {
-        return Id;
+    public Long getDoctorId() {
+        return this.doctorId;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
-    public String getName() {
-        return name;
+    public String getDoctorName() {
+        return this.doctorName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getDoctorPhoneNum() {
+        return this.doctorPhoneNum;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setDoctorPhoneNum(String doctorPhoneNum) {
+        this.doctorPhoneNum = doctorPhoneNum;
     }
 
-    public LocalDate getDob() {
-        return dob;
+    public LocalDate getDoctorDob() {
+        return this.doctorDob;
     }
 
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
+    public void setDoctorDob(LocalDate dob) {
+        this.doctorDob = dob;
     }
 
     public Department getDepartmentId() {
@@ -74,5 +93,21 @@ public class Doctor {
 
     public void setDepartmentId(Department departmentId) {
         this.departmentID = departmentId;
+    }
+
+    public String getDoctorEmail() {
+        return doctorEmail;
+    }
+
+    public void setDoctorEmail(String doctorEmail) {
+        this.doctorEmail = doctorEmail;
+    }
+
+    public String getDoctorPassword() {
+        return doctorPassword;
+    }
+
+    public void setDoctorPassword(String doctorPassword) {
+        this.doctorPassword = doctorPassword;
     }
 }
