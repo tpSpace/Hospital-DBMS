@@ -2,15 +2,20 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+ 
 }
 .Container {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    background: #f1f1f1;
+    background: #853c3c;
 
     display: flex;
     justify-content: center;
     align-items: center;
+    /* scroll-padding-top: 300px; */
+
+    
 }
 .Container > .register {
     width: 500px;
@@ -26,7 +31,10 @@
     justify-content: center;
     align-items: center;
 
+    overflow: scroll;
 }
+/* if the screen is not full then margin-top is 500px; */
+
 .register h1  {
     margin-bottom: 20px;
     font-size: 30px;
@@ -40,6 +48,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    overflow: scroll;
 }
 input {
     /* margin-bottom: 3px; */
@@ -73,5 +83,14 @@ p {
 .sex {
     display: inline-flex;
     align-items: center;
+}
+textarea  {
+    width: 300px;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 10px;
+  
 }
  
