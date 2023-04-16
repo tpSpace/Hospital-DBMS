@@ -1,9 +1,11 @@
 package com.application.HPDM.Doctor;
 
+import com.application.HPDM.Appointment.Appointment;
 import com.application.HPDM.Department.Department;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table
@@ -18,7 +20,7 @@ public class Doctor {
             strategy = GenerationType.SEQUENCE,
             generator = "doctor_sequence"
     )
-    private Long Id;
+    private Long doctorID;
     private String name;
     private String phoneNum;
     private LocalDate dob;
@@ -27,6 +29,8 @@ public class Doctor {
     @JoinColumn(name = "DoctorDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
+    @OneToMany(mappedBy = "doctorID")
+    private List<Appointment> appointments;
     public Doctor(){}
 
     public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID){
@@ -37,11 +41,11 @@ public class Doctor {
     }
 
     public Long getId() {
-        return Id;
+        return this.doctorID;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.doctorID = id;
     }
 
     public String getName() {

@@ -1,9 +1,9 @@
 package com.application.HPDM.Patient;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.application.HPDM.Appointment.Appointment;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="patient")
@@ -20,7 +20,7 @@ public class Patient {
 //    PRIMARY KEY (patientId)
     @Id
     @GeneratedValue()
-    private Long patientId;
+    private Long patientID;
     private String patientName;
     private String patientDob;
     private String patientGender;
@@ -29,13 +29,14 @@ public class Patient {
     private String patientEmail;
     private String patientPassword;
 
-
-    public Long getPatientId() {
-        return patientId;
+    @OneToMany(mappedBy = "patientID")
+    private List<Appointment> appointments;
+    public Long getPatientID() {
+        return patientID;
     }
 
-    public void setPatientId(Long patientId) {
-        this.patientId = patientId;
+    public void setPatientId(Long patientID) {
+        this.patientID = patientID;
     }
 
     public String getPatientName() {
