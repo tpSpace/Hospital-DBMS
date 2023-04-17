@@ -30,4 +30,8 @@ public class Room {
     @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     private Patient patientId;
 
+    public Room(String roomName, Patient patientId) {
+        this.roomName = roomName;
+        this.setPatientId(patientId);
+    }
 }
