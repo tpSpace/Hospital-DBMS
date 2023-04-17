@@ -35,7 +35,7 @@ public class Nurse {
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate nurseDoB;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "nurseDepartmentID", referencedColumnName = "departmentId")
     private Department departmentID;
 

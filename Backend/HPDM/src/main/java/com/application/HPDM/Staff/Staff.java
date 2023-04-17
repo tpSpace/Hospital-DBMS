@@ -33,7 +33,7 @@ public class Staff {
     @NotBlank(message = "Please enter DoB")
     private Date staffDoB;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
