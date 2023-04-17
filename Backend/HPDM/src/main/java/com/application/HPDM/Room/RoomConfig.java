@@ -2,14 +2,10 @@ package com.application.HPDM.Room;
 
 import com.application.HPDM.Patient.Patient;
 import com.application.HPDM.Patient.PatientController;
-import com.application.HPDM.Patient.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @Configuration
