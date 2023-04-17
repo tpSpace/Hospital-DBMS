@@ -2,7 +2,7 @@ import React from 'react';
 import './Login.css';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-
+import { configureStore } from '@reduxjs/toolkit'
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
@@ -11,7 +11,10 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
-
+    const [user,setUser] = useState({
+        doctorEmail: "",
+    doctorPassword: "",
+    })
     useEffect(() => {
         userRef.current.focus();
     }, []);
@@ -22,10 +25,11 @@ const Login = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        await axios.post("http://localhost:8080/doctor/login", {
-            doctorEmail: email,
-            doctorPassword: pwd
+        setUser({
+            email: email,
+            password: pwd,
         })
+        await axios.post("http://localhost:8080/login",user)
         .then(response => {
             if(response.data.success){
                 setEmail('');
