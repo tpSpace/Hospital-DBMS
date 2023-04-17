@@ -1,7 +1,6 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

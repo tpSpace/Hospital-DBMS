@@ -1,5 +1,6 @@
 package com.application.HPDM.Doctor;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,18 +22,18 @@ public class DoctorController {
         return doctorService.getDoctors();
     }
 
-    @GetMapping(path = "doctor/{doctorId}")
+    @GetMapping(path = "/doctor/{doctorId}")
     public Doctor getDoctorById(@PathVariable("doctorId") Long id){
         return doctorService.findDoctorById(id);
     }
 
-    @PostMapping
+    @PostMapping("/doctor")
     public void registerNewDoctor(@RequestBody Doctor doctor){
         doctorService.addNewDoctor(doctor);
     }
 
-    @PostMapping(path = "doctor/login")
-    public boolean loginDoctor(@RequestBody String doctorEmail, @RequestBody String doctorPassword){
+    @PostMapping(path = "/doctor/login")
+    public boolean loginDoctor(@Valid String doctorEmail, @Valid String doctorPassword){
         return doctorService.login(doctorEmail, doctorPassword);
     }
 
