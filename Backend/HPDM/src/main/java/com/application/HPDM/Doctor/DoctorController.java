@@ -32,11 +32,6 @@ public class DoctorController {
         doctorService.addNewDoctor(doctor);
     }
 
-    @PostMapping(path = "/doctor/login")
-    public boolean loginDoctor(@Valid String doctorEmail, @Valid String doctorPassword){
-        return doctorService.login(doctorEmail, doctorPassword);
-    }
-
     @DeleteMapping(path = "doctor/{doctorId}")
     public void deleteDoctor(@PathVariable("doctorId") Long doctorId){
         doctorService.deleteDoctor(doctorId);
