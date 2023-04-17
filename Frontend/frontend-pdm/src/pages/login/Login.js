@@ -26,10 +26,10 @@ const Login = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setUser({
-            doctorEmail: email,
-            doctorPassword: pwd,
+            email: email,
+            password: pwd,
         })
-        await axios.post("http://localhost:8080/doctor/login",user)
+        await axios.post("http://localhost:8080/login",user)
         .then(response => {
             if(response.data.success){
                 setEmail('');
