@@ -77,10 +77,10 @@ public class DoctorService {
         if(doctorRepository.findById(optionalDoctorEmail.get().getDoctorId()) == doctorRepository.findById(optionalDoctorPassword.get().getDoctorId())){
             isSuccess = true;
         }else{
-            if (!doctorRepository.findDoctorByDoctorEmail(email).isPresent()){
+            if (doctorRepository.findDoctorByDoctorEmail(email).isEmpty()){
                 throw new IllegalStateException("Can not find doctor email");
             }
-            if(!doctorRepository.findDoctorByDoctorPassword(password).isPresent()){
+            if(doctorRepository.findDoctorByDoctorPassword(password).isEmpty()){
                 throw new IllegalStateException("The password is invalid");
             }
         }
