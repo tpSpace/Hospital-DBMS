@@ -1,12 +1,13 @@
 import React from 'react';
 import './Login.css';
 import { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -17,10 +18,27 @@ const Login = () => {
 
     useEffect(() => {
         setErrMsg('');
-    },[user, pwd]);
+    },[email, pwd]);
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        await axios.post("http://localhost:8080/doctor/login", {
+            doctorEmail: email,
+            doctorPassword: pwd
+        })
+        .then(response => {
+            if(response.data.success){
+                setEmail('');
+                setPwd('')
+                setSuccess(true);
+            }else{
+                setErrMsg('Login failed');
+                console.log(`email: ${email}, pass: ${pwd}`)
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
     return (
         <>
@@ -41,8 +59,8 @@ const Login = () => {
                             placeholder='Enter your username'
                             ref={userRef}
                             autoComplete='off'
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
                             required
                         />
 
