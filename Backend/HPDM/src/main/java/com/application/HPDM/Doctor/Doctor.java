@@ -1,10 +1,11 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDate;
 
@@ -32,8 +33,9 @@ public class Doctor {
     private String doctorPhoneNum;
     private LocalDate doctorDob;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "DoctorDepartmentID", referencedColumnName = "departmentID")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Department departmentID;
 
     @NotBlank(message = "Please enter doctor email")
