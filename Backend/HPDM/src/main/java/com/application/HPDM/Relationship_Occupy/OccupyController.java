@@ -1,5 +1,6 @@
 package com.application.HPDM.Relationship_Occupy;
 
+import com.application.HPDM.Department.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +27,19 @@ public class OccupyController {
         return occupyService.findOccupationById(id);
     }
 
-    @PostMapping(path = "/occupy/{ID}")
-    public void updateOccupation(Occupy occupy, LocalDate date){
-        if(occupy.getDateLeave() != null){
-            throw new RuntimeException("Patient have aleady left");
+    @PostMapping(path = "/occupy/add")
+    public void registerNewOccupation(@RequestBody Occupy occupy){
+        occupyService.addNewOccupation(occupy);
+    }
+    @PutMapping(path = "/occupy/update")
+    public void updateOccupation(@PathVariable Long occupyID, LocalDate date){
+        Occupy updateOccupy = occupyService.findOccupationById(occupyID);
+        if (updateOccupy.getDateLeave() != null){
+            throw new IllegalStateException("Patient already left");
         }
-        occupy.setDateLeave(date);
+        else
+            updateOccupy.setDateLeave(date);
+        occupyService.updateOccupation(updateOccupy);
     }
 
     @DeleteMapping(path= "/occupy/{ID}")
