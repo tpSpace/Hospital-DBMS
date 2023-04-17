@@ -13,14 +13,14 @@
 //    @Column
 //    private Long doctorID;
 //
-////    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-////    @MapsId("doctorId")
-////    @JoinColumn(name = "doctorID",referencedColumnName = "doctorID")
-////    private Doctor doctorID;
-////    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-////    @MapsId("patientId")
-////    @JoinColumn(name = "patientID",referencedColumnName = "patientID")
-////    private Patient patientID;
+//    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+//    @MapsId("doctorId")
+//    @JoinColumn(name = "doctorID",referencedColumnName = "doctorID")
+//    private Doctor doctorID;
+//    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+//    @MapsId("patientId")
+//    @JoinColumn(name = "patientID",referencedColumnName = "patientID")
+//    private Patient patientID;
 //
 //
 //    public AppointmentKey(Long patientID, Long doctorID) {
