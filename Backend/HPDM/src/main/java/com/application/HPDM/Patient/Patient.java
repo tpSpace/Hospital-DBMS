@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -22,17 +24,16 @@ public class Patient {
     @Id
     @GeneratedValue()
     private Long patientId;
-    @Length(max = 25)
+    @Length(max = 25, min=1)
     @NotBlank(message = "Please enter patient's first name")
     private String patientFirstName;
-    @Length(max = 25)
+    @Length(max = 25, min=1)
     @NotBlank(message = "Please enter patient's last name")
     private String patientLastName;
-    @NotBlank(message = "Please enter patient dob")
     private LocalDate patientDob;
-    @Length(max = 20)
+    @Length(max = 20, min=4)
     private String patientGender;
-    @Length(max = 200)
+    @Length(max = 200,min=1)
     private String patientMedicalRecord;
     @NotBlank(message = "Please enter patient phone number")
     @Column(unique=true)
@@ -46,8 +47,8 @@ public class Patient {
     @Length(max = 50, min = 8)
     private String patientPassword;
 
-    public Patient(Long patientId, String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
-        this.patientId = patientId;
+    public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
+
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.patientDob = patientDob;
