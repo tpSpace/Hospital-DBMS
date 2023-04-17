@@ -16,7 +16,7 @@ const Register = () => {
         patientPassword: "",
     });
 
-    const {patientFirstName,patientLastName,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = user;
+    const {patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = user;
 
     const onInputChange = (e) => {
         setUser({...user,[e.target.name]:e.target.value});
@@ -53,6 +53,28 @@ const Register = () => {
                             required
                         /><br/>
 
+                        <label for="patientDob">Date of birth</label><br/>
+                        <input 
+                            type="date" 
+                            id="patientDob" 
+                            name="patientDob" 
+                            placeholder="Enter your dob" 
+                            value={patientDob}
+                            onChange={(e) => onInputChange(e)}
+                            required
+                        /><br/>
+
+                        {/* <label for="patientGender">Choose your gender</label><br/>
+                        <input 
+                            type="radio" 
+                            id="patientGender" 
+                            name="patientGender" 
+                            
+                            value={patientGender}
+                            onChange={(e) => onInputChange(e)}
+                            required
+                        /><br/> */}
+                        
                         <label for="phone">Phone</label><br/>
                         <input 
                             type="tel" 
