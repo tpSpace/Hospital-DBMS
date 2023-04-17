@@ -70,4 +70,21 @@ public class DoctorService {
         }
     }
 
+    public boolean login(String email, String password) {
+        Optional<Doctor> optionalDoctorEmail = doctorRepository.findDoctorByDoctorEmail(email);
+        Optional<Doctor> optionalDoctorPassword = doctorRepository.findDoctorByDoctorPassword(password);
+        boolean isSuccess = false;
+        if(doctorRepository.findById(optionalDoctorEmail.get().getDoctorId()) == doctorRepository.findById(optionalDoctorPassword.get().getDoctorId())){
+            isSuccess = true;
+        }else{
+            if (!doctorRepository.findDoctorByDoctorEmail(email).isPresent()){
+                throw new IllegalStateException("Can not find doctor email");
+            }
+            if(!doctorRepository.findDoctorByDoctorPassword(password).isPresent()){
+                throw new IllegalStateException("The password is invalid");
+            }
+        }
+
+        return isSuccess;
+    }
 }
