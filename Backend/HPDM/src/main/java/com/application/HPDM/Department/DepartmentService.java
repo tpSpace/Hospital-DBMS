@@ -34,4 +34,8 @@ public class DepartmentService {
         }
         departmentRepository.deleteById(departmentID);
     }
+
+    public Department findDepartmentById(Long id) {
+        return departmentRepository.findById(id).get();
+    }
 }
