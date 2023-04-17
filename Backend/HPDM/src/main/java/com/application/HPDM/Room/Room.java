@@ -9,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.Optional;
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -25,12 +23,10 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;
-
     @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String roomName;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     private Patient patientId;
 
@@ -38,6 +34,4 @@ public class Room {
         this.roomName = roomName;
         this.setPatientId(patientId);
     }
-
-
 }
