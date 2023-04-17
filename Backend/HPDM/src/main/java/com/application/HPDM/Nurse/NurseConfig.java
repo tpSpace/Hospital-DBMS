@@ -15,8 +15,7 @@ public class NurseConfig {
     CommandLineRunner nurseCommandLineRunner(NurseRepository nurseRepository) {
         return args -> {
             Department vaidan = new Department("Vaidan");
-            Nurse Kkmanmnan = new Nurse("KKmanman","42069",
-                    LocalDate.of(1296, Month.FEBRUARY, 2), vaidan);
+            Nurse Kkmanmnan = new Nurse("NYNY","090654579",LocalDate.of(2003,Month.APRIL,16),vaidan,"nurse@hotmail.com","superpassword");
             nurseRepository.saveAll(List.of(Kkmanmnan));
         };
     }

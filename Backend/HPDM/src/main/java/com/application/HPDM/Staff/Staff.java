@@ -27,7 +27,7 @@ public class Staff {
 //    PRIMARY KEY (staffId)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long staffID;
+    private Long staffId;
     @NotBlank(message = "Please enter staff name")
     @Length(max = 50, min = 1)
     private String staffName;
