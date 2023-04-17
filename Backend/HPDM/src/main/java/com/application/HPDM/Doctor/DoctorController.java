@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping
-@CrossOrigin("http://localhost3000")
+@CrossOrigin("*")
 public class DoctorController {
     private final DoctorService doctorService;
 
@@ -21,7 +21,7 @@ public class DoctorController {
         return doctorService.getDoctors();
     }
 
-    @GetMapping(path = "{doctorId}")
+    @GetMapping(path = "doctor/{doctorId}")
     public Doctor getDoctorById(@PathVariable("doctorId") Long id){
         return doctorService.findDoctorById(id);
     }
@@ -31,12 +31,17 @@ public class DoctorController {
         doctorService.addNewDoctor(doctor);
     }
 
-    @DeleteMapping(path = "{doctorId}")
+    @PostMapping("/login")
+    public boolean loginDoctor(@RequestBody String doctorEmail, @RequestBody String doctorPassword){
+        return doctorService.login(doctorEmail, doctorPassword);
+    }
+
+    @DeleteMapping(path = "doctor/{doctorId}")
     public void deleteDoctor(@PathVariable("doctorId") Long doctorId){
         doctorService.deleteDoctor(doctorId);
     }
 
-    @PutMapping(path = "{doctorId}")
+    @PutMapping(path = "doctor/{doctorId}")
     public void updateDoctor(@PathVariable("doctorId") Long doctorId,
                              @RequestParam(required = false) String name,
                              @RequestParam(required = false) String phoneNum,
