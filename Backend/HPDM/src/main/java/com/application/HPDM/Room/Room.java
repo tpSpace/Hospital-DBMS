@@ -26,7 +26,7 @@ public class Room {
     @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String roomName;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientId", referencedColumnName = "patientId")
     private Patient patientId;
 

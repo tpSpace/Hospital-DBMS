@@ -31,7 +31,7 @@ public class Staff {
     @NotBlank(message = "Please enter staff name")
     @Length(max = 50, min = 1)
     private String staffName;
-    @NotBlank(message = "Please enter DoB")
+//    @NotBlank(message = "Please enter DoB")
     private LocalDate staffDoB;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
