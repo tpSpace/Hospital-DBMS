@@ -9,8 +9,11 @@ import java.util.List;
 @CrossOrigin("*")
 public class PatientController {
     @Autowired
-    private PatientRepository patientRepository;
-
+    private final PatientRepository patientRepository;
+    @Autowired
+    public PatientController(PatientRepository patientRepository) {
+        this.patientRepository = patientRepository;
+    }
     @GetMapping("/patients")
     public List<Patient> getPatients() {
         return patientRepository.findAll();

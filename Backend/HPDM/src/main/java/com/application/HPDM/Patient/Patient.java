@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
@@ -57,6 +55,8 @@ public class Patient {
         this.patientPhone = patientPhone;
         this.patientEmail = patientEmail;
         this.patientPassword = patientPassword;
+    }
+    public Patient() {
     }
 
     public Long getPatientId() {
