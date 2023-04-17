@@ -34,7 +34,7 @@ public class Staff {
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate staffDoB;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
