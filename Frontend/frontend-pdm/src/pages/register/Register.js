@@ -4,8 +4,8 @@ import axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
 
 const Register = () => {
-
-    const [user,setUser] = useState({
+    let navigate=useNavigate();
+    const [patient,setPatient] = useState({
         patientFirstName: "",
         patientLastName: "",
         patientDob: "",
@@ -16,19 +16,23 @@ const Register = () => {
         patientPassword: "",
     });
 
-    const {patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = user;
+    const {patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = patient;
 
     const onInputChange = (e) => {
-        setUser({...user,[e.target.name]:e.target.value});
+        setPatient({...patient,[e.target.name]:e.target.value});
     }
-
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:8080/createPatients", patient);
+        navigate("/");
+      }
     return (
         <>
             <div class="Container">
             
                 <div class="register">
                     <h1>Register</h1>
-                    <form id="register-form"> 
+                    <form id="register-form" onSubmit={e => onSubmit(e)}> 
                     
                         <label for="patientFirstName">First name</label><br/>
                         <input 
