@@ -1,26 +1,48 @@
 import React from 'react';
 import './Login.css';
 import { useState, useRef, useEffect } from 'react';
-
+import axios from 'axios';
+import { configureStore } from '@reduxjs/toolkit'
 const Login = () => {
     const userRef = useRef();
     const errRef = useRef();
 
-    const [user, setUser] = useState('');
+    const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
-
+    const [user,setUser] = useState({
+        doctorEmail: "",
+    doctorPassword: "",
+    })
     useEffect(() => {
         userRef.current.focus();
     }, []);
 
     useEffect(() => {
         setErrMsg('');
-    },[user, pwd]);
+    },[email, pwd]);
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        setUser({
+            email: email,
+            password: pwd,
+        })
+        await axios.post("http://localhost:8080/login",user)
+        .then(response => {
+            if(response.data.success){
+                setEmail('');
+                setPwd('')
+                setSuccess(true);
+            }else{
+                setErrMsg('Login failed');
+                console.log(`email: ${email}, pass: ${pwd}`)
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
     return (
         <>
@@ -41,8 +63,8 @@ const Login = () => {
                             placeholder='Enter your username'
                             ref={userRef}
                             autoComplete='off'
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
                             required
                         />
 

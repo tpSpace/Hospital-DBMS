@@ -4,8 +4,8 @@ import axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
 
 const Register = () => {
-
-    const [user,setUser] = useState({
+    let navigate=useNavigate();
+    const [patient,setPatient] = useState({
         patientFirstName: "",
         patientLastName: "",
         patientDob: "",
@@ -16,21 +16,25 @@ const Register = () => {
         patientPassword: "",
     });
 
-    const {patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = user;
+    const {patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = patient;
 
     const onInputChange = (e) => {
-        setUser({...user,[e.target.name]:e.target.value});
+        setPatient({...patient,[e.target.name]:e.target.value});
     }
-
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:8080/createPatients", patient);
+        navigate("/");
+      }
     return (
         <>
-            <div class="Container">
+            <div className="Container">
             
-                <div class="register">
+                <div className="register">
                     <h1>Register</h1>
-                    <form id="register-form"> 
+                    <form id="register-form" onSubmit={e => onSubmit(e)}> 
                     
-                        <label for="patientFirstName">First name</label><br/>
+                        <label htmlFor="patientFirstName">First name</label><br/>
                         <input 
                             type={"text"}
                             id="patientFirstName" 
@@ -42,7 +46,7 @@ const Register = () => {
                             required
                         /><br/>
 
-                        <label for="patientLastName">Last name</label><br/>
+                        <label htmlFor="patientLastName">Last name</label><br/>
                         <input 
                             type="text" 
                             id="patientLastName" 
@@ -53,7 +57,7 @@ const Register = () => {
                             required
                         /><br/>
 
-                        <label for="patientDob">Date of birth</label><br/>
+                        <label htmlFor="patientDob">Date of birth</label><br/>
                         <input 
                             type="date" 
                             id="patientDob" 
@@ -64,7 +68,7 @@ const Register = () => {
                             required
                         /><br/>
 
-                        <label for="patientGender">Choose your gender</label><br/>
+                        <label htmlFor="patientGender">Choose your gender</label><br/>
                         <input 
                             type="text" 
                             id="patientGender" 
@@ -75,7 +79,7 @@ const Register = () => {
                             required
                         /><br/>
                         
-                        <label for="phone">Phone</label><br/>
+                        <label htmlFor="phone">Phone</label><br/>
                         <input 
                             type="tel" 
                             id="patientPhone" 
@@ -86,7 +90,7 @@ const Register = () => {
                             required
                         /><br/>
 
-                        <label for="patientEmail">Email</label><br/>
+                        <label htmlFor="patientEmail">Email</label><br/>
                         <input 
                             type="email" 
                             id="patientEmail" 
@@ -97,7 +101,7 @@ const Register = () => {
                             required
                         /><br/>            
 
-                        <label for="patientPassword">Password</label><br/>
+                        <label htmlFor="patientPassword">Password</label><br/>
                         <input 
                             type="password" 
                             id="patientPassword" 
@@ -108,7 +112,7 @@ const Register = () => {
                             required
                         /><br/> 
 
-                        <label for="patientMedicalRecord">Medical record</label><br/>
+                        <label htmlFor="patientMedicalRecord">Medical record</label><br/>
                         <textarea  
                             type="text" 
                             id="patientMedicalRecord"
@@ -116,7 +120,7 @@ const Register = () => {
                             placeholder="Enter your password" 
                             value={patientMedicalRecord}
                             onChange={(e) => onInputChange(e)}
-                            maxlength="200"
+                            maxLength="200"
                         /><br/> 
 
                         
