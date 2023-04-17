@@ -31,7 +31,7 @@ public class DoctorController {
         doctorService.addNewDoctor(doctor);
     }
 
-    @PostMapping("/login")
+    @PostMapping(path = "doctor/login")
     public boolean loginDoctor(@RequestBody String doctorEmail, @RequestBody String doctorPassword){
         return doctorService.login(doctorEmail, doctorPassword);
     }

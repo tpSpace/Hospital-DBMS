@@ -78,7 +78,17 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.github.05nelsonm</groupId>
+            <artifactId>authentication-manager</artifactId>
+            <version>1.0.0-RC4</version>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.7.7</version>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
