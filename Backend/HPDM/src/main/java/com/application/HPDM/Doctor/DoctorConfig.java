@@ -1,6 +1,7 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
+import com.application.HPDM.Department.DepartmentController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +13,11 @@ import java.util.List;
 @Configuration
 public class DoctorConfig {
     @Bean
-    CommandLineRunner doctorCommandLineRunner(DoctorRepository doctorRepository){
+    CommandLineRunner doctorCommandLineRunner(DoctorRepository doctorRepository,
+                                              DepartmentController departmentController){
         return args -> {
-            Department ngu = new Department("ngu");
-            Department vl = new Department("vl");
+            Department ngu = departmentController.getDepartmentById(1L);
+            Department vl = departmentController.getDepartmentById(2L);
             Doctor Alex = new Doctor("Alex","0903696969",
                     LocalDate.of(1996, Month.JANUARY, 2), ngu , "alex@gmail.com", "alex123");
             Doctor amongus = new Doctor("sus","42096969",

@@ -1,7 +1,9 @@
 package com.application.HPDM.Patient;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.application.HPDM.Relationship_Appointment.Appointment;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
@@ -22,6 +24,7 @@ public class Patient {
     @Id
     @GeneratedValue()
     private Long patientId;
+
     @Length(max = 25, min=1)
     @NotBlank(message = "Please enter patient's first name")
     private String patientFirstName;
@@ -45,6 +48,8 @@ public class Patient {
     @Length(max = 50, min = 8)
     private String patientPassword;
 
+    @OneToMany(mappedBy = "patientID")
+    private List<Appointment> appointmentList;
     public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
 
         this.patientFirstName = patientFirstName;

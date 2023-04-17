@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/department")
+//@RequestMapping
 public class DepartmentController {
     private final DepartmentService departmentService;
 
@@ -18,13 +18,17 @@ public class DepartmentController {
     public List<Department> getDepartment(){
         return departmentService.getDepartment();
     }
+    @GetMapping(path = "/department/{departmentID}")
+    public Department getDepartmentById(@PathVariable("departmentID") Long id){
+        return departmentService.findDepartmentById(id);
+    }
 
     @PostMapping
     public void registerNewDepartment(@RequestBody Department department){
         departmentService.addNewDepartment(department);
     }
-    @DeleteMapping(path= "{departmentID}")
-    public void deleteDepartment(@PathVariable("departmentID") Long departmentid){
-        departmentService.deleteDepartment(departmentid);
+    @DeleteMapping(path= "/department/{departmentID}")
+    public void deleteDepartment(@PathVariable("departmentID") Long departmentID){
+        departmentService.deleteDepartment(departmentID);
     }
 }

@@ -1,6 +1,5 @@
-package com.application.HPDM.Appointment;
+package com.application.HPDM.Relationship_Appointment;
 
-import com.application.HPDM.Department.Department;
 import com.application.HPDM.Doctor.Doctor;
 import com.application.HPDM.Patient.Patient;
 import jakarta.persistence.*;
@@ -10,24 +9,22 @@ import java.time.LocalDate;
 @Entity
 @Table
 public class Appointment {
+    @Id
+    @GeneratedValue
+    private Long appointmentID;
 
-    @EmbeddedId
-    private AppointmentKey appointmentID;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @MapsId("doctorID")
-    @JoinColumn(name = "doctorID",referencedColumnName = "doctorID")
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
     private Doctor doctorID;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @MapsId("patientID")
-    @JoinColumn(name = "patientID",referencedColumnName = "patientID")
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patientID;
     private LocalDate Date;
 
     public Appointment(Patient patient, Doctor doctor, LocalDate date) {
-        this.setPatientID(patient);
         this.setDoctorID(doctor);
-        Date = date;
+        this.setPatientID(patient);
+        this.Date = date;
     }
 
     public void setPatientID(Patient patient) {
