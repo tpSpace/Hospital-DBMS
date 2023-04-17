@@ -33,18 +33,18 @@ const LoginDoctor = () => {
         })
         await axios.post("http://localhost:8080/doctor/login",user)
         .then(response => {
-            if(response.data.success){
+            if(response.status === 200){
                 setEmail('');
                 setPwd('')
                 setSuccess(true);
                 navigate('/');
-            }else{
-                setErrMsg('Login failed');
-                console.log(`email: ${email}, pass: ${pwd}`)
             }
         })
         .catch(err => {
-            console.log(err);
+            if(err.response.status === 400){
+                setErrMsg('Wrong email or password');
+            }
+            console.log('login failed');
         })
     }
     return (
