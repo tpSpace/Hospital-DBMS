@@ -1,4 +1,4 @@
-package com.application.HPDM.Room;
+package com.application.HPDM.RecoverRoom;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

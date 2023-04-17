@@ -26,7 +26,7 @@ public class Appointment {
         this.setPatientID(patient);
         this.Date = date;
     }
-
+    public Appointment(){}
     public void setPatientID(Patient patient) {
         this.patientID =  patient;
     }

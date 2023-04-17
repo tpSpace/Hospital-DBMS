@@ -1,4 +1,4 @@
-package com.application.HPDM.Room;
+package com.application.HPDM.RecoverRoom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

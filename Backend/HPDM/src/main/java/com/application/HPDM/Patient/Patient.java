@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.application.HPDM.Relationship_Appointment.Appointment;
+import com.application.HPDM.Relationship_Occupy.Occupy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
@@ -50,6 +51,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patientID")
     private List<Appointment> appointmentList;
+
+    @OneToMany(mappedBy = "patientID")
+    private List<Occupy> occupiesList;
     public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
 
         this.patientFirstName = patientFirstName;

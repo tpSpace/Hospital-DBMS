@@ -1,4 +1,4 @@
-package com.application.HPDM.Room;
+package com.application.HPDM.RecoverRoom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

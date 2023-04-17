@@ -1,6 +1,6 @@
-package com.application.HPDM.Room;
+package com.application.HPDM.RecoverRoom;
 
-import com.application.HPDM.Patient.Patient;
+import com.application.HPDM.Relationship_Occupy.Occupy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -9,11 +9,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
+@Table (name = "Room")
 public class Room {
 //    roomId SERIAL NOT NULL,
 //    roomName VARCHAR(50) NOT NULL,
@@ -23,16 +26,30 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roomId;
-    @NotBlank(message = "Please enter nurse name")
+    @NotBlank(message = "Please enter room name")
     @Length(max = 50, min = 1)
     private String roomName;
 
-//    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "patientId", referencedColumnName = "patientId")
-//    private Patient patientId;
-
+    @OneToMany(mappedBy = "roomID")
+    private List<Occupy> occupiesList;
     public Room(String roomName) {
         this.roomName = roomName;
-//        this.setPatientId(patientId);
+    }
+    public Room(){}
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 }
