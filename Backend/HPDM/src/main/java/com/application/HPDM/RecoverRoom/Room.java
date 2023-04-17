@@ -1,5 +1,6 @@
 package com.application.HPDM.RecoverRoom;
 
+import com.application.HPDM.Relationship_InCharge.Incharge;
 import com.application.HPDM.Relationship_Occupy.Occupy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -32,6 +33,9 @@ public class Room {
 
     @OneToMany(mappedBy = "roomID")
     private List<Occupy> occupiesList;
+
+    @OneToMany(mappedBy = "roomID")
+    private  List<Incharge> shiftList;
     public Room(String roomName) {
         this.roomName = roomName;
     }

@@ -1,6 +1,7 @@
 package com.application.HPDM.Nurse;
 
 import com.application.HPDM.Department.Department;
+import com.application.HPDM.Relationship_InCharge.Incharge;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -10,13 +11,15 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder
+@Table(name = "Nurse")
 public class Nurse {
 //    nurseId SERIAL NOT NULL,
 //    nurseName VARCHAR(50) NOT NULL,
@@ -43,14 +46,49 @@ public class Nurse {
     @Length(max = 15, min = 1)
     private String nursePhone;
 
+    @OneToMany(mappedBy = "nurseID")
+    private List<Incharge> shiftList;
+
     public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB, Department departmentID) {
         this.nurseName = nurseName;
         this.nurseDoB = nurseDoB;
         this.nursePhone = nursePhone;
         this.setDepartmentId(departmentID);
     }
-
+    public Nurse(){}
     public void setDepartmentId(Department departmentId) {
         this.departmentID = departmentId;
+    }
+
+    public Long getNurseID() {
+        return nurseID;
+    }
+
+    public void setNurseID(Long nurseID) {
+        this.nurseID = nurseID;
+    }
+
+    public String getNurseName() {
+        return nurseName;
+    }
+
+    public void setNurseName(String nurseName) {
+        this.nurseName = nurseName;
+    }
+
+    public LocalDate getNurseDoB() {
+        return nurseDoB;
+    }
+
+    public void setNurseDoB(LocalDate nurseDoB) {
+        this.nurseDoB = nurseDoB;
+    }
+
+    public String getNursePhone() {
+        return nursePhone;
+    }
+
+    public void setNursePhone(String nursePhone) {
+        this.nursePhone = nursePhone;
     }
 }
