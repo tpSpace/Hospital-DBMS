@@ -64,16 +64,16 @@ const Register = () => {
                             required
                         /><br/>
 
-                        {/* <label for="patientGender">Choose your gender</label><br/>
+                        <label for="patientGender">Choose your gender</label><br/>
                         <input 
-                            type="radio" 
+                            type="text" 
                             id="patientGender" 
                             name="patientGender" 
-                            
+                            placeholder='Male or Female'
                             value={patientGender}
                             onChange={(e) => onInputChange(e)}
                             required
-                        /><br/> */}
+                        /><br/>
                         
                         <label for="phone">Phone</label><br/>
                         <input 
