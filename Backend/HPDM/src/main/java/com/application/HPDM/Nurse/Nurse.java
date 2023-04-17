@@ -27,11 +27,10 @@ public class Nurse {
 //    PRIMARY KEY (nurseId)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long nurseID;
+    private Long nurseId;
     @NotBlank(message = "Please enter nurse name")
     @Length(max = 50, min = 1)
     private String nurseName;
-
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate nurseDoB;
 
@@ -43,11 +42,22 @@ public class Nurse {
     @Length(max = 15, min = 1)
     private String nursePhone;
 
-    public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB, Department departmentID) {
+    @NotBlank(message = "Please enter nurse email")
+    @Column(unique=true)
+    @Length(max = 50)
+    private String nurseEmail;
+
+    @NotBlank(message = "Please enter nurse password at least 8 characters")
+    @Length(max = 50, min = 8)
+    private String nursePassword;
+
+    public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB, Department departmentID, String nurseEmail, String nursePassword) {
         this.nurseName = nurseName;
         this.nurseDoB = nurseDoB;
         this.nursePhone = nursePhone;
         this.setDepartmentId(departmentID);
+        this.nurseEmail = nurseEmail;
+        this.nursePassword = nursePassword;
     }
 
     public void setDepartmentId(Department departmentId) {

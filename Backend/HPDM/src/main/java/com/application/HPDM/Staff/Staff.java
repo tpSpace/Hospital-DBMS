@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data
@@ -27,22 +26,26 @@ public class Staff {
 //    PRIMARY KEY (staffId)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long staffID;
+    private Long staffId;
     @NotBlank(message = "Please enter staff name")
     @Length(max = 50, min = 1)
     private String staffName;
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate staffDoB;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String staffPhone;
+
+    @NotBlank(message = "Please enter email")
+    @Column(unique=true)
     @Length(max = 100, min = 1)
     private String staffEmail;
+
     @Length(max = 100, min = 1)
     private String staffPassword;
 
