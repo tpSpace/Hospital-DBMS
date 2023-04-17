@@ -26,8 +26,11 @@ public class LoginController {
     public ResponseEntity<String> patientLogin(@RequestBody LoginRequest loginRequest){
         Long Email = patientRepository.findIdByEmail(loginRequest.getEmail());
         Long Password = patientRepository.findIdByPassword(loginRequest.getPassword());
-        if(Email.equals(Password) && Email != null && Password != null){
-            return ResponseEntity.ok("Login Successful");
+        if(Email != null && Password != null){
+            if(Email.equals(Password)){
+                return ResponseEntity.ok("Login Successful");
+            }
+
         }
         return ResponseEntity.badRequest()
                 .body("Year of birth cannot be in the future");
