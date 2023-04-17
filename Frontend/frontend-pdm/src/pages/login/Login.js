@@ -38,6 +38,7 @@ const Login = () => {
             }else{
                 setErrMsg('Login failed');
                 console.log(`email: ${email}, pass: ${pwd}`)
+                
             }
         })
         .catch(err => {
