@@ -37,29 +37,31 @@ public class LoginController {
         Long doctorEmail = doctorRepository.findIdByEmail(loginRequest.getEmail());
         Long doctorPassword = doctorRepository.findIdByPassword(loginRequest.getPassword());
 
-        Long staffEmail = staffRepository.findIdByEmail(loginRequest.getEmail());
-        Long staffPassword = staffRepository.findIdByPassword(loginRequest.getPassword());
-
         Long nurseEmail = nurseRepository.findIdByEmail(loginRequest.getEmail());
         Long nursePassword = nurseRepository.findIdByPassword(loginRequest.getPassword());
+
+        Long staffEmail = staffRepository.findIdByEmail(loginRequest.getEmail());
+        Long staffPassword = staffRepository.findIdByPassword(loginRequest.getPassword());
 
         if(patientEmail != null && patientPassword != null){
             if(patientEmail.equals(patientPassword)){
                 return ResponseEntity.ok("Patient");
-            } else if (doctorEmail != null && doctorPassword != null){
-                if(doctorEmail.equals(doctorPassword)){
-                    return ResponseEntity.ok("Doctor");
-                } else if (staffEmail != null && staffPassword != null){
-                    if(staffEmail.equals(staffPassword)){
-                        return ResponseEntity.ok("Staff");
-                    } else if (nurseEmail != null && nursePassword != null){
-                        if(nurseEmail.equals(nursePassword)){
-                            return ResponseEntity.ok("Nurse");
-                        }
-                    }
-                }
+            }
+        } else if(staffEmail != null && staffPassword != null){
+            if(staffEmail.equals(staffPassword)){
+                return ResponseEntity.ok("Staff");
+            }
+        } else if(doctorEmail != null && doctorPassword != null){
+            if(doctorEmail.equals(doctorPassword)){
+                return ResponseEntity.ok("Doctor");
+            }
+        } else if(nurseEmail != null && nursePassword != null){
+            if(nurseEmail.equals(nursePassword)){
+                return ResponseEntity.ok("Nurse");
             }
         }
+
+
         return ResponseEntity.badRequest()
                 .body("Email or Password is incorrect");
     }

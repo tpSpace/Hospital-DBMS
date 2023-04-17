@@ -33,15 +33,19 @@ public class Staff {
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate staffDoB;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "staffDepartmentID", referencedColumnName = "departmentID")
     private Department departmentID;
 
     @NotBlank(message = "Please enter phone number")
     @Length(max = 15, min = 1)
     private String staffPhone;
+
+    @NotBlank(message = "Please enter email")
+    @Column(unique=true)
     @Length(max = 100, min = 1)
     private String staffEmail;
+
     @Length(max = 100, min = 1)
     private String staffPassword;
 
