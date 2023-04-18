@@ -49,13 +49,13 @@ public class Patient {
     @Length(max = 50, min = 8)
     private String patientPassword;
 
-    @OneToMany(mappedBy = "patientID")
+    @OneToMany(mappedBy = "patient")
     private List<Appointment> appointmentList;
 
     @OneToMany(mappedBy = "patientID")
     private List<Occupy> occupiesList;
-    public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender, String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
-
+    public Patient(String patientFirstName, String patientLastName, LocalDate patientDob, String patientGender,
+                   String patientMedicalRecord, String patientPhone, String patientEmail, String patientPassword) {
         this.patientFirstName = patientFirstName;
         this.patientLastName = patientLastName;
         this.patientDob = patientDob;

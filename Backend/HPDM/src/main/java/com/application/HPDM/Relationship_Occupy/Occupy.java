@@ -60,12 +60,12 @@ public class Occupy {
     public Long getOccupyID(){
         return this.occupyID;
     }
-    public Patient getPatientID() {
-        return patientID;
+    public Long getPatientID() {
+        return patientID.getPatientId();
     }
 
-    public Room getRoomID() {
-        return roomID;
+    public Long getRoomID() {
+        return roomID.getRoomId();
     }
 
     public LocalDate getDateEnter() {

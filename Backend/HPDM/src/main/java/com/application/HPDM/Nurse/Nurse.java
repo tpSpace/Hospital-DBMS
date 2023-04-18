@@ -63,4 +63,52 @@ public class Nurse {
     public void setDepartmentId(Department departmentId) {
         this.departmentID = departmentId;
     }
+
+    public void setNurseName(String nurseName) {
+        this.nurseName = nurseName;
+    }
+
+    public void setNurseDoB(LocalDate nurseDoB) {
+        this.nurseDoB = nurseDoB;
+    }
+
+    public void setNursePhone(String nursePhone) {
+        this.nursePhone = nursePhone;
+    }
+
+    public void setNurseEmail(String nurseEmail) {
+        this.nurseEmail = nurseEmail;
+    }
+
+    public void setNursePassword(String nursePassword) {
+        this.nursePassword = nursePassword;
+    }
+
+    public Long getNurseId() {
+        return nurseId;
+    }
+
+    public String getNurseName() {
+        return nurseName;
+    }
+
+    public LocalDate getNurseDoB() {
+        return nurseDoB;
+    }
+
+    public Long getDepartmentID() {
+        return departmentID.getDepartmentID();
+    }
+
+    public String getNursePhone() {
+        return nursePhone;
+    }
+
+    public String getNurseEmail() {
+        return nurseEmail;
+    }
+
+    public String getNursePassword() {
+        return nursePassword;
+    }
 }
