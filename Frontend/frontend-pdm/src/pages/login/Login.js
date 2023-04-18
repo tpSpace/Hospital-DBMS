@@ -33,7 +33,7 @@ const LoginDoctor = () => {
         })
         await axios.post("http://localhost:8090/login",user)
         .then(response => {
-            console.log(response);
+            console.log(response.data);
             if(response.status === 200){
                 setEmail('');
                 setPwd('')
