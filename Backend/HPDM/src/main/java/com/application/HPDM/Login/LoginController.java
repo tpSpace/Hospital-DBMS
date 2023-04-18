@@ -66,17 +66,4 @@ public class LoginController {
                 .body("Email or Password is incorrect");
     }
 
-    // @PostMapping(path = "/doctor/login")
-    // public ResponseEntity<String> doctorLogin(@RequestBody LoginRequest loginRequest){
-    //     Long Email = doctorRepository.findIdByEmail(loginRequest.getEmail());
-    //     Long Password = doctorRepository.findIdByPassword(loginRequest.getPassword());
-    //     if(Email != null && Password != null){
-    //         if(Email.equals(Password)){
-    //             return ResponseEntity.ok("Login Successful");
-    //         }
-
-    //     }
-    //     return ResponseEntity.badRequest()
-    //             .body("Year of birth cannot be in the future");
-    // }
 }
