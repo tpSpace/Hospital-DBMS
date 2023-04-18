@@ -27,7 +27,7 @@ public class DoctorController {
     }
 
     @PostMapping("/doctor")
-    public void registerNewDoctor(@RequestBody Doctor doctor){
+    public void registerNewDoctor(@RequestBody Doctor doctor){;
         doctorService.addNewDoctor(doctor);
     }
 

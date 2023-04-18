@@ -15,8 +15,9 @@ import java.time.LocalDate;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+//@AllArgsConstructor
+//@
+@Table(name = "Nurse")
 public class Nurse {
 //    nurseId SERIAL NOT NULL,
 //    nurseName VARCHAR(50) NOT NULL,
@@ -33,8 +34,7 @@ public class Nurse {
     private String nurseName;
 //    @NotBlank(message = "Please enter DoB")
     private LocalDate nurseDoB;
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "nurseDepartmentID", referencedColumnName = "departmentId")
     private Department departmentID;
 
@@ -51,7 +51,8 @@ public class Nurse {
     @Length(max = 50, min = 8)
     private String nursePassword;
 
-    public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB, Department departmentID, String nurseEmail, String nursePassword) {
+    public Nurse(String nurseName, String nursePhone, LocalDate nurseDoB,
+                 Department departmentID, String nurseEmail, String nursePassword) {
         this.nurseName = nurseName;
         this.nurseDoB = nurseDoB;
         this.nursePhone = nursePhone;
