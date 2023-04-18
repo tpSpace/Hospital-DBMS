@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
 const Home = () => {
     const [appointments, setAppointments] = useState([]);
 
@@ -9,7 +8,7 @@ const Home = () => {
     }, []);
 
     const loadAppointments = async() => {
-        const result = await axios.get("http://localhost:8080/appointments");
+        const result = await axios.get("http://localhost:8090/appointment");
         setAppointments(result);
     };
 
@@ -26,20 +25,12 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            appointments.map((appointment, index) => (
-                                <tr>
-                                    <th scope="row" key={index}>{index + 1}</th>
-                                    <td>{appointment.doctocName}</td>
-                                    <td>{appointment.patientName}</td>
-                                    <td>{appointment.Date}</td>
-                                    
-                                </tr>
-                            ))
-                        }
+                        <th>ee</th>
+                        <tr>werwe</tr>
                     </tbody>
                 </table>
             </div>
+            
         </div>
     );
 };
