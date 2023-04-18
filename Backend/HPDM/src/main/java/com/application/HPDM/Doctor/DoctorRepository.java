@@ -3,6 +3,8 @@ package com.application.HPDM.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,5 +17,5 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
     //query by password and return
     @Query("SELECT d.doctorId FROM Doctor d WHERE d.doctorPassword = ?1")
-    public Long findIdByPassword(String doctorPassword);
+    public List<Long> findIdByPassword(String doctorPassword);
 }

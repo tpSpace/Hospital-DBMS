@@ -3,6 +3,8 @@ package com.application.HPDM.Patient;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
     //query by email and reutrn id
@@ -11,5 +13,6 @@ public interface PatientRepository extends JpaRepository<Patient, Long> {
 
     //query by password and return
     @Query("SELECT p.patientId FROM Patient p WHERE p.patientPassword = ?1")
-    public Long findIdByPassword(String password);
+    public List<Long> findIdByPassword(String password);
+
 }
