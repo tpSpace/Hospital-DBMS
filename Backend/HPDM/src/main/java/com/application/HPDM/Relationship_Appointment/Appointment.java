@@ -13,10 +13,10 @@ public class Appointment {
     @GeneratedValue
     private Long appointmentID;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
     private Doctor doctorID;
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patientID;
     private LocalDate Date;
