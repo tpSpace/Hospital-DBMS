@@ -13,6 +13,8 @@ import java.util.List;
 public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
+    @Autowired
+    private AppointmentRepository appointmentRepository;
     private final Logger LOGGER = LoggerFactory.getLogger(Appointment.class);
     @PostMapping("/appointment")
     public Appointment saveAppointment(@Valid @RequestBody Appointment appointment) {
@@ -20,7 +22,7 @@ public class AppointmentController {
         return appointmentService.saveAppointment(appointment);
     }
     @GetMapping("/appointment")
-    public List<Appointment> fetchAppointmentList() {return appointmentService.fetchAppointmentList();}
+    public List<Appointment> fetchAppointmentList() {return appointmentRepository.findAll();}
 
     @GetMapping("/appointment/{doctorId}")
     public Appointment fetchAppointmentByDoctorID(@PathVariable("doctorId") Long doctorId) {
