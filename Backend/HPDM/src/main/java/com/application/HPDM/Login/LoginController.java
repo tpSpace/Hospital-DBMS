@@ -1,4 +1,4 @@
-package com.application.HPDM.Nurse.Login;
+package com.application.HPDM.Login;
 
 
 import com.application.HPDM.Doctor.DoctorRepository;
