@@ -14,7 +14,7 @@ public class DepartmentController {
         this.departmentService=departmentService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/departments")
     public List<Department> getDepartment(){
         return departmentService.getDepartment();
     }
@@ -23,7 +23,7 @@ public class DepartmentController {
         return departmentService.findDepartmentById(id);
     }
 
-    @PostMapping
+    @PostMapping(path = "/department")
     public void registerNewDepartment(@RequestBody Department department){
         departmentService.addNewDepartment(department);
     }
@@ -31,4 +31,7 @@ public class DepartmentController {
     public void deleteDepartment(@PathVariable("departmentID") Long departmentID){
         departmentService.deleteDepartment(departmentID);
     }
+//    public Department getDepartmentById(Long id){
+//        return departmentService.findDepartmentById(id);
+//    }
 }

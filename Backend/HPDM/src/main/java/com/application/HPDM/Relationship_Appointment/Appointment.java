@@ -13,10 +13,10 @@ public class Appointment {
     @GeneratedValue
     private Long appointmentID;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
     private Doctor doctorID;
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patientID;
     private LocalDate Date;
@@ -26,7 +26,7 @@ public class Appointment {
         this.setPatientID(patient);
         this.Date = date;
     }
-
+    public Appointment(){}
     public void setPatientID(Patient patient) {
         this.patientID =  patient;
     }

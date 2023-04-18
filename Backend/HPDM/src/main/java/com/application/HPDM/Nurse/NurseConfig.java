@@ -1,8 +1,6 @@
 package com.application.HPDM.Nurse;
 
 import com.application.HPDM.Department.Department;
-import com.application.HPDM.Department.DepartmentConfig;
-import com.application.HPDM.Department.DepartmentController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +12,10 @@ import java.util.List;
 @Configuration
 public class NurseConfig {
     @Bean
-    CommandLineRunner nurseCommandLineRunner(NurseRepository nurseRepository,
-                                             DepartmentController departmentController) {
+    CommandLineRunner nurseCommandLineRunner(NurseRepository nurseRepository) {
         return args -> {
-            Department vaidan = departmentController.getDepartmentById(3L);
-
-            Nurse Kkmanmnan = new Nurse("KKmanman","42069",
-                    LocalDate.of(1296, Month.FEBRUARY, 2), vaidan);
+            Department vaidan = new Department("Vaidan");
+            Nurse Kkmanmnan = new Nurse("NYNY","090654579",LocalDate.of(2003,Month.APRIL,16),vaidan,"nurse@hotmail.com","superpassword");
             nurseRepository.saveAll(List.of(Kkmanmnan));
         };
     }
