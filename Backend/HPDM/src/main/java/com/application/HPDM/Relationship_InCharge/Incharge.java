@@ -37,16 +37,16 @@ public class Incharge {
 
     public Incharge(){}
 
-    public Nurse getNurseID() {
-        return nurseID;
+    public Long getNurseID() {
+        return nurseID.getNurseId();
     }
 
     public void setNurseID(Nurse nurseID) {
         this.nurseID = nurseID;
     }
 
-    public Room getRoomID() {
-        return roomID;
+    public Long getRoomID() {
+        return roomID.getRoomId();
     }
 
     public void setRoomID(Room roomID) {

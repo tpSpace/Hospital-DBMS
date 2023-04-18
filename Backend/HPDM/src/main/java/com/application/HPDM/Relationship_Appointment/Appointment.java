@@ -15,22 +15,24 @@ public class Appointment {
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
-    private Doctor doctorID;
+    private Doctor doctor;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
-    private Patient patientID;
+    private Patient patient;
     private LocalDate Date;
 
-    private String doctorName;
-
-    private String patientName;
+//    private String doctorName;
+//
+//    private String patientName;
 
     public Appointment(Patient patient, Doctor doctor, LocalDate date) {
-        this.setDoctorID(doctor);
-        this.setPatientID(patient);
+        this.setDoctor(doctor);
+        this.setPatient(patient);
         this.Date = date;
-        this.doctorName = doctor.getDoctorName();
-        this.patientName = patient.getPatientFirstName() + " " + patient.getPatientLastName();
+//        this.patientIDL = patient.getPatientId();
+//        this.doctorIDL = doctor.getDoctorId();
+//        this.doctorName = doctor.getDoctorName();
+//        this.patientName = patient.getPatientFirstName() + " " + patient.getPatientLastName();
     }
     public Appointment(){}
 
@@ -38,31 +40,39 @@ public class Appointment {
         return appointmentID;
     }
 
-    public Doctor getDoctorID() {
-        return doctorID;
-    }
+//    public Doctor getDoctor() {
+//        return doctor;
+//    }
 
-    public Patient getPatientID() {
-        return patientID;
-    }
+//    public Patient getPatient() {
+//        return patient;
+//    }
 
     public LocalDate getDate() {
         return Date;
     }
 
-    public void setPatientID(Patient patient) {
-        this.patientID =  patient;
+    public void setPatient(Patient patient) {
+        this.patient=  patient;
     }
 
-    public void setDoctorID(Doctor doctor) {
-        this.doctorID = doctor;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Long getPatientID() {
+        return patient.getPatientId();
+    }
+
+    public Long getDoctorID() {
+        return doctor.getDoctorId();
     }
 
     public String getDoctorName() {
-        return doctorName;
+        return doctor.getDoctorName();
     }
 
     public String getPatientName() {
-        return patientName;
+        return patient.getPatientFirstName() + " " + patient.getPatientLastName();
     }
 }
