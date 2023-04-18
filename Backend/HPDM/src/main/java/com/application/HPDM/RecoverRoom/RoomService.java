@@ -1,4 +1,4 @@
-package com.application.HPDM.Room;
+package com.application.HPDM.RecoverRoom;
 
 
 import java.util.List;
