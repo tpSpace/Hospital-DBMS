@@ -18,7 +18,12 @@ public class PatientController {
     public List<Patient> getPatients() {
         return patientRepository.findAll();
     }
-
+    public Long findPatientIdByPatientEmail(String patientEmail) {
+        return patientRepository.findIdByEmail(patientEmail);
+    }
+    public Long findPatientIdByPatientPhone(String patientPhone) {
+        return patientRepository.findIdByPassword(patientPhone);
+    }
     @GetMapping("/patients/{id}")
     public Patient getPatientById(@PathVariable Long id) {
         return patientRepository.findById(id).orElseThrow(()-> new UserNotFoundException(id));

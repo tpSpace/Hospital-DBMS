@@ -1,14 +1,12 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
-import com.application.HPDM.Relationship_Appointment.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table
@@ -34,7 +32,7 @@ public class Doctor {
     private String doctorPhoneNum;
     private LocalDate doctorDob;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "DoctorDepartmentID", referencedColumnName = "departmentID")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Department departmentID;
@@ -46,9 +44,6 @@ public class Doctor {
     @NotBlank(message = "Please enter doctor password")
     @Length(max = 50, min = 1)
     private String doctorPassword;
-
-    @OneToMany(mappedBy = "doctorID")
-    private List<Appointment> appointmentList;
 
     public Doctor(){}
 

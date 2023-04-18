@@ -31,4 +31,7 @@ public class DepartmentController {
     public void deleteDepartment(@PathVariable("departmentID") Long departmentID){
         departmentService.deleteDepartment(departmentID);
     }
+    public Department getDepartmentById(Long id){
+        return departmentService.findDepartmentById(id);
+    }
 }
