@@ -1,7 +1,5 @@
 package com.application.HPDM.Relationship_InCharge;
 
-import com.application.HPDM.Relationship_Occupy.Occupy;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

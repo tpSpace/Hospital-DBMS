@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.print.Doc;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,27 +48,36 @@ public class DoctorService {
     }
 
     @Transactional
-    public void updateDoctor(Long doctorId, String name, String phoneNum, String email){
-        Doctor doctor = doctorRepository.findById(doctorId)
+    public Doctor updateDoctor(Long doctorId, Doctor doctor){
+        Doctor updateDoctor = doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new IllegalStateException("doctor with id: " + doctorId + " does not exists"));
 
-        if(name != null && name.length() > 0 && !Objects.equals(doctor.getDoctorName(), name)){
-            doctor.setDoctorName(name);
+        String name = doctor.getDoctorName();
+        if(name != null && name.length() > 0 &&
+                !Objects.equals(updateDoctor.getDoctorName(), name)){
+            updateDoctor.setDoctorName(name);
         }
-        if(phoneNum != null && phoneNum.length() > 0 && !Objects.equals(doctor.getDoctorPhoneNum(), phoneNum)){
+
+        String phoneNum = doctor.getDoctorPhoneNum();
+        if(phoneNum != null && phoneNum.length() > 0 &&
+                !Objects.equals(updateDoctor.getDoctorPhoneNum(), phoneNum)){
             Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorPhoneNum(phoneNum);
             if(optionalDoctor.isPresent()){
                 throw new IllegalStateException("phone number is taken");
             }
-            doctor.setDoctorPhoneNum(phoneNum);
+            updateDoctor.setDoctorPhoneNum(phoneNum);
         }
-        if(email != null && email.length() > 0 && !Objects.equals(doctor.getDoctorEmail(), email)){
+
+        String email = doctor.getDoctorEmail();
+        if(email != null && email.length() > 0 &&
+                !Objects.equals(updateDoctor.getDoctorEmail(), email)){
             Optional<Doctor> optionalDoctor = doctorRepository.findDoctorByDoctorEmail(email);
             if(optionalDoctor.isPresent()){
                 throw new IllegalStateException("email is taken");
             }
-            doctor.setDoctorEmail(email);
+            updateDoctor.setDoctorEmail(email);
         }
+        return doctorRepository.save(updateDoctor);
     }
 
 }

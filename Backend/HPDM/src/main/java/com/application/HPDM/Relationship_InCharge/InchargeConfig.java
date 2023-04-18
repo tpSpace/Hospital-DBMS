@@ -2,10 +2,8 @@ package com.application.HPDM.Relationship_InCharge;
 
 import com.application.HPDM.Nurse.Nurse;
 import com.application.HPDM.Nurse.NurseController;
-import com.application.HPDM.Nurse.NurseRepository;
 import com.application.HPDM.RecoverRoom.Room;
 import com.application.HPDM.RecoverRoom.RoomController;
-import com.application.HPDM.RecoverRoom.RoomRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
