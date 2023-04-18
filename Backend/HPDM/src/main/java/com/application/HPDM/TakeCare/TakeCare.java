@@ -1,6 +1,7 @@
 package com.application.HPDM.TakeCare;
 
 import com.application.HPDM.Doctor.Doctor;
+import com.application.HPDM.Nurse.Nurse;
 import com.application.HPDM.Patient.Patient;
 import jakarta.persistence.*;
 
@@ -20,15 +21,15 @@ public class TakeCare {
     @GeneratedValue
     private Long takeCareID;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
-    private Doctor doctorID;
+    @JoinColumn(name = "nurseID",referencedColumnName = "nurseId")
+    private Nurse nurseID;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patientID;
     private LocalDate Date;
 
-    public TakeCare(Patient patient, Doctor doctor, LocalDate date) {
-        this.setDoctorID(doctor);
+    public TakeCare(Patient patient, Nurse nurse, LocalDate date) {
+        this.setNurseID(nurse);
         this.setPatientID(patient);
         this.Date = date;
     }
@@ -37,7 +38,7 @@ public class TakeCare {
         this.patientID =  patient;
     }
 
-    public void setDoctorID(Doctor doctor) {
-        this.doctorID = doctor;
+    public void setNurseID(Nurse nurse) {
+        this.nurseID = nurse;
     }
 }

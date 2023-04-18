@@ -24,9 +24,9 @@ public class TakeCareController {
         return takeCareService.fetchTakeCareList();
     }
 
-    @GetMapping("/takeCare/{doctorId}")
-    public TakeCare fetchTakeCareByDoctorID(@PathVariable("doctorId") Long doctorId) {
-        return takeCareService.fetchTakeCareByDoctorID(doctorId);
+    @GetMapping("/takeCare/{nurseId}")
+    public TakeCare fetchTakeCareByNurseID(@PathVariable("nurseId") Long nurseId) {
+        return takeCareService.fetchTakeCareByNurseID(nurseId);
     }
 
     @GetMapping("/takeCare/{patientId}")

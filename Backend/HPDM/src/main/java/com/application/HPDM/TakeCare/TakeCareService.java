@@ -6,5 +6,5 @@ public interface TakeCareService {
     TakeCare saveTakeCare(TakeCare takeCare);
     List<TakeCare> fetchTakeCareList();
     TakeCare fetchTakeCareByPatientID(Long patientId);
-    TakeCare fetchTakeCareByDoctorID(Long doctorId);
+    TakeCare fetchTakeCareByNurseID(Long nurseId);
 }
