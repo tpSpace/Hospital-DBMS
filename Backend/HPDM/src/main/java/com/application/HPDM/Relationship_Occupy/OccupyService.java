@@ -2,6 +2,7 @@ package com.application.HPDM.Relationship_Occupy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,10 +20,23 @@ public class OccupyService {
         return occupyRepository.findAll();
     }
 
-    public void addNewOccupation(Occupy occupy){
-        occupyRepository.save(occupy);
+    public Occupy addNewOccupation(Occupy occupy){
+        return occupyRepository.save(occupy);
     }
-
+    @Transactional
+    public Occupy updateOccupationDateLeave(Long occupyID, Occupy occupy){
+        Occupy updateOccupy = occupyRepository.findById(occupyID).
+                orElseThrow(() -> new IllegalStateException("can't find occupation"));
+        if (updateOccupy.getDateLeave() != null) {
+            throw new IllegalStateException("Patient already left");
+        }
+//        updateOccupy.setDateEnter(occupy.getDateEnter());m
+//        updateOccupy.setPatientID(occupy.getPatientID());
+//        updateOccupy.setRoomID(occupy.getRoomID());
+//        updateOccupy.setDateLeave(occupy.getDateLeave());
+        updateOccupy.setDateLeave(occupy.getDateLeave());
+        return occupyRepository.save(updateOccupy);
+    }
     public Occupy findOccupationById(Long id) {
         return occupyRepository.findById(id).get();
     }
@@ -33,9 +47,8 @@ public class OccupyService {
         }
         occupyRepository.deleteById(occupyID);
     }
-
-    public void updateOccupation(Occupy occupy){
-        deleteOccupation(occupy.getOccupyID());
-        addNewOccupation(occupy);
-    }
+//    public void updateOccupation(Occupy occupy){
+//        deleteOccupation(occupy.getOccupyID());
+//        addNewOccupation(occupy);
+//    }
 }

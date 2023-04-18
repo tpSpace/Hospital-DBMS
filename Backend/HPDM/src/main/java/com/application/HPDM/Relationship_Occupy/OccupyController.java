@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -30,19 +31,14 @@ public class OccupyController {
     public void registerNewOccupation(@RequestBody Occupy occupy){
         occupyService.addNewOccupation(occupy);
     }
-    @PutMapping(path = "/occupy/update")
-    public void updateOccupation(@PathVariable Long occupyID, LocalDate date){
-        Occupy updateOccupy = occupyService.findOccupationById(occupyID);
-        if (updateOccupy.getDateLeave() != null){
-            throw new IllegalStateException("Patient already left");
-        }
-        else
-            updateOccupy.setDateLeave(date);
-        occupyService.updateOccupation(updateOccupy);
+    @PutMapping(path = "/occupy/{id}")
+    public Occupy updateOccupation(@PathVariable("id") Long occupyID,
+                                  @RequestBody Occupy occupy){
+        return occupyService.updateOccupationDateLeave(occupyID, occupy);
     }
 
-    @DeleteMapping(path= "/occupy/{ID}")
-    public void deleteOccupation(@PathVariable("occupyID") Long occupyID){
+    @DeleteMapping(path= "/occupy/{id}")
+    public void deleteOccupation(@PathVariable("id") Long occupyID){
         occupyService.deleteOccupation(occupyID);
     }
 }
