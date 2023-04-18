@@ -1,4 +1,4 @@
-package com.application.HPDM.Nurse.Login;
+package com.application.HPDM.Login;
 
 public class LoginResponse {
     private String status;
