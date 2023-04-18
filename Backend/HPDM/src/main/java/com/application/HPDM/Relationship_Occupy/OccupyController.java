@@ -1,6 +1,5 @@
 package com.application.HPDM.Relationship_Occupy;
 
-import com.application.HPDM.Department.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

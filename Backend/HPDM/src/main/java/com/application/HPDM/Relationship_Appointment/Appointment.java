@@ -21,12 +21,35 @@ public class Appointment {
     private Patient patientID;
     private LocalDate Date;
 
+    private String doctorName;
+
+    private String patientName;
+
     public Appointment(Patient patient, Doctor doctor, LocalDate date) {
         this.setDoctorID(doctor);
         this.setPatientID(patient);
         this.Date = date;
+        this.doctorName = doctor.getDoctorName();
+        this.patientName = patient.getPatientFirstName() + " " + patient.getPatientLastName();
     }
     public Appointment(){}
+
+    public Long getAppointmentID() {
+        return appointmentID;
+    }
+
+    public Doctor getDoctorID() {
+        return doctorID;
+    }
+
+    public Patient getPatientID() {
+        return patientID;
+    }
+
+    public LocalDate getDate() {
+        return Date;
+    }
+
     public void setPatientID(Patient patient) {
         this.patientID =  patient;
     }
@@ -35,4 +58,11 @@ public class Appointment {
         this.doctorID = doctor;
     }
 
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
 }
