@@ -14,7 +14,7 @@ const Home = () => {
     }
 
     return (
-        <div className='container-home'>
+        <div className='container'>
             <div className='py-4'>
                 <table className="table border shadow">
                     <thead>
@@ -26,8 +26,17 @@ const Home = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <th>ee</th>
-                        <tr>werwe</tr>
+                        {
+                            appointments.map((appointment, index) => (
+                                <tr>
+                                    <th scope="row" key={index}>{index + 1}</th>
+                                    <td>{appointment.doctorName}</td>
+                                    <td>{appointment.patientName}</td>
+                                    <td>{appointment.date}</td>
+                                    
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>

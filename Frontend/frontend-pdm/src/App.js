@@ -5,6 +5,8 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import ViewInfo from './pages/dashboard/ViewInfo';
 import styled from 'styled-components';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
     <>
