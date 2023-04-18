@@ -28,9 +28,9 @@ public class TakeCareServiceImplementation implements TakeCareService{
     }
 
     @Override
-    public TakeCare fetchTakeCareByDoctorID(Long doctorId) {
+    public TakeCare fetchTakeCareByNurseID(Long nurseId) {
         Optional<TakeCare> takeCare =
-                takeCareRespository.findById(doctorId);
+                takeCareRespository.findById(nurseId);
         return takeCare.get();
     }
 }
