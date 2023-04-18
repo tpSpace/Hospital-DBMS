@@ -4,10 +4,6 @@ import com.application.HPDM.Relationship_InCharge.Incharge;
 import com.application.HPDM.Relationship_Occupy.Occupy;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
