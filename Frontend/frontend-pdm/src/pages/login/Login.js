@@ -2,8 +2,8 @@ import React from 'react';
 import './Login.css';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import { configureStore } from '@reduxjs/toolkit'
 import { useNavigate } from 'react-router-dom';
+
 const LoginDoctor = () => {
     let navigate = useNavigate();
     const userRef = useRef();
@@ -14,8 +14,8 @@ const LoginDoctor = () => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
     const [user,setUser] = useState({
-        doctorEmail: "",
-        doctorPassword: "",
+        email: "",
+        password: "",
     })
     useEffect(() => {
         userRef.current.focus();
@@ -31,8 +31,9 @@ const LoginDoctor = () => {
             email: email,
             password: pwd,
         })
-        await axios.post("http://localhost:8080/doctor/login",user)
+        await axios.post("http://localhost:8080/login",user)
         .then(response => {
+            console.log(response);
             if(response.status === 200){
                 setEmail('');
                 setPwd('')
@@ -41,6 +42,7 @@ const LoginDoctor = () => {
             }
         })
         .catch(err => {
+            console.log(err);
             if(err.response.status === 400){
                 setErrMsg('Wrong email or password');
             }
