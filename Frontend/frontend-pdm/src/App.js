@@ -2,7 +2,6 @@ import './App.css';
 import { Route, Routes, Link} from 'react-router-dom';
 import Home from './pages/home/Home';
 import Register from './pages/register/Register';
-import LoginDoctor from './pages/login/LoginDoctor';
 import Login from './pages/login/Login';
 import ViewInfo from './pages/dashboard/ViewInfo';
 import styled from 'styled-components';
@@ -22,7 +21,6 @@ function App() {
         <Route  path="/" element={<Home />} />
         <Route  path="/login" element={<Login />} />
         <Route  path="/register" element={<Register />} />
-        <Route exact path='/logindoctor' element={<LoginDoctor/>}/>
         <Route  path="/viewinfo" element={<ViewInfo/>}/>
       </Routes>
     </>
