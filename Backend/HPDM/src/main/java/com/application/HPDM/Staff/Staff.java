@@ -57,4 +57,56 @@ public class Staff {
         this.staffEmail = staffEmail;
         this.staffPassword = staffPassword;
     }
+
+    public Long getStaffId() {
+        return staffId;
+    }
+
+    public String getStaffName() {
+        return staffName;
+    }
+
+    public LocalDate getStaffDoB() {
+        return staffDoB;
+    }
+
+    public Long getDepartmentID() {
+        return departmentID.getDepartmentID();
+    }
+
+    public String getStaffPhone() {
+        return staffPhone;
+    }
+
+    public String getStaffEmail() {
+        return staffEmail;
+    }
+
+    public String getStaffPassword() {
+        return staffPassword;
+    }
+
+    public void setStaffName(String staffName) {
+        this.staffName = staffName;
+    }
+
+    public void setStaffDoB(LocalDate staffDoB) {
+        this.staffDoB = staffDoB;
+    }
+
+    public void setDepartmentID(Department departmentID) {
+        this.departmentID = departmentID;
+    }
+
+    public void setStaffPhone(String staffPhone) {
+        this.staffPhone = staffPhone;
+    }
+
+    public void setStaffEmail(String staffEmail) {
+        this.staffEmail = staffEmail;
+    }
+
+    public void setStaffPassword(String staffPassword) {
+        this.staffPassword = staffPassword;
+    }
 }

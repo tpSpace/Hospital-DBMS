@@ -47,7 +47,7 @@ public class Doctor {
     @Length(max = 50, min = 1)
     private String doctorPassword;
 
-    @OneToMany(mappedBy = "doctorID")
+    @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointmentList;
 
     public Doctor(){}
@@ -93,8 +93,8 @@ public class Doctor {
         this.doctorDob = dob;
     }
 
-    public Department getDepartmentId() {
-        return departmentID;
+    public Long getDepartmentId() {
+        return departmentID.getDepartmentID();
     }
 
     public void setDepartmentId(Department departmentId) {

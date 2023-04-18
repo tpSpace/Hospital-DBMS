@@ -9,8 +9,9 @@ const Home = () => {
 
     const loadAppointments = async() => {
         const result = await axios.get("http://localhost:8090/appointment");
-        setAppointments(result);
-    };
+        setAppointments(result.data);
+        console.log(result.data);
+    }
 
     return (
         <div className='container-home'>

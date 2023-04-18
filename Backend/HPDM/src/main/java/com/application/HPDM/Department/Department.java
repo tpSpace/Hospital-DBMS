@@ -32,8 +32,10 @@ public class Department {
 
     @OneToMany(mappedBy = "departmentID")
     private List<Doctor>  doctors;
+
     @OneToMany(mappedBy = "departmentID")
     private List<Nurse>  nurses;
+
     @OneToMany(mappedBy = "departmentID")
     private List<Staff>  staff;
 
