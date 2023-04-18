@@ -10,6 +10,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin("*")
 public class RoomController {
     @Autowired
     private RoomService roomService;

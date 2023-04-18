@@ -31,7 +31,7 @@ const LoginDoctor = () => {
             email: email,
             password: pwd,
         })
-        await axios.post("http://localhost:8080/login",user)
+        await axios.post("http://localhost:8090/login",user)
         .then(response => {
             console.log(response);
             if(response.status === 200){

@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 //@RequestMapping
 public class OccupyController {
     private OccupyService occupyService;
