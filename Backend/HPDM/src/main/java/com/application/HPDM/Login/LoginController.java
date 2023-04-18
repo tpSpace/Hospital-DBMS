@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 public class LoginController {
@@ -32,31 +34,31 @@ public class LoginController {
     @PostMapping(path = "/login")
     public ResponseEntity<String> patientLogin(@RequestBody LoginRequest loginRequest){
         Long patientEmail = patientRepository.findIdByEmail(loginRequest.getEmail());
-        Long patientPassword = patientRepository.findIdByPassword(loginRequest.getPassword());
+        List<Long> patientPassword = patientRepository.findIdByPassword(loginRequest.getPassword());
 
         Long doctorEmail = doctorRepository.findIdByEmail(loginRequest.getEmail());
-        Long doctorPassword = doctorRepository.findIdByPassword(loginRequest.getPassword());
+        List<Long> doctorPassword = doctorRepository.findIdByPassword(loginRequest.getPassword());
 
         Long nurseEmail = nurseRepository.findIdByEmail(loginRequest.getEmail());
-        Long nursePassword = nurseRepository.findIdByPassword(loginRequest.getPassword());
+        List<Long> nursePassword = nurseRepository.findIdByPassword(loginRequest.getPassword());
 
         Long staffEmail = staffRepository.findIdByEmail(loginRequest.getEmail());
-        Long staffPassword = staffRepository.findIdByPassword(loginRequest.getPassword());
+        List<Long> staffPassword = staffRepository.findIdByPassword(loginRequest.getPassword());
 
         if(patientEmail != null && patientPassword != null){
-            if(patientEmail.equals(patientPassword)){
+            if(contains(patientPassword, patientEmail)){
                 return ResponseEntity.ok("Patient");
             }
         } else if(staffEmail != null && staffPassword != null){
-            if(staffEmail.equals(staffPassword)){
+            if(contains(staffPassword, staffEmail)){
                 return ResponseEntity.ok("Staff");
             }
         } else if(doctorEmail != null && doctorPassword != null){
-            if(doctorEmail.equals(doctorPassword)){
+            if(contains(doctorPassword, doctorEmail)){
                 return ResponseEntity.ok("Doctor");
             }
         } else if(nurseEmail != null && nursePassword != null){
-            if(nurseEmail.equals(nursePassword)){
+            if(contains(nursePassword, nurseEmail)){
                 return ResponseEntity.ok("Nurse");
             }
         }
@@ -65,5 +67,12 @@ public class LoginController {
         return ResponseEntity.badRequest()
                 .body("Email or Password is incorrect");
     }
-
+    static boolean contains(List<Long> list, Long item) {
+        for (Long n : list) {
+            if (item.equals(n)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
