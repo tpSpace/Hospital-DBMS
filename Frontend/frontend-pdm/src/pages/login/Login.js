@@ -50,10 +50,13 @@ const LoginDoctor = () => {
                 setEmail('');
                 setPwd('');
                 setRole(JSON.stringify(response.data));
-                localStorage.setItem('myRole', role);
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', pwd);
+                localStorage.setItem('role', role);
                 localStorage.setItem('status', 'true');
                 console.log('login successful');
-                navigate('/');
+                navigate('/viewinfo');
+                window.location.reload();
             }
         })
         .catch(err => {
