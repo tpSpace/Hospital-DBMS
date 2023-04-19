@@ -33,12 +33,18 @@ const LoginDoctor = () => {
         })
         await axios.post("http://localhost:8090/login",user)
         .then(response => {
-            console.log(response);
+            console.log(response.data);
+            console.log(response.status)
             if(response.status === 200){
                 setEmail('');
                 setPwd('')
                 setSuccess(true);
-                navigate('/');
+                localStorage.setItem('email', user.email);
+                localStorage.setItem('password', user.password);
+                localStorage.setItem('role', response.data);
+                localStorage.setItem('status', true);
+                navigate('/viewinfo');
+                window.location.reload();
             }
         })
         .catch(err => {
