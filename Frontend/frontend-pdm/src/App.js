@@ -1,82 +1,26 @@
 import './App.css';
-import { Route, Routes, Link} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import ViewInfo from './pages/dashboard/ViewInfo';
-import styled from 'styled-components';
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Logic from './components/Logic.jsx';
 
 function App() {
+  
   return (
     <>
-      <Nav>
-        <Logo>HPDM</Logo>
-        <Ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/register">Register</Link></li>
-        </Ul>
-      </Nav>
-
+      <Logic/>
       <Routes>
         <Route  path="/" element={<Home />} />
         <Route  path="/login" element={<Login />} />
         <Route  path="/register" element={<Register />} />
         <Route  path="/viewinfo" element={<ViewInfo/>}/>
+        <Route  path="*" element={<h1>404 Not Found</h1>} />
+     
       </Routes>
     </>
   );
 }
-const Nav = styled.nav`
-  width: 100%;
-  height: 70px;
-  background-color: #2E3440;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #2E3440;
-  
-`;
-
-const Ul = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 50;
-  margin-right: 1rem;
-  height: 100%;
-  list-style: none;
-  font-size: 1.2rem;
-  li {
-    margin: 0 1rem;
-    padding: 5px;
-
-    a {
-      text-decoration: none;
-      color: #fff;
-    }
-  }
-  li:hover {
-    background-color: #3B4252;
-    padding: 5px;
-    border-radius: 5px;
-    shadow: 1 1 5px #000;
-    a {
-      color: #fff;
-    }
-  }
-
-`;
-
-const Logo = styled.h1`
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-left: 1rem;
-`;
 
 export default App;
