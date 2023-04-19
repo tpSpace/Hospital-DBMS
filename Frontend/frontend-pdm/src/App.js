@@ -5,6 +5,7 @@ import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import ViewInfo from './pages/dashboard/ViewInfo';
 import Logic from './components/Logic.jsx';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   
