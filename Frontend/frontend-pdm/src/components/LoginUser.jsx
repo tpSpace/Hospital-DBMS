@@ -18,7 +18,7 @@ const LoginUser = () => {
                 <li><Link to="/viewinfo">Profile</Link></li>
                 <li><Link to="/login">Login</Link></li>
                 <li><Link to="/register">Register</Link></li>
-                <li><a onClick={handleLogout}>Logout</a></li>
+                <li><a onClick={handleLogout} href="">Logout</a></li>
             </Ul>
         </Nav>
     )
