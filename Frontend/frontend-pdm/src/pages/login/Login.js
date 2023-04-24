@@ -12,21 +12,11 @@ const LoginDoctor = () => {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [role, setRole] = useState('');
 
     const [user,setUser] = useState({
         email: "",
         password: "",
     });
-
-    // if(localStorage.getItem('myRole')){
-    //     localStorage.removeItem('myRole');
-    // }
-
-    useEffect(() => {
-        localStorage.setItem('myRole', role);
-        console.log(localStorage.getItem('myRole'));
-    }, [role]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -49,11 +39,11 @@ const LoginDoctor = () => {
             if(response.status === 200){
                 setEmail('');
                 setPwd('');
-                setRole(JSON.stringify(response.data));
                 localStorage.setItem('email', email);
-                localStorage.setItem('password', pwd);
-                localStorage.setItem('role', role);
+                //localStorage.setItem('password', pwd);
+                localStorage.setItem('role', JSON.stringify(response.data));
                 localStorage.setItem('status', 'true');
+                console.log(localStorage.getItem('role'));
                 console.log('login successful');
                 navigate('/viewinfo');
                 window.location.reload();

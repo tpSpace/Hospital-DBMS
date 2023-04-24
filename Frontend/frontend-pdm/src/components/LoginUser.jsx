@@ -7,6 +7,8 @@ const LoginUser = () => {
 
     function handleLogout() {
         localStorage.setItem('status', 'false');
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
         navigate('/');
         window.location.reload();
         console.log("Bye");
@@ -16,8 +18,8 @@ const LoginUser = () => {
             <Logo>HPDM</Logo>
             <Ul>
                 <li><Link to="/viewinfo">Profile</Link></li>
-                <li><Link to="/login">Login</Link></li>
-                <li><Link to="/register">Register</Link></li>
+                {/* <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Register</Link></li> */}
                 <li><a onClick={handleLogout} href="">Logout</a></li>
             </Ul>
         </Nav>
