@@ -7,22 +7,19 @@ A project for pdm (principle of database) ar HCMIU.
 - **Front-end**: Reactjs, Bootstrap
 - **Database Management System**: PostgreSQL
 
-## Features
-# Basic feature
+# Features
+## Basic feature
 * **Sign in**: User can sign in with their username and password if they have an existing account.
 * **Register**: User registers for a new username and password, add basic information like phone number, address.
 * **Edit user information**: User can edit their username and other information on their profile.
-
-# Patients 
+## Patients 
 * **Make an appointment**: Patients cant make and appointment with doctos.
-
-# Doctors
+## Doctors
 * **View appoinment**: Doctors can view appointments in the future.
-
-# Staffs 
+## Staffs 
 * **View rooms**: Staffs can view status of rooms.
 * **Add rooms**: Staffs can add new rooms.
-# Nurces
+## Nurces
 * **View rooms"": Nurces can view which rooms to serve.
 
 
