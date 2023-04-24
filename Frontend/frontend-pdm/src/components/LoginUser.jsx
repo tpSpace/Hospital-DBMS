@@ -8,6 +8,7 @@ const LoginUser = () => {
     function handleLogout() {
         localStorage.setItem('status', 'false');
         localStorage.removeItem('role');
+        localStorage.removeItem('email');
         navigate('/');
         window.location.reload();
         console.log("Bye");
