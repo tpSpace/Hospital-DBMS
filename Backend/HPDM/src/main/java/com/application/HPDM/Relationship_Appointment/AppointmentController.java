@@ -24,12 +24,12 @@ public class AppointmentController {
     @GetMapping("/appointment")
     public List<Appointment> fetchAppointmentList() {return appointmentRepository.findAll();}
 
-    @GetMapping("/appointment/{doctorId}")
+    @GetMapping("/appointment/doctor/{doctorId}")
     public Appointment fetchAppointmentByDoctorID(@PathVariable("doctorId") Long doctorId) {
         return appointmentService.fetchAppointmentByDoctorID(doctorId);
     }
 
-    @GetMapping("/appointment/{patientId}")
+    @GetMapping("/appointment/patient/{patientId}")
     public Appointment fetchAppointmentByPatientID(@PathVariable("patientId") Long patientId) {
         return appointmentService.fetchAppointmentByPatientID(patientId);
     }

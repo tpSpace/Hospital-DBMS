@@ -10,7 +10,6 @@ const Home = () => {
     const loadAppointments = async() => {
         const result = await axios.get("http://localhost:8090/appointment");
         setAppointments(result.data);
-        // console.log(result.data);
     }
 
     return (
@@ -27,16 +26,14 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {
-                            appointments.map((appointment, index) => {
-                                return (
-                                    <tr>
-                                        <th scope="row" key={appointment}>{index + 1}</th>
-                                        <td>{appointment.doctorName}</td>
-                                        <td>{appointment.patientName}</td>
-                                        <td>{appointment.date}</td>
-                                    </tr>
-                                )
-                            })
+                            appointments.map((appointment, index) => (
+                                <tr>
+                                    <th scope="row" key={appointment}>{index + 1}</th>
+                                    <td>{appointment.doctorName}</td>
+                                    <td>{appointment.patientName}</td>
+                                    <td>{appointment.date}</td>
+                                </tr>
+                            ))
                         }
                     </tbody>
                 </table>
