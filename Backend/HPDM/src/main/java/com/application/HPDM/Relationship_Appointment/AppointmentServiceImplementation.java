@@ -1,10 +1,13 @@
 package com.application.HPDM.Relationship_Appointment;
 
+import com.application.HPDM.Doctor.DoctorRepository;
+import com.application.HPDM.Patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,9 +17,14 @@ import java.util.Optional;
 public class AppointmentServiceImplementation implements AppointmentService{
     @Autowired
     private AppointmentRepository appointmentRepository;
+    @Autowired
+    private PatientRepository patientRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
     @Override
     public Appointment saveAppointment(Appointment appointment) {
-        return appointmentRepository.save(appointment);
+        return
+                appointmentRepository.save(appointment);
     }
 
     @Override
@@ -25,16 +33,26 @@ public class AppointmentServiceImplementation implements AppointmentService{
     }
 
     @Override
-    public Appointment fetchAppointmentByPatientID(Long patientId) {
-        Optional<Appointment> appointment =
-                appointmentRepository.findById(patientId);
-        return appointment.get();
+    public List<Appointment> fetchAppointmentByPatientID(Long patientId) {
+        List<Appointment> appointmentList = new ArrayList<>();
+
+        for(Appointment a : appointmentRepository.findAll()){
+             if(a.getPatientID() == patientId){
+                 appointmentList.add(a);
+             }
+        }
+        return appointmentList;
     }
 
     @Override
-    public Appointment fetchAppointmentByDoctorID(Long doctorId) {
-        Optional<Appointment> appointment =
-                appointmentRepository.findById(doctorId);
-        return appointment.get();
+    public List<Appointment> fetchAppointmentByDoctorID(Long doctorId) {
+        List<Appointment> appointmentList = new ArrayList<>();
+
+        for(Appointment a : appointmentRepository.findAll()){
+            if(a.getDoctorID() == doctorId){
+                appointmentList.add(a);
+            }
+        }
+        return appointmentList;
     }
 }

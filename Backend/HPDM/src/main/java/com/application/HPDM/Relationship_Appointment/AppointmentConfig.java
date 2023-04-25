@@ -27,12 +27,13 @@ public class AppointmentConfig {
 
 
 
-            Appointment appointment1 = new Appointment(patient1,doctor1,
+            Appointment appointment1 = new Appointment(patient1,doctor2,
                     LocalDate.of(2020, Month.OCTOBER, 1));
 
             Appointment appointment2 = new Appointment(patient2,doctor2,LocalDate.of(2020, Month.OCTOBER, 1));
+            Appointment appointment3 = new Appointment(patient1,doctor1,LocalDate.of(2020, Month.OCTOBER, 1));
 
-            appointmentRepository.saveAll(List.of(appointment1, appointment2));
+            appointmentRepository.saveAll(List.of(appointment1, appointment2,appointment3));
         };
     }
 }
