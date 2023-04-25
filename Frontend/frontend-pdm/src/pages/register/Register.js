@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './Register.css'
 import axios from 'axios';
-import { Link,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     let navigate=useNavigate();
@@ -23,7 +23,7 @@ const Register = () => {
     }
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:8080/createPatients", patient);
+        await axios.post("http://localhost:8090/createPatients", patient);
         navigate("/");
       }
     return (

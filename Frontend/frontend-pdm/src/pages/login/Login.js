@@ -12,33 +12,41 @@ const LoginDoctor = () => {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+
     const [user,setUser] = useState({
         email: "",
         password: "",
-    })
+    });
+
     useEffect(() => {
         userRef.current.focus();
     }, []);
 
     useEffect(() => {
         setErrMsg('');
-    },[email, pwd]);
+    },[email, pwd]);;
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setUser({
             email: email,
             password: pwd,
-        })
+        });
+
         await axios.post("http://localhost:8090/login",user)
         .then(response => {
             console.log(response);
             if(response.status === 200){
                 setEmail('');
-                setPwd('')
-                setSuccess(true);
-                navigate('/');
+                setPwd('');
+                localStorage.setItem('email', email);
+                //localStorage.setItem('password', pwd);
+                localStorage.setItem('role', JSON.stringify(response.data));
+                localStorage.setItem('status', 'true');
+                console.log(localStorage.getItem('role'));
+                console.log('login successful');
+                navigate('/viewinfo');
+                window.location.reload();
             }
         })
         .catch(err => {
@@ -47,48 +55,40 @@ const LoginDoctor = () => {
                 setErrMsg('Wrong email or password');
             }
             console.log('login failed');
-        })
+        });
     }
+
     return (
-        <>
-            {success ? (
-                <section className='body-login'>
-                    <h1 className='title-login'>You are logged in!</h1>
-                </section>
-            ) : (
-                <section className='body-login'>
-                    <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errMsg}</p>
-                    <form className='container-login' onSubmit={handleSubmit}>
-                        <h1 className='title-login'>Sign In</h1>
-                        <br></br>
-                        <label htmlFor='username-login'>Username</label>
-                        <input
-                            type='text'
-                            id='username-login'
-                            placeholder='Enter your username'
-                            ref={userRef}
-                            autoComplete='off'
-                            onChange={(e) => setEmail(e.target.value)}
-                            value={email}
-                            required
-                        />
+        <section className='body-login'>
+            <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errMsg}</p>
+            <form className='container-login' onSubmit={handleSubmit}>
+                <h1 className='title-login'>Sign In</h1>
+                <br></br>
+                <label htmlFor='username-login'>Username</label>
+                <input
+                    type='text'
+                    id='username-login'
+                    placeholder='Enter your username'
+                    ref={userRef}
+                    autoComplete='off'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
+                />
 
-                        <label htmlFor='password-login'>Password</label>
-                        <input
-                            type='password'
-                            id='password-login'
-                            placeholder='Enter your password'
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            required
-                        />
+                <label htmlFor='password-login'>Password</label>
+                <input
+                    type='password'
+                    id='password-login'
+                    placeholder='Enter your password'
+                    onChange={(e) => setPwd(e.target.value)}
+                    value={pwd}
+                    required
+                />
 
-                        <button type='submit' value='submit' className='submit-button-login'>Sign in</button>
-                    </form>
-                </section>
-            )}
-        </>
-    );
-};
+                <button type='submit' value='submit' className='submit-button-login'>Sign in</button>
+            </form>
+        </section>
+    )}
 
 export default LoginDoctor;

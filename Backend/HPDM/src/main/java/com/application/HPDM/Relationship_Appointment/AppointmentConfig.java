@@ -22,10 +22,17 @@ public class AppointmentConfig {
             Doctor doctor1 = doctorController.getDoctorById(1L);
             Patient patient1 = patientController.getPatientById(2L);
 
+            Doctor doctor2 = doctorController.getDoctorById(2L);
+            Patient patient2 = patientController.getPatientById(1L);
+
+
+
             Appointment appointment1 = new Appointment(patient1,doctor1,
                     LocalDate.of(2020, Month.OCTOBER, 1));
 
-            appointmentRepository.saveAll(List.of(appointment1));
+            Appointment appointment2 = new Appointment(patient2,doctor2,LocalDate.of(2020, Month.OCTOBER, 1));
+
+            appointmentRepository.saveAll(List.of(appointment1, appointment2));
         };
     }
 }

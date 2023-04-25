@@ -2,6 +2,7 @@ package com.application.HPDM.Relationship_Appointment;
 
 import com.application.HPDM.Doctor.Doctor;
 import com.application.HPDM.Patient.Patient;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -13,9 +14,12 @@ public class Appointment {
     @GeneratedValue
     private Long appointmentID;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
     private Doctor doctor;
+
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patient;
