@@ -19,12 +19,12 @@ public class TakeCareController {
         return takeCareService.fetchTakeCareList();
     }
 
-    @GetMapping("/takeCare/{nurseId}")
+    @GetMapping("/takeCare/nurse/{nurseId}")
     public List<TakeCare> fetchTakeCareByNurseID(@PathVariable("nurseId") Long nurseId) {
         return takeCareService.fetchTakeCareByNurseID(nurseId);
     }
 
-    @GetMapping("/takeCare/{patientId}")
+    @GetMapping("/takeCare/patient/{patientId}")
     public List<TakeCare> fetchTakeCareByPatientID(@PathVariable("patientId") Long patientId) {
         return takeCareService.fetchTakeCareByPatientID(patientId);
     }
