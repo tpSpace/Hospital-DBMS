@@ -5,6 +5,6 @@ import java.util.List;
 public interface AppointmentService {
     Appointment saveAppointment(Appointment appointment);
     List<Appointment> fetchAppointmentList();
-    Appointment fetchAppointmentByPatientID(Long patientId);
-    Appointment fetchAppointmentByDoctorID(Long doctorId);
+    List<Appointment> fetchAppointmentByPatientID(Long patientId);
+    List<Appointment> fetchAppointmentByDoctorID(Long doctorId);
 }

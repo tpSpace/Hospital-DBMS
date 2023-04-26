@@ -1,10 +1,13 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
+import com.application.HPDM.Department.DepartmentController;
+import com.application.HPDM.Department.DepartmentService;
 import com.application.HPDM.Relationship_Appointment.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
@@ -41,6 +44,9 @@ public class Doctor {
 
     @NotBlank(message = "Please enter doctor email")
     @Length(max = 50, min = 8)
+    @Column(
+            unique = true
+    )
     private String doctorEmail;
 
     @NotBlank(message = "Please enter doctor password")
@@ -49,18 +55,17 @@ public class Doctor {
 
     @OneToMany(mappedBy = "doctor")
     private List<Appointment> appointmentList;
-
     public Doctor(){}
 
-    public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID, String doctorEmail, String doctorPassword){
+    public Doctor(String name, String phoneNum, LocalDate dob,Department departmentID,
+                  String doctorEmail, String doctorPassword){
         this.doctorName = name;
         this.doctorPhoneNum = phoneNum;
         this.doctorDob = dob;
-        this.setDepartmentId(departmentID);
         this.doctorEmail = doctorEmail;
         this.doctorPassword = doctorPassword;
+        this.setDepartmentId(departmentID);
     }
-
     public Long getDoctorId() {
         return this.doctorId;
     }
