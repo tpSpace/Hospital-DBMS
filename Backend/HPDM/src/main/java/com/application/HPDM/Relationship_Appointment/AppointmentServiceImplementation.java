@@ -14,12 +14,16 @@ import java.util.List;
 @CrossOrigin("*")
 @Service
 public class AppointmentServiceImplementation implements AppointmentService{
+
     @Autowired
     private AppointmentRepository appointmentRepository;
+
     @Autowired
     private PatientRepository patientRepository;
+
     @Autowired
     private DoctorRepository doctorRepository;
+    
     @Override
     public Appointment saveAppointment(Appointment appointment) {
         return
