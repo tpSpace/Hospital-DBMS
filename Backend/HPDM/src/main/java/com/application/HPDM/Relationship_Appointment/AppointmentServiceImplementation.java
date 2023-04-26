@@ -9,18 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
 @Service
 public class AppointmentServiceImplementation implements AppointmentService{
+
     @Autowired
     private AppointmentRepository appointmentRepository;
+
     @Autowired
     private PatientRepository patientRepository;
+
     @Autowired
     private DoctorRepository doctorRepository;
+    
     @Override
     public Appointment saveAppointment(Appointment appointment) {
         return

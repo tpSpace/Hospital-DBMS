@@ -1,6 +1,5 @@
 package com.application.HPDM.TakeCare;
 
-import com.application.HPDM.Doctor.Doctor;
 import com.application.HPDM.Nurse.Nurse;
 import com.application.HPDM.Patient.Patient;
 import jakarta.persistence.*;
