@@ -1,4 +1,4 @@
-A project for pdm (principle of database) ar HCMIU.
+A project for pdm (principle of database) at HCMIU.
 - This is a simple web allows patients to view their personal profolio and make an appoiment with doctor. 
 - Beisde patients we also have pages for doctor, staffs and nurces. 
 
