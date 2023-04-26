@@ -66,8 +66,9 @@ const EditInfo = () => {
         e.preventDefault();
         console.log(id);
         if(role.includes('Doctor')){
-            setDoctor({ ...doctor, doctorId: id });
-            setDoctor({ ...doctor, doctorDepartmentId: id });
+            setDoctor({ ...doctor, doctorId: String(id) });
+            setDoctor({ ...doctor, departmentId: String(id) });
+
             await axios.put(`http://localhost:8090/doctor/${id}`, doctor);
         } else if(role.includes('Patient')) {
             await axios.put(`http://localhost:8090/patients/${id}`, patient);
@@ -81,16 +82,16 @@ const EditInfo = () => {
 
     const loadUser = async () =>{
         if(role.includes('Doctor')){
-            const result = await axios.get(`http://localhost:8090/doctor/${id}`);
+            const result = await axios.get(`http://localhost:8090/doctor/${id}`).catch(err => console.log(err));
             setDoctor(result.data);
         } else if(role.includes('Patient')) {
-            const result = await axios.get(`http://localhost:8090/patients/${id}`);
+            const result = await axios.get(`http://localhost:8090/patients/${id}`).catch(err => console.log(err));
             setPatient(result.data);
         } else if(role.includes('Nurse')) {
-            const result = await axios.get(`http://localhost:8090/nurse/${id}`);
+            const result = await axios.get(`http://localhost:8090/nurse/${id}`).catch(err => console.log(err));
             setNurse(result.data);
         } else if(role.includes('Staff')){
-            const result = await axios.get(`http://localhost:8090/staff/${id}`);
+            const result = await axios.get(`http://localhost:8090/staff/${id}`).catch(err => console.log(err));
             setStaff(result.data);
         }
     }

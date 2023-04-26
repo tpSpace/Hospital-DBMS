@@ -19,6 +19,7 @@ const LoginDoctor = () => {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        // eslint-disable-next-line
         const {email, password} = user;
 
         await axios.post("http://localhost:8090/login",user)
