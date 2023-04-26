@@ -26,6 +26,14 @@ public class OccupyController {
         return occupyService.findOccupationById(id);
     }
 
+    @GetMapping(path ="/occupy/patient/{patientId}")
+    public List<Occupy> getOccupyByPatientID(@PathVariable("patientId") Long patientId){
+        return occupyService.findOccupationByPatientID(patientId);
+    }
+    @GetMapping(path ="/occupy/room/{roomId}")
+    public List<Occupy> getOccupyByRoomID(@PathVariable("roomId") Long roomId){
+        return occupyService.findOccupationByRoomID(roomId);
+    }
     @PostMapping(path = "/occupy/add")
     public void registerNewOccupation(@RequestBody Occupy occupy){
         occupyService.addNewOccupation(occupy);

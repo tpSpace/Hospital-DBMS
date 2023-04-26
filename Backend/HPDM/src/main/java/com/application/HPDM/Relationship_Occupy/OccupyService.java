@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,10 +31,6 @@ public class OccupyService {
         if (updateOccupy.getDateLeave() != null) {
             throw new IllegalStateException("Patient already left");
         }
-//        updateOccupy.setDateEnter(occupy.getDateEnter());m
-//        updateOccupy.setPatientID(occupy.getPatientID());
-//        updateOccupy.setRoomID(occupy.getRoomID());
-//        updateOccupy.setDateLeave(occupy.getDateLeave());
         updateOccupy.setDateLeave(occupy.getDateLeave());
         return occupyRepository.save(updateOccupy);
     }
@@ -47,8 +44,25 @@ public class OccupyService {
         }
         occupyRepository.deleteById(occupyID);
     }
-//    public void updateOccupation(Occupy occupy){
-//        deleteOccupation(occupy.getOccupyID());
-//        addNewOccupation(occupy);
-//    }
+    public List<Occupy> findOccupationByPatientID(Long patientId){
+        List<Occupy> occupyList = new ArrayList<>();
+
+        for(Occupy a: occupyRepository.findAll() ){
+            if(a.getPatientID() == patientId){
+                occupyList.add(a);
+            }
+        }
+        return occupyList;
+    }
+
+    public List<Occupy> findOccupationByRoomID(Long roomId){
+        List<Occupy> occupyList = new ArrayList<>();
+
+        for(Occupy a: occupyRepository.findAll() ){
+            if(a.getRoomID() == roomId){
+                occupyList.add(a);
+            }
+        }
+        return occupyList;
+    }
 }

@@ -5,6 +5,6 @@ import java.util.List;
 public interface TakeCareService {
     TakeCare saveTakeCare(TakeCare takeCare);
     List<TakeCare> fetchTakeCareList();
-    TakeCare fetchTakeCareByPatientID(Long patientId);
-    TakeCare fetchTakeCareByNurseID(Long nurseId);
+    List<TakeCare> fetchTakeCareByPatientID(Long patientId);
+    List<TakeCare> fetchTakeCareByNurseID(Long nurseId);
 }

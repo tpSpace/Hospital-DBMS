@@ -1,8 +1,10 @@
 package com.application.HPDM.Relationship_InCharge;
 
+import com.application.HPDM.Relationship_Appointment.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +27,27 @@ public class InchargeService {
     public Incharge findInchargeById(Long id) {
         return inchargeRepository.findById(id).get();
     }
+    public List<Incharge> findShiftbyNurseID(Long nurseID) {
+        List<Incharge> inchargeList = new ArrayList<>();
 
+        for(Incharge a : inchargeRepository.findAll()){
+            if(a.getNurseID() == nurseID){
+                inchargeList.add(a);
+            }
+        }
+        return inchargeList;
+    }
+
+    public List<Incharge> findShiftbyRoomID(Long roomID) {
+        List<Incharge> inchargeList = new ArrayList<>();
+
+        for(Incharge a : inchargeRepository.findAll()){
+            if(a.getRoomID() == roomID){
+                inchargeList.add(a);
+            }
+        }
+        return inchargeList;
+    }
     public void deleteShift(Long inchargeID) {
         boolean exists = inchargeRepository.existsById(inchargeID);
         if (!exists) {
