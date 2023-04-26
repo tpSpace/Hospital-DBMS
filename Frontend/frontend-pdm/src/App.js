@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import ViewInfo from './pages/dashboard/ViewInfo';
 import Logic from './components/Logic.jsx';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Appointment from './pages/dashboard/Appointment';
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route  path="/register" element={<Register />} />
         <Route  path="/viewinfo" element={<ViewInfo/>}/>
         <Route  path="*" element={<h1>404 Not Found</h1>} />
+        <Route  path='/appointment' element={<Appointment/>}/>
      
       </Routes>
     </>
