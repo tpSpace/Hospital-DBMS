@@ -31,13 +31,13 @@ public class DoctorController {
         doctorService.addNewDoctor(doctor);
     }
 
-    @DeleteMapping(path = "doctor/{doctorId}")
+    @DeleteMapping(path = "/doctor/{doctorId}")
     public void deleteDoctor(@PathVariable("doctorId") Long doctorId){
         doctorService.deleteDoctor(doctorId);
     }
 
-    @PutMapping(path = "doctor/{doctorId}")
-    public Doctor updateDoctor(@PathVariable("doctorId") Long doctorId,
+    @PutMapping(path = "/doctor/{doctorId}")
+    public Doctor updateDoctor(@PathVariable Long doctorId,
                              @RequestBody Doctor doctor){
         return doctorService.updateDoctor(doctorId, doctor);
     }
