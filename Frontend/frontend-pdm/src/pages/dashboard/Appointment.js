@@ -32,7 +32,7 @@ const Appointment = () => {
             return null;
         }
     }
-
+    
     // get patient's id
     const loadPatients = async () => {
         const result = await axios.get("http://localhost:8090/patients");
@@ -101,8 +101,8 @@ const Appointment = () => {
                         <tbody>
                             {
                                 appointments.map((appointment, index) => (
-                                    <tr>
-                                        <th scope="row" key={appointment}>{index + 1}</th>
+                                    <tr key={index}>
+                                        <th scope="row" >{index + 1}</th>
                                         <td>{appointment.doctorName}</td>
                                         <td>{appointment.patientName}</td>
                                         <td>{appointment.date}</td>

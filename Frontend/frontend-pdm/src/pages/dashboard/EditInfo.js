@@ -8,11 +8,13 @@ const EditInfo = () => {
     const role = localStorage.getItem('role');
 
     const [doctor, setDoctor] = useState({
+        doctorId: "1",
         doctorName: "",
         doctorPhoneNum: "",
         doctorDob: "",
         doctorEmail: "",
         doctorPassword: "",
+        doctorDepartmentId: "1",
     });
     const [patient, setPatient] = useState({
         patientFirstName: "",
@@ -39,7 +41,7 @@ const EditInfo = () => {
         staffPassword: ""
     });
 
-    const { doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword } = doctor;
+    const {doctorId, doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword,doctorDepartmentId } = doctor;
     const { patientFirstName,patientLastName,patientDob,patientGender,patientMedicalRecord,patientPhone,patientEmail,patientPassword} = patient;
     const { nurseName, nurseDob, nursePhone, nurseEmail, nursePassword } = nurse;
     const { staffName, staffDob, staffPhone, staffEmail, staffPassword } = staff;
@@ -64,6 +66,8 @@ const EditInfo = () => {
         e.preventDefault();
         console.log(id);
         if(role.includes('Doctor')){
+            setDoctor({ ...doctor, doctorId: id });
+            setDoctor({ ...doctor, doctorDepartmentId: id });
             await axios.put(`http://localhost:8090/doctor/${id}`, doctor);
         } else if(role.includes('Patient')) {
             await axios.put(`http://localhost:8090/patients/${id}`, patient);

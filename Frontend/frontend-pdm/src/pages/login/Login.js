@@ -1,46 +1,31 @@
 import React from 'react';
 import './Login.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const LoginDoctor = () => {
-    let navigate = useNavigate();
-    const userRef = useRef();
-    const errRef = useRef();
 
-    const [email, setEmail] = useState('');
-    const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
+    let navigate = useNavigate();
 
     const [user,setUser] = useState({
         email: "",
         password: "",
     });
 
-    useEffect(() => {
-        userRef.current.focus();
-    }, []);
-
-    useEffect(() => {
-        setErrMsg('');
-    },[email, pwd]);;
+    const onInputChange = (e) => {
+        setUser({...user, [e.target.id]: e.target.value});
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        setUser({
-            email: email,
-            password: pwd,
-        });
+        const {email, password} = user;
 
         await axios.post("http://localhost:8090/login",user)
         .then(response => {
             console.log(response);
             if(response.status === 200){
-                setEmail('');
-                setPwd('');
                 localStorage.setItem('email', email);
-                //localStorage.setItem('password', pwd);
                 localStorage.setItem('role', JSON.stringify(response.data));
                 localStorage.setItem('status', 'true');
                 console.log(localStorage.getItem('role'));
@@ -52,7 +37,7 @@ const LoginDoctor = () => {
         .catch(err => {
             console.log(err);
             if(err.response.status === 400){
-                setErrMsg('Wrong email or password');
+                alert('Invalid username or password');
             }
             console.log('login failed');
         });
@@ -60,29 +45,25 @@ const LoginDoctor = () => {
 
     return (
         <section className='body-login'>
-            <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live='assertive'>{errMsg}</p>
             <form className='container-login' onSubmit={handleSubmit}>
                 <h1 className='title-login'>Sign In</h1>
                 <br></br>
                 <label htmlFor='username-login'>Username</label>
                 <input
                     type='text'
-                    id='username-login'
+                    id='email'
                     placeholder='Enter your username'
-                    ref={userRef}
                     autoComplete='off'
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
+                    onChange={(e) => onInputChange(e)}
                     required
                 />
 
                 <label htmlFor='password-login'>Password</label>
                 <input
                     type='password'
-                    id='password-login'
+                    id='password'
                     placeholder='Enter your password'
-                    onChange={(e) => setPwd(e.target.value)}
-                    value={pwd}
+                    onChange={(e) => onInputChange(e)}
                     required
                 />
 

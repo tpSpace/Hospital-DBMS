@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ViewInfo = () => {
     const role = localStorage.getItem('role');
@@ -40,7 +40,7 @@ const ViewInfo = () => {
     }
 
     const loadDoctor = async (id) => {
-        const result = await axios.get(`http://localhost:8090/doctor/${id}`);
+        const result = await axios.get(`http://localhost:8090/doctor/${id}`).catch((err) => {console.log(err)});
         setDoctor(result.data);
     }
 
