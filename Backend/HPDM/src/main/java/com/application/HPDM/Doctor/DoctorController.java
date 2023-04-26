@@ -37,7 +37,7 @@ public class DoctorController {
     }
 
     @PutMapping(path = "/doctor/{doctorId}")
-    public Doctor updateDoctor(@PathVariable("doctorId") Long doctorId,
+    public Doctor updateDoctor(@PathVariable Long doctorId,
                              @RequestBody Doctor doctor){
         return doctorService.updateDoctor(doctorId, doctor);
     }
