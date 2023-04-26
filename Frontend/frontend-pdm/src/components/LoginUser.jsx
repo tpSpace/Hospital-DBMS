@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import Appointment from '../pages/dashboard/Appointment';
+
 const LoginUser = () => {
     let navigate = useNavigate();
+
+    const role = localStorage.getItem('role');
 
     function handleLogout() {
         localStorage.setItem('status', 'false');
@@ -13,8 +17,23 @@ const LoginUser = () => {
         window.location.reload();
         console.log("Bye");
     }
+
     return (
-        <Nav>
+      <>
+        {role.includes("Doctor") || role.includes("Patient") ? (
+          <Nav>
+            <Logo>HPDM</Logo>
+            <Ul>
+                <li><Link to='/appointment'>Appointment</Link></li>
+                <li><Link to='/'>Home</Link></li>
+                <li><Link to="/viewinfo">Profile</Link></li>
+                {/* <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Register</Link></li> */}
+                <li><a onClick={handleLogout} href="">Logout</a></li>
+            </Ul>
+          </Nav>
+        ) : (
+          <Nav>
             <Logo>HPDM</Logo>
             <Ul>
                 <li><Link to="/viewinfo">Profile</Link></li>
@@ -22,7 +41,10 @@ const LoginUser = () => {
                 <li><Link to="/register">Register</Link></li> */}
                 <li><a onClick={handleLogout} href="">Logout</a></li>
             </Ul>
-        </Nav>
+          </Nav>
+        )}
+      </>
+        
     )
 }
 const Nav = styled.nav`
