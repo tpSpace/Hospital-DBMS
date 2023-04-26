@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const ViewInfo = () => {
     const role = localStorage.getItem('role');
@@ -125,16 +125,17 @@ const ViewInfo = () => {
                                             {doctor.doctorPhoneNum}
                                         </li>
                                         <li className='list-group-item'>
-                                            <b>Date of birth </b>
+                                            <b>Date of birth: </b>
                                             {doctor.doctorDob}
                                         </li>
                                         <li className='list-group-item'>
-                                            <b>Email </b>
+                                            <b>Email: </b>
                                             {doctor.doctorEmail}
                                         </li>
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${doctor.doctorId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -174,6 +175,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${patient.patientId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -209,6 +211,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${nurse.nurseId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -244,6 +247,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${staff.staffId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -257,7 +261,6 @@ const ViewInfo = () => {
     }
 
     return (
-        
         <div>
             {display()}
         </div>
