@@ -1,0 +1,15 @@
+.appointment-picker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+input[type='datetime-local']{
+    margin: 15px;
+    text-align: center;
+}
+
+.appointment-picker h2{
+    font-size: 24px;
+}

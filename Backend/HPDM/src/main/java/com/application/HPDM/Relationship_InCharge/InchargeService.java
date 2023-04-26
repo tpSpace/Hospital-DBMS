@@ -1,6 +1,5 @@
 package com.application.HPDM.Relationship_InCharge;
 
-import com.application.HPDM.Relationship_Appointment.Appointment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
