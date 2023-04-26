@@ -3,6 +3,7 @@ package com.application.HPDM.TakeCare;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -21,16 +22,25 @@ public class TakeCareServiceImplementation implements TakeCareService{
     }
 
     @Override
-    public TakeCare fetchTakeCareByPatientID(Long patientId) {
-        Optional<TakeCare> takeCare =
-                takeCareRespository.findById(patientId);
-        return takeCare.get();
+    public List<TakeCare> fetchTakeCareByPatientID(Long patientId) {
+        List<TakeCare> takeCareList = new ArrayList<>();
+
+        for(TakeCare a : takeCareRespository.findAll()){
+            if(a.getPatientID() == patientId){
+                takeCareList.add(a);
+            }
+        }
+        return takeCareList;
     }
 
-    @Override
-    public TakeCare fetchTakeCareByNurseID(Long nurseId) {
-        Optional<TakeCare> takeCare =
-                takeCareRespository.findById(nurseId);
-        return takeCare.get();
+    public List<TakeCare> fetchTakeCareByNurseID(Long nurseId) {
+        List<TakeCare> takeCareList = new ArrayList<>();
+
+        for(TakeCare a : takeCareRespository.findAll()){
+            if(a.getNurseID() == nurseId){
+                takeCareList.add(a);
+            }
+        }
+        return takeCareList;
     }
 }

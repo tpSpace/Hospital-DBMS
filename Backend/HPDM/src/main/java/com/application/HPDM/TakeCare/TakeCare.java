@@ -41,4 +41,12 @@ public class TakeCare {
     public void setNurseID(Nurse nurse) {
         this.nurseID = nurse;
     }
+
+    public Long getNurseID() {
+        return this.nurseID.getNurseId();
+    }
+
+    public Long getPatientID() {
+        return this.patientID.getPatientId();
+    }
 }
