@@ -26,13 +26,13 @@ public class Incharge {
     )
     private LocalDate date;
 
-    private String shift_time;
+    private String shift;
 
     public Incharge(Nurse nurseID, Room roomID, LocalDate date, String shift) {
         this.setNurseID(nurseID);
         this.setRoomID(roomID);
         this.date = date;
-        this.shift_time = shift;
+        this.shift = shift;
     }
 
     public Incharge(){}
@@ -62,10 +62,10 @@ public class Incharge {
     }
 
     public String getShift() {
-        return shift_time;
+        return shift;
     }
 
     public void setShift(String shift) {
-        this.shift_time = shift;
+        this.shift = shift;
     }
 }

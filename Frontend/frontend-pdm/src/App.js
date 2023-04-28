@@ -3,12 +3,12 @@ import { Route, Routes} from 'react-router-dom';
 import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
-import ViewInfo from './pages/dashboard/ViewInfo';
-import Logic from './components/Logic.jsx';
+import ViewInfo from './pages/viewinfo/ViewInfo';
+import Logic from './navbar/Logic.jsx';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Appointment from './pages/dashboard/Appointment';
-import EditInfo from './pages/dashboard/EditInfo';
-import Shift from './pages/dashboard/Shift';
+import Appointment from './pages/appointment/Appointment';
+import EditInfo from './pages/editUser/EditInfo';
+import Shift from './pages/appointment/Shift';
 
 function App() {
   

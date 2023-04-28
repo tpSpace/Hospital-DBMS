@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const Shift = () => {
 
     const [nurses, setNurses] = useState([]);
-    const [shift, setShift] = useState([]);
+    const [shifts, setShifts] = useState([]);
 
-    useEffect(() => {
-        loadNurses();
-    }, []);
+    const email = localStorage.getItem('email');
 
     // display nurse
     const loadNurses = async () => {
-      const result = await axios.get("http://localhost:8090/nurse").catch((err) => {console.log(err)});
-      setNurses(result.data);
+        const result = await axios.get("http://localhost:8090/nurse").catch((err) => {console.log(err)});
+        setNurses(result.data);
     }
 
     const getNurseId = (email) => {
+        loadNurses();
         const result = nurses.filter((nurse) => nurse.nurseEmail.includes(email));
         if (result.length > 0) {
             return result[0].nurseId;
@@ -25,48 +24,56 @@ const Shift = () => {
         }
     }
 
-    const loadShift = async (id) => {
-        const result = await axios.get(`http://localhost:8090/incharge/nurse/${id}`).catch((err) => {console.log(err)});
-        setShift(result.data);
+    const loadShifts = async () => {
+        const id = getNurseId(email);
+        const result = await axios.get(`http://localhost:8090/incharge/nurse/${id}`);
+        setShifts(result.data);
     }
 
     const render = () => {
-        loadShift(getNurseId(localStorage.getItem('email')));
+        loadShifts();
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                        <h2 className="text-center m-4">Shift detail</h2>
-
-                        <div className='card'>
-                            <div className='card-header'>
-                                <ul className='list-group list-group-frush'>
-                                    <li className='list-group-item'>
-                                        <b>Room ID </b>
-                                        {shift.roomID}
-                                    </li>
-                                    <li className='list-group-item'>
-                                        <b>Date </b>
-                                        {shift.date}
-                                    </li>
-                                    <li className='list-group-item'>
-                                        <b>Shift </b>
-                                        {shift.shift}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
+            <div className='py-4'>
+                { shifts.length > 0 ? (
+                    <div className='text-center'>
+                        <h2 className="text-center m-4">You have {shifts.length} shifts</h2>
+                        <br></br>
+                        <table className="table border shadow">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">RoomID</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Shift Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    shifts.map((shift, index) => (
+                                        <tr key={index}>
+                                            <th scope="row" >{index + 1}</th>
+                                            <td>{shift.roomID}</td>
+                                            <td>{shift.date}</td>
+                                            <td>{shift.shift}</td>
+                                        </tr>
+                                    ))
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                </div>
+                    
+                ) : (
+                    <h2 className="m-4">Well done! You can rest :D</h2>
+                )}
+                
             </div>
         )
     }
 
     return (
-      <div>
-        {render()}
-      </div>
+        <div>
+            {render()}
+        </div>
     )
 }
 
