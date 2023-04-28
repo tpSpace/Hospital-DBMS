@@ -22,8 +22,8 @@ function App() {
         <Route  path="/viewinfo" element={<ViewInfo/>}/>
         <Route  path="*" element={<h1>404 Not Found</h1>} />
         <Route  path='/appointment' element={<Appointment/>}/>
-        <Route path='/edituser/:id' element={<EditInfo/>}/>
-        <Route path='/shift' element={<Shift/>}/>
+        <Route  path='/edituser/:id' element={<EditInfo/>}/>
+        <Route  path='/shift' element={<Shift/>}/>
      
       </Routes>
     </>
