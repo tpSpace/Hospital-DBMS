@@ -4,7 +4,6 @@ import com.application.HPDM.Doctor.Doctor;
 import com.application.HPDM.Patient.Patient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -14,46 +13,35 @@ public class Appointment {
     @GeneratedValue
     private Long appointmentID;
 
-    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "doctorID",referencedColumnName = "doctorId")
     private Doctor doctor;
 
-    @JsonIgnore
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "patientID",referencedColumnName = "patientId")
     private Patient patient;
-    private LocalDate Date;
-
-//    private String doctorName;
-//
-//    private String patientName;
+    private LocalDate date;
 
     public Appointment(Patient patient, Doctor doctor, LocalDate date) {
         this.setDoctor(doctor);
         this.setPatient(patient);
-        this.Date = date;
-//        this.patientIDL = patient.getPatientId();
-//        this.doctorIDL = doctor.getDoctorId();
-//        this.doctorName = doctor.getDoctorName();
-//        this.patientName = patient.getPatientFirstName() + " " + patient.getPatientLastName();
+        this.date = date;
     }
     public Appointment(){}
 
+    public Appointment(Patient patient,LocalDate date) {
+        this.setPatient(patient);
+        this.date = date;
+    }
     public Long getAppointmentID() {
         return appointmentID;
     }
 
-//    public Doctor getDoctor() {
-//        return doctor;
-//    }
-
-//    public Patient getPatient() {
-//        return patient;
-//    }
-
     public LocalDate getDate() {
-        return Date;
+        return date;
+    }
+    public void setDate(LocalDate date){
+        this.date = date;
     }
 
     public void setPatient(Patient patient) {
@@ -71,7 +59,14 @@ public class Appointment {
     public Long getDoctorID() {
         return doctor.getDoctorId();
     }
-
+    @JsonIgnore
+    public Doctor getDoctor(){
+        return this.doctor;
+    }
+    @JsonIgnore
+    public Patient getPatient(){
+        return this.patient;
+    }
     public String getDoctorName() {
         return doctor.getDoctorName();
     }
