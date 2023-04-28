@@ -11,7 +11,8 @@ const Appointment = () => {
     const [appointment, setAppointment] = useState({
         patient: "",
         Date: ""
-    })
+    });
+    const email = localStorage.getItem('email');
 
     useEffect(() => {
         loadDoctors();
@@ -62,9 +63,9 @@ const Appointment = () => {
     // load all the appropriate appointments
     const loadAppointments = () => {
         if(role.includes('Doctor')){
-            getAppointments(getDoctorId(localStorage.getItem('email')));
+            getAppointments(getDoctorId(email));
         } else if(role.includes('Patient')) {
-            getAppointments(getPatientId(localStorage.getItem('email')));
+            getAppointments(getPatientId(email));
         }
     }
 

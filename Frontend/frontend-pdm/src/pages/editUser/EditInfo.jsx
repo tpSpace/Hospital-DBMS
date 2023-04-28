@@ -5,7 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 const EditInfo = () => {
     let navigate = useNavigate();
     const { id } = useParams();
-    const role = localStorage.getItem('role');
+    let role = localStorage.getItem('role');
 
     const [doctor, setDoctor] = useState({
         doctorId: "1",
@@ -98,6 +98,7 @@ const EditInfo = () => {
 
     const editForm = () => {
         if(role.includes('Doctor')){
+            role = "";
             return (
                 <div className="Container">
             

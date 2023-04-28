@@ -20,8 +20,8 @@ const LoginNurse = () => {
         <Nav>
             <Logo>HPDM</Logo>
             <Ul>
+                <li><Link to="/shift">Shift</Link></li>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/room">Rooms</Link></li>
                 <li><Link to="/viewinfo">Profile</Link></li>
                 
                 <li><a onClick={handleLogout} href="">Logout</a></li>
