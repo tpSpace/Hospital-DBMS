@@ -8,6 +8,7 @@ import Logic from './components/Logic.jsx';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Appointment from './pages/dashboard/Appointment';
 import EditInfo from './pages/dashboard/EditInfo';
+import Shift from './pages/dashboard/Shift';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
         <Route  path="*" element={<h1>404 Not Found</h1>} />
         <Route  path='/appointment' element={<Appointment/>}/>
         <Route path='/edituser/:id' element={<EditInfo/>}/>
+        <Route path='/shift' element={<Shift/>}/>
      
       </Routes>
     </>
