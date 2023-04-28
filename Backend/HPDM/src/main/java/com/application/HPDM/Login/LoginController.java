@@ -7,6 +7,8 @@ import com.application.HPDM.Patient.PatientRepository;
 import com.application.HPDM.Staff.StaffRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +34,7 @@ public class LoginController {
 
 
     @PostMapping(path = "/login")
-    public ResponseEntity<String> patientLogin(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<LoginResponse> patientLogin(@RequestBody LoginRequest loginRequest){
         Long patientEmail = patientRepository.findIdByEmail(loginRequest.getEmail());
         List<Long> patientPassword = patientRepository.findIdByPassword(loginRequest.getPassword());
 
@@ -47,25 +49,24 @@ public class LoginController {
 
         if(patientEmail != null && patientPassword != null){
             if(contains(patientPassword, patientEmail)){
-                return ResponseEntity.ok("Patient");
+                return new ResponseEntity<LoginResponse>(new LoginResponse("Patient", patientEmail.toString()), HttpStatus.OK);
             }
         } else if(staffEmail != null && staffPassword != null){
             if(contains(staffPassword, staffEmail)){
-                return ResponseEntity.ok("Staff");
+                return new ResponseEntity<LoginResponse>(new LoginResponse("Staff", staffEmail.toString()), HttpStatus.OK);
             }
         } else if(doctorEmail != null && doctorPassword != null){
             if(contains(doctorPassword, doctorEmail)){
-                return ResponseEntity.ok("Doctor");
+                return new ResponseEntity<LoginResponse>(new LoginResponse("Doctor", doctorEmail.toString()), HttpStatus.OK);
             }
         } else if(nurseEmail != null && nursePassword != null){
             if(contains(nursePassword, nurseEmail)){
-                return ResponseEntity.ok("Nurse");
+                return new ResponseEntity<LoginResponse>(new LoginResponse("Nurse", nurseEmail.toString()), HttpStatus.OK);
             }
         }
 
 
-        return ResponseEntity.badRequest()
-                .body("Email or Password is incorrect");
+        return ResponseEntity.status(HttpStatusCode.valueOf(404)).build();
     }
     static boolean contains(List<Long> list, Long item) {
         for (Long n : list) {
