@@ -1,13 +1,10 @@
 package com.application.HPDM.Doctor;
 
 import com.application.HPDM.Department.Department;
-import com.application.HPDM.Department.DepartmentController;
-import com.application.HPDM.Department.DepartmentService;
 import com.application.HPDM.Relationship_Appointment.Appointment;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;

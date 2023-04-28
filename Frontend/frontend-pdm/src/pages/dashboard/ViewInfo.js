@@ -26,7 +26,7 @@ const ViewInfo = () => {
 
     // display doctor
     const loadDoctors = async () => {
-        const result = await axios.get("http://localhost:8090/doctors");
+        const result = await axios.get("http://localhost:8090/doctors").catch((err) => {console.log(err)});
         setDoctors(result.data);
     }
 
@@ -40,13 +40,13 @@ const ViewInfo = () => {
     }
 
     const loadDoctor = async (id) => {
-        const result = await axios.get(`http://localhost:8090/doctor/${id}`);
+        const result = await axios.get(`http://localhost:8090/doctor/${id}`).catch((err) => {console.log(err)});
         setDoctor(result.data);
     }
 
     // display patient
     const loadPatients = async () => {
-        const result = await axios.get("http://localhost:8090/patients");
+        const result = await axios.get("http://localhost:8090/patients").catch((err) => {console.log(err)});
         setPatients(result.data);
     }
 
@@ -60,13 +60,13 @@ const ViewInfo = () => {
     }
 
     const loadPatient = async (id) => {
-        const result = await axios.get(`http://localhost:8090/patients/${id}`);
+        const result = await axios.get(`http://localhost:8090/patients/${id}`).catch((err) => {console.log(err)});
         setPatient(result.data);
     }
 
     // display nurse
     const loadNurses = async () => {
-        const result = await axios.get("http://localhost:8090/nurse");
+        const result = await axios.get("http://localhost:8090/nurse").catch((err) => {console.log(err)});
         setNurses(result.data);
     }
 
@@ -80,13 +80,13 @@ const ViewInfo = () => {
     }
 
     const loadNurse = async (id) => {
-        const result = await axios.get(`http://localhost:8090/nurse/${id}`);
+        const result = await axios.get(`http://localhost:8090/nurse/${id}`).catch((err) => {console.log(err)});
         setNurse(result.data);
     }
 
     // display staff
     const loadStaffs = async () => {
-        const result = await axios.get("http://localhost:8090/staff");
+        const result = await axios.get("http://localhost:8090/staff").catch((err) => {console.log(err)});
         setStaffs(result.data);
     }
 
@@ -100,7 +100,7 @@ const ViewInfo = () => {
     }
 
     const loadStaff = async (id) => {
-        const result = await axios.get(`http://localhost:8090/staff/${id}`);
+        const result = await axios.get(`http://localhost:8090/staff/${id}`).catch((err) => {console.log(err)});
         setStaff(result.data);
     }
 
@@ -125,16 +125,17 @@ const ViewInfo = () => {
                                             {doctor.doctorPhoneNum}
                                         </li>
                                         <li className='list-group-item'>
-                                            <b>Date of birth </b>
+                                            <b>Date of birth: </b>
                                             {doctor.doctorDob}
                                         </li>
                                         <li className='list-group-item'>
-                                            <b>Email </b>
+                                            <b>Email: </b>
                                             {doctor.doctorEmail}
                                         </li>
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${doctor.doctorId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -174,6 +175,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${patient.patientId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -209,6 +211,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${nurse.nurseId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -244,6 +247,7 @@ const ViewInfo = () => {
                                     </ul>
                                 </div>
                             </div>
+                            <Link className='btn btn-outline mx-2' to={`/edituser/${staff.staffId}`}>Edit</Link>
                             <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
                         </div>
                     </div>
@@ -257,7 +261,6 @@ const ViewInfo = () => {
     }
 
     return (
-        
         <div>
             {display()}
         </div>
