@@ -2,110 +2,108 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const EditDoctor = () => {
-    
-    const [doctor, setDoctor] = useState({
-        doctorName: "",
-        doctorPhoneNum: "",
-        doctorDob: "",
-        doctorEmail: "",
-        doctorPassword: "",
-
+const EditStaff = () => {
+    const [staff, setStaff] = useState({
+        staffName: "",
+        staffDob: "",
+        staffPhone: "",
+        staffEmail: "",
+        staffPassword: ""
     });
-    
-    const {  doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword } = doctor;
+
+    const { staffDob, staffEmail,staffName, staffPassword,staffPhone  } = staff;
 
     useEffect(() => {
-        const loadDoctor = async () => {
+        const loadStaff = async () => {
             const id = localStorage.getItem("id");
-            await axios.get(`http://localhost:8090/doctor/${id}`)
+            await axios.get(`http://localhost:8090/staff/${id}`)
             .then(response => {
-                setDoctor(response.data);
+                setStaff(response.data);
                 console.log(response.data);
             })
             .catch(error => console.log(error));
         };
-        loadDoctor();
+        loadStaff();
     }, []);
 
     const onInputChange = (e) => {
-        setDoctor({...doctor, [e.target.name]: e.target.value});
+        setStaff({ ...staff, [e.target.name]: e.target.value });
     };
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const id = localStorage.getItem("id");
-        for (var k in doctor) {
-            if (doctor.hasOwnProperty(k)) {
-                doctor[k] = String(doctor[k]);
+        for (var k in staff) {
+            if (staff.hasOwnProperty(k)) {
+                staff[k] = String(staff[k]);
             }
         }
-        await axios.put(`http://localhost:8090/doctor/${id}`, doctor)
+        const id = localStorage.getItem("id");
+        await axios.put(`http://localhost:8090/staff/${id}`, staff)
         .then(response => {
             console.log(response.data);
-            alert("Doctor information updated successfully!");
+            alert("Your information updated successfully!");
         })
         .catch(error => console.log(error));
     };
-
+    
     return (
         <div className="Container">
-    
+
             <div className="register">
                 <h1>Edit information</h1>
                 <form id="register-form" onSubmit={e => onSubmit(e)}> 
                 
-                    <label htmlFor="doctorName">Doctor name</label><br/>
+                    <label htmlFor="staffName">Staff name</label><br/>
                     <input 
                         type={"text"}
-                        id="doctorName" 
-                        name="doctorName" 
+                        id="staffName"
+                        name="staffName"
                         placeholder="Enter your name" 
-                        value={doctorName}
+                        value={staffName}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/>
 
-                    <label htmlFor="doctorPhoneNum">Phone Number</label><br/>
-                    <input 
-                        type="tel" 
-                        id="doctorPhoneNum" 
-                        name="doctorPhoneNum" 
-                        placeholder="Enter your phone number" 
-                        value={doctorPhoneNum}
-                        onChange={(e) => onInputChange(e)}
-                        required
-                    /><br/>
-
-                    <label htmlFor="doctorDob">Date of birth</label><br/>
+                    <label htmlFor="staffDob">Date of birth</label><br/>
                     <input 
                         type="date" 
-                        id="doctorDob" 
-                        name="doctorDob" 
+                        id="staffDob"
+                        name="staffDob"
                         placeholder="Enter your date of birth" 
-                        value={doctorDob}
+                        value={staffDob}
+                        onChange={(e) => onInputChange(e)}
+                        required
+                    /><br/>
+                    
+                    <label htmlFor="staffPhone">Phone Number</label><br/>
+                    <input 
+                        type="tel" 
+                        id="staffPhone" 
+                        name="staffPhone" 
+                        placeholder="Enter your phone number" 
+                        value={staffPhone}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/>
 
-                    <label htmlFor="doctorEmail">Email</label><br/>
+                    <label htmlFor="staffEmail">Email</label><br/>
                     <input 
                         type="email" 
-                        id="doctorEmail"
-                        name="doctorEmail"
+                        id="staffEmail"
+                        name="staffEmail"
                         placeholder="Enter your email" 
-                        value={doctorEmail}
+                        value={staffEmail}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/>            
 
-                    <label htmlFor="doctorPassword">Password</label><br/>
+                    <label htmlFor="staffPassword">Password</label><br/>
                     <input 
                         type="password" 
-                        id="doctorPassword"
-                        name="doctorPassword" 
+                        id="staffPassword" 
+                        name="staffPassword"
                         placeholder="Enter your password" 
-                        value={doctorPassword}
+                        value={staffPassword}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/> 
@@ -120,4 +118,4 @@ const EditDoctor = () => {
     )
 };
 
-export default EditDoctor;
+export default EditStaff;

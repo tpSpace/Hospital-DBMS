@@ -23,7 +23,7 @@ const LoginNurse = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/operation">Operation center</Link></li>
                 <li><Link to="/viewinfo">Profile</Link></li>
-                
+                 {/* eslint-disable-next-line */}
                 <li><a onClick={handleLogout} href="">Logout</a></li>
             </Ul>
         </Nav>
