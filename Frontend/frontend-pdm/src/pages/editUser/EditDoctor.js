@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditDoctor = () => {
+
+    let navigate = useNavigate();
     
     const [doctor, setDoctor] = useState({
         doctorName: "",
@@ -13,7 +15,7 @@ const EditDoctor = () => {
 
     });
     
-    const {  doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword } = doctor;
+    const { doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword } = doctor;
 
     useEffect(() => {
         const loadDoctor = async () => {
@@ -46,6 +48,8 @@ const EditDoctor = () => {
             alert("Doctor information updated successfully!");
         })
         .catch(error => console.log(error));
+
+        navigate("/viewinfo");
     };
 
     return (

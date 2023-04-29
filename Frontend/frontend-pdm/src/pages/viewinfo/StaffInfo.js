@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './ViewInfo.css';
 
 const StaffInfo = () => {
     const [staff, setStaff] = useState({
@@ -55,8 +54,8 @@ const StaffInfo = () => {
                         </div>
                     </div>
                     <div className='buttons-container'>
-                        <Link className='btn btn-outline mx-2' to={`/edituser/${staff.staffId}`}>Edit</Link>
-                        <Link className='btn btn-primary my-2' to='/'>Back to home</Link>
+                        <Link className='btn btn-secondary' to={`/edituser/${staff.staffId}`}>Edit</Link>
+                        <Link className='btn btn-primary' to='/'>Back to home</Link>
                     </div>
                 </div>
             </div>

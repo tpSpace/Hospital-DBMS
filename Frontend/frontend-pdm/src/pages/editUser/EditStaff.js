@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditStaff = () => {
+
+    let navigate = useNavigate();
+
     const [staff, setStaff] = useState({
         staffName: "",
         staffDob: "",
@@ -44,6 +47,8 @@ const EditStaff = () => {
             alert("Your information updated successfully!");
         })
         .catch(error => console.log(error));
+
+        navigate("/viewinfo");
     };
     
     return (
