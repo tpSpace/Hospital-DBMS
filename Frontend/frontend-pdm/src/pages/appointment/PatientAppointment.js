@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PatientAppointment = () => {
+
+    let navigate = useNavigate();
 
     const [appointments, setAppointments] = useState([]);
     const [patient, setPatient] = useState({
@@ -35,6 +38,8 @@ const PatientAppointment = () => {
         .catch(error => {
             console.log(error);
         });
+
+        navigate("/viewinfo");
     }
 
     const loadAppointments = async () => {
