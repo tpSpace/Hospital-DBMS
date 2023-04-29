@@ -1,5 +1,54 @@
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const EditDoctor = () => {
+    let id = localStorage.getItem("id");
+    const [doctor, setDoctor] = useState({
+        doctorId: "",
+        doctorName: "",
+        doctorPhoneNum: "",
+        doctorDob: "",
+        doctorEmail: "",
+        doctorPassword: "",
+        departmentId: ""
+    });
+
+    const { doctorId, doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword, departmentId } = doctor;
+
+    useEffect(() => {
+        const loadDoctor = async () => {
+        
+            await axios.get(`http://localhost:8090/doctor/${id}`)
+            .then(response => {
+                setDoctor(response.data);
+                console.log(response.data);
+            })
+            .catch(error => console.log(error));
+        };
+        loadDoctor();
+    }, []);
+
+    const onInputChange = (e) => {
+        setDoctor({...doctor, [e.target.name]: e.target.value});
+    };
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        let id = localStorage.getItem("id");
+        for (var k in doctor) {
+            if (doctor.hasOwnProperty(k)) {
+                doctor[k] = String(doctor[k]);
+            }
+        }
+        await axios.put(`http://localhost:8090/doctor/${id}`, doctor)
+        .then(response => {
+            console.log(response.data);
+            alert("Doctor information updated successfully!");
+        })
+        .catch(error => console.log(error));
+    };
+
     return (
         <div className="Container">
     
