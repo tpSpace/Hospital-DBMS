@@ -8,7 +8,7 @@ import Logic from './navbar/Logic.jsx';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Appointment from './pages/appointment/Appointment';
 import EditInfo from './pages/editUser/EditInfo';
-import Shift from './pages/appointment/Shift';
+import Shift from './pages/shift/Shift';
 
 function App() {
   

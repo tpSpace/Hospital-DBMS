@@ -1,5 +1,8 @@
 import React from 'react'
 import EditDoctor from './EditDoctor';
+import EditPatient from './EditPatient';
+import EditNurse from './EditNurse';
+import EditStaff from './EditStaff';
 
 const EditInfo = () => {
     let role = localStorage.getItem('role');
@@ -7,6 +10,9 @@ const EditInfo = () => {
     return (
         <>
             {role.includes('Doctor') && <EditDoctor />}
+            {role.includes('Patient') && <EditPatient/>}
+            {role.includes('Nurse') && <EditNurse/>}
+            {role.includes('Staff') && <EditStaff/>}
         </>
     )
     // let navigate = useNavigate();

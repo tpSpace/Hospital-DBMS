@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditDoctor = () => {
+    let navigate = useNavigate();
     let id = localStorage.getItem("id");
     const [doctor, setDoctor] = useState({
         doctorId: "",
@@ -47,6 +48,7 @@ const EditDoctor = () => {
             alert("Doctor information updated successfully!");
         })
         .catch(error => console.log(error));
+        navigate("/viewinfo");
     };
 
     return (
