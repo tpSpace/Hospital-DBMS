@@ -5,13 +5,14 @@ const Shift = () => {
 
     const [shifts, setShifts] = useState([]);
 
-    const id = localStorage.getItem('id');
+    
 
     useEffect(() => {
         loadShifts();
     }, []);
 
     const loadShifts = async () => {
+        const id = localStorage.getItem('id');
         await axios.get(`http://localhost:8090/incharge/nurse/${id}`)
         .then(response => {
             setShifts(response.data);

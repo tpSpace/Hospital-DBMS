@@ -14,20 +14,19 @@ const LoginNurse = () => {
     window.location.reload();
     console.log("Bye");
   }
-
-    return (
-        // eslint-disable-next-line
-        <Nav>
-            <Logo>HPDM</Logo>
-            <Ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/shift">Shift</Link></li>
-                <li><Link to="/viewinfo">Profile</Link></li>
-      
-                <li><a onClick={handleLogout} href="">Logout</a></li>
-            </Ul>
-        </Nav>
-    )
+  
+  return (
+    <Nav>
+        <Logo>HPDM</Logo>
+        <Ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/shift">Shift</Link></li>
+            <li><Link to="/viewinfo">Profile</Link></li>
+             {/* eslint-disable-next-line */}
+            <li><a onClick={handleLogout} href="">Logout</a></li>
+        </Ul>
+    </Nav>
+  )
 }
 const Nav = styled.nav`
   width: 100%;
