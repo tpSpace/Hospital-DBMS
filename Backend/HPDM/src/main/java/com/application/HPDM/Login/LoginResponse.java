@@ -1,26 +1,20 @@
 package com.application.HPDM.Login;
 
 public class LoginResponse {
-    private String status;
-    private String message;
-    public LoginResponse(String status, String message) {
-        this.status = status;
-        this.message = message;
+    private String role;
+    private String id;
+
+    public LoginResponse(String role, String id) {
+        this.role = role;
+        this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public LoginResponse() {
     }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public String getRole() {
+        return role;
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public String getId() {
+        return id;
     }
 }

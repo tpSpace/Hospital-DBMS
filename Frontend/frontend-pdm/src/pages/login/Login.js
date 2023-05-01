@@ -24,13 +24,14 @@ const LoginDoctor = () => {
 
         await axios.post("http://localhost:8090/login",user)
         .then(response => {
-            console.log(response);
+        
             if(response.status === 200){
                 localStorage.setItem('email', email);
-                localStorage.setItem('role', JSON.stringify(response.data));
+                localStorage.setItem('role', response.data.role);
+                localStorage.setItem('id', response.data.id);
                 localStorage.setItem('status', 'true');
-                console.log(localStorage.getItem('role'));
                 console.log('login successful');
+                console.log(response.data)
                 navigate('/viewinfo');
                 window.location.reload();
             }
