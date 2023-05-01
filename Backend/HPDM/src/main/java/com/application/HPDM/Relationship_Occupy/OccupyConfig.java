@@ -24,13 +24,13 @@ public class OccupyConfig {
             Room room1 = roomController.fetchRoomById(1L);
 
             Occupy occupy1 = new Occupy(patient1,room1, LocalDate.of(
-                    2020, Month.OCTOBER,23),null
+                    2020, Month.JANUARY,2),null
             );
 
             Occupy occupy2 = new Occupy(patient2,room1, LocalDate.of(
-                    2021, Month.SEPTEMBER,2),
+                    2020, Month.JANUARY,2),
                     LocalDate.of(
-                            2022, Month.OCTOBER,23)
+                            2020, Month.JANUARY,3)
             );
             occupyRepository.saveAll(List.of(occupy1,occupy2));
         };

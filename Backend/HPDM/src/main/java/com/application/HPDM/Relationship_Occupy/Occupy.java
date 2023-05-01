@@ -22,13 +22,13 @@ public class Occupy {
     private Room roomID;
 
     @Column(
-            name = "Date Enter",
+            name = "date_enter",
             nullable = false
     )
     private LocalDate DateEnter;
 
     @Column(
-            name = "Date Leave",
+            name = "date_leave",
             nullable = true
     )
     private LocalDate DateLeave;

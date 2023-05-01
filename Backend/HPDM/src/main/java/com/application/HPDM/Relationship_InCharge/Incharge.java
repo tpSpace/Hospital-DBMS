@@ -21,7 +21,7 @@ public class Incharge {
     private Room roomID;
 
     @Column(
-        name = "Day of shift",
+        name = "dateOfShift",
                 nullable = false
     )
     private LocalDate date;
