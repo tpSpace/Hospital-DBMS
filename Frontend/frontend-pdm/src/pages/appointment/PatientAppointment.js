@@ -4,22 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const PatientAppointment = () => {
 
-    let navigate = useNavigate();
-
     const [appointments, setAppointments] = useState([]);
-    const [patient, setPatient] = useState({
-        patientFirstName: "",
-        patientLastName: "",
-        patientGender: "",
-        patientMedicalRecord: "",
-        patientPhone: "",
-        patientDob: "",
-        patientEmail: "",
-        patientPassword: ""
-    });
+    const [patient, setPatient] = useState({});
+    const [doctor, setDoctor] = useState({});
     const [appointment, setAppointment] = useState({
         patient: {},
-        Date: ""
+        doctor: {},
+        date: ""
     });
 
     const id = localStorage.getItem('id');
@@ -27,12 +18,22 @@ const PatientAppointment = () => {
     useEffect(() => {
         loadAppointments();
         loadPatient();
+        loadDoctor();
     }, []);
+
+    const loadDoctor = async () => {
+        await axios.get("http://localhost:8090/appointment/doctor")
+        .then(response => {
+            setDoctor(response.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
 
     const loadPatient = async () => {
         await axios.get(`http://localhost:8090/patients/${id}`)
         .then(response => {
-            console.log(response);
             setPatient(response.data);
         })
         .catch(error => {
@@ -50,15 +51,30 @@ const PatientAppointment = () => {
         });
     }
 
-    const handleAddAppointment = async (e) => {
-        e.preventDefault();
+    const onInputChange = () => {
         const datePicker = document.getElementById('date-picker');
         const dueDate = datePicker.value;
+        console.log(doctor);
+        console.log(patient);
+        console.log(dueDate);
         setAppointment({
+            ...appointment,
             patient: patient,
-            Date: dueDate
+            doctor: doctor,
+            date: dueDate
         });
-        await axios.post('http://localhost:8090/appointment', appointment);
+    }
+
+    const handleAddAppointment = async (e) => {
+        e.preventDefault();
+        console.log(appointment);
+        try{
+            await axios.post('http://localhost:8090/appointment', appointment);
+            alert("Appointment added successfully");
+        }catch(err) {
+            console.log(err);
+            alert("Failed to add appointment");
+        };
         loadAppointments();
     }
 
@@ -90,11 +106,11 @@ const PatientAppointment = () => {
                             }
                         </tbody>
                     </table>
-                    <div className='appointment-picker'>
+                    <form className='appointment-picker' onSubmit={(e) => handleAddAppointment(e)}>
                         <h2>Make a new appointment</h2>
-                        <input id="date-picker" type="datetime-local" required></input>
-                        <button className='btn btn-primary mx-2' onClick={() => handleAddAppointment()}>Add new appointment</button>
-                    </div>
+                        <input id="date-picker" type="date" onChange={() => onInputChange()} required></input>
+                        <button className='btn btn-primary mx-2' type='submit'>Add new appointment</button>
+                    </form>
                 </div>
                 
             ) : (

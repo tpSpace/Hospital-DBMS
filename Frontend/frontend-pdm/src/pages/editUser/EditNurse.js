@@ -7,13 +7,13 @@ const EditNurse = () => {
 
     const [nurse, setNurse] = useState({
         nurseName: "",
-        nurseDob: "",
+        nurseDoB: "",
         nursePhone: "",
         nurseEmail: "",
         nursePassword: ""
     });
 
-    const { nurseName, nurseDob, nursePhone, nurseEmail, nursePassword } = nurse;
+    const { nurseName, nurseDoB, nursePhone, nurseEmail, nursePassword } = nurse;
 
     useEffect(() => {
         const loadNurse = async () => {
@@ -74,7 +74,7 @@ const EditNurse = () => {
                         id="nurseDob" 
                         name="nurseDob" 
                         placeholder="Enter your date of birth" 
-                        value={nurseDob}
+                        value={nurseDoB}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/>

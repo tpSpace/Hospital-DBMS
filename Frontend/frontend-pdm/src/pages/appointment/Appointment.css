@@ -5,7 +5,7 @@
     padding: 15px;
 }
 
-input[type='datetime-local']{
+input[type='date']{
     margin: 15px;
     text-align: center;
 }

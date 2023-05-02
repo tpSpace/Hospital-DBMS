@@ -20,7 +20,6 @@ const ViewInfoDoctor = () => {
         let doctorId = localStorage.getItem("id");
         await axios.get(`http://localhost:8090/doctor/${doctorId}`)
         .then(response => {
-            console.log(response);
             setDoctor(response.data);
         })
         .catch(error => {

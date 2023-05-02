@@ -1,6 +1,7 @@
 package com.application.HPDM.Relationship_Appointment;
 
 import com.application.HPDM.Doctor.Doctor;
+import com.application.HPDM.Patient.Patient;
 
 import java.time.LocalDate;
 import java.util.List;

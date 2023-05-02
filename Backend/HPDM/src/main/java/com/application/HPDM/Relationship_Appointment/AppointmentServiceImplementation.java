@@ -32,8 +32,7 @@ public class AppointmentServiceImplementation implements AppointmentService{
         if(appointment.getDoctor() == null){
             appointment.setDoctor(findFreeDoctor(appointment.getDate()));
         }
-        return
-                appointmentRepository.save(appointment);
+        return appointmentRepository.save(appointment);
     }
 
     @Override
