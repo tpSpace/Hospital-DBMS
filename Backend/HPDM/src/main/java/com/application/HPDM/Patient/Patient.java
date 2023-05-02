@@ -23,7 +23,7 @@ public class Patient {
 //    patientPassword VARCHAR(100) NOT NULL,
 //    PRIMARY KEY (patientId)
     @Id
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
 
     @Length(max = 25, min=1)
