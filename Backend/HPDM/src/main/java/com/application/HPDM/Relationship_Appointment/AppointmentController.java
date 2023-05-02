@@ -35,11 +35,6 @@ public class AppointmentController {
         return appointmentService.fetchAppointmentByDoctorID(doctorId);
     }
 
-    @GetMapping("/appointment/doctor")
-    public Doctor findFreeDoctor(){
-        return appointmentService.findFreeDoctor(LocalDate.now());
-    }
-
     @GetMapping("/appointment/patient/{patientId}")
     public List<Appointment> fetchAppointmentByPatientID(@PathVariable("patientId") Long patientId) {
         return appointmentService.fetchAppointmentByPatientID(patientId);

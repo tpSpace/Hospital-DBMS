@@ -6,10 +6,8 @@ const PatientAppointment = () => {
 
     const [appointments, setAppointments] = useState([]);
     const [patient, setPatient] = useState({});
-    const [doctor, setDoctor] = useState({});
     const [appointment, setAppointment] = useState({
         patient: {},
-        doctor: {},
         date: ""
     });
 
@@ -18,18 +16,8 @@ const PatientAppointment = () => {
     useEffect(() => {
         loadAppointments();
         loadPatient();
-        loadDoctor();
     }, []);
 
-    const loadDoctor = async () => {
-        await axios.get("http://localhost:8090/appointment/doctor")
-        .then(response => {
-            setDoctor(response.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }
 
     const loadPatient = async () => {
         await axios.get(`http://localhost:8090/patients/${id}`)
@@ -54,22 +42,17 @@ const PatientAppointment = () => {
     const onInputChange = () => {
         const datePicker = document.getElementById('date-picker');
         const dueDate = datePicker.value;
-        console.log(doctor);
-        console.log(patient);
-        console.log(dueDate);
         setAppointment({
             ...appointment,
             patient: patient,
-            doctor: doctor,
             date: dueDate
         });
     }
 
     const handleAddAppointment = async (e) => {
         e.preventDefault();
-        console.log(appointment);
         try{
-            await axios.post('http://localhost:8090/appointment', appointment);
+            await axios.post(`http://localhost:8090/appointment/${id}`, appointment);
             alert("Appointment added successfully");
         }catch(err) {
             console.log(err);
