@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f9fdff;
+}
+.container section {
+    width: 100vw;
+    height: 100vh;
+    
+}
+ .one {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background-color: #DBE7FF;
+}
+.left {
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: column;
+}
+.left > h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #1d3557;
+    font-family: "Inter",Helvetica, sans-serif;
+    margin-bottom: 1rem;
+
+    position: relative;
+    width: 400px;
+}
+.left > p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #101316;
+    font-family: "Inter",Helvetica, sans-serif;
+    margin-bottom: 1rem;
+    position: relative;
+    width: 500px;
+}
+.left > button {
+    width: 200px;
+    height: 50px;
+    background-color: #2c5691;
+    border: none;
+    border-radius: 5px;
+    color: #f9fdff;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Inter",Helvetica, sans-serif;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.left > button:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.right > img {
+    border-radius: 20%;
+    border: 3px solid black;
+    padding: 10px;
+}
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* make smaller gaps */
+
+    flex-direction: column;
+    margin-top: 2rem;
+}
+.title > h4 {
+    color: #204EA5;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.title > h2 {
+    color: #101316;
+    font-size: 3rem;
+    font-weight: 900;
+    font-family: "Inter",Helvetica, sans-serif;
+    width: 600px;
+    text-align: center;
+}
+.title > p {
+    color: #101316;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: "Inter",Helvetica, sans-serif;
+    width: 670px;
+    text-align: center;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 1rem;
+    width: 200px;
+    height: 250px;
+    padding: 5px;
+    background-color: #f9fdff;
+    border-radius: 10px;
+
+    transition: box-shadow 0.3s ease;
+}
+.category > h3 {
+    padding-top: 2px;
+    color: #204EA5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: "Inter",Helvetica, sans-serif;
+    margin-bottom: 1rem;
+}
+.category > img {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 10px;
+}
+.category:hover {
+    /* faded shadow */
+    box-shadow: 4px 4px 20px rgba(56, 56, 56, 0.6);
+    background-color: #F0F0F0;
+
+}
+
+.three {
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+
+    background-color: #DBE7FF;
+}
+.video > iframe {
+    width: 800px;
+    height: 500px;
+    border: none;
+    border-radius: 10px;
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.footer > img {
+    width: 50px;
+    height: 50px;
+    margin: 1rem;
+}
+.info {
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 200px;
+}
+.social {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    width: 200px;
+    height: 100px;
+}
+.icons > img {
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    
+}
+/* Path: src/pages/home/Home.js */
