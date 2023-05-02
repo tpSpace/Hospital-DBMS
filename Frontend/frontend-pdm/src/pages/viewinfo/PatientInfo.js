@@ -23,7 +23,6 @@ const PatientInfo = () => {
         let patientId = localStorage.getItem("id");
         await axios.get(`http://localhost:8090/patients/${patientId}`)
         .then(response => {
-            console.log(response);
             setPatient(response.data);
         })
         .catch(error => {

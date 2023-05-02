@@ -17,7 +17,6 @@ const StaffInfo = () => {
         let staffId = localStorage.getItem("id");
         await axios.get(`http://localhost:8090/staff/${staffId}`)
         .then(response => {
-            console.log(response);
             setStaff(response.data);
         })
         .catch(error => {
