@@ -17,7 +17,7 @@ public class TakeCare {
 //    FOREIGN KEY (PatientID) REFERENCES Patient(PatientID),
 //    FOREIGN KEY (NurseID) REFERENCES Nurse(NurseID)
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long takeCareID;
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "nurseID",referencedColumnName = "nurseId")
