@@ -80,4 +80,13 @@ public class AppointmentServiceImplementation implements AppointmentService{
         throw new IllegalStateException("No doctor is free on this day");
     }
 
+    @Override
+    public Appointment saveAppointmentByPatientID(Appointment appointment, Long patientID){
+        appointment.setPatient(patientRepository.getReferenceById(patientID));
+        if(appointment.getDoctor() == null){
+            appointment.setDoctor(findFreeDoctor(appointment.getDate()));
+        }
+        return
+                appointmentRepository.save(appointment);
+    }
 }
