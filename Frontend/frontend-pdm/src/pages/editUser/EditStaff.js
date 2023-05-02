@@ -8,13 +8,13 @@ const EditStaff = () => {
 
     const [staff, setStaff] = useState({
         staffName: "",
-        staffDob: "",
+        staffDoB: "",
         staffPhone: "",
         staffEmail: "",
         staffPassword: ""
     });
 
-    const { staffDob, staffEmail,staffName, staffPassword,staffPhone  } = staff;
+    const { staffDoB, staffEmail,staffName, staffPassword,staffPhone  } = staff;
 
     useEffect(() => {
         const loadStaff = async () => {
@@ -75,7 +75,7 @@ const EditStaff = () => {
                         id="staffDob"
                         name="staffDob"
                         placeholder="Enter your date of birth" 
-                        value={staffDob}
+                        value={staffDoB}
                         onChange={(e) => onInputChange(e)}
                         required
                     /><br/>

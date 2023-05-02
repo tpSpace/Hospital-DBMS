@@ -5,8 +5,8 @@ import axios from 'axios';
 const StaffInfo = () => {
     const [staff, setStaff] = useState({
         staffName: "",
-        staffPhone: "",
         staffDoB: "",
+        staffPhone: "",
         staffEmail: "",
         staffPassword: ""
     });
@@ -38,12 +38,12 @@ const StaffInfo = () => {
                                     {staff.staffName}
                                 </li>
                                 <li className='list-group-item'>
-                                    <b>Phone number: </b>
-                                    {staff.staffPhone}
-                                </li>
-                                <li className='list-group-item'>
                                     <b>Date of birth </b>
                                     {staff.staffDoB}
+                                </li>
+                                <li className='list-group-item'>
+                                    <b>Phone number: </b>
+                                    {staff.staffPhone}
                                 </li>
                                 <li className='list-group-item'>
                                     <b>Email </b>
