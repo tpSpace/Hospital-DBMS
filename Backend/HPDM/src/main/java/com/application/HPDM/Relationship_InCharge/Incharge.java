@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Table
 public class Incharge {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long inchargeID;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

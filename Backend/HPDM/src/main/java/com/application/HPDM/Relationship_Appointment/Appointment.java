@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Table
 public class Appointment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long appointmentID;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
