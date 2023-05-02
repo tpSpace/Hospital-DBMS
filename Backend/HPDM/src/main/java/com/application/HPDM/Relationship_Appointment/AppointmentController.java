@@ -22,6 +22,11 @@ public class AppointmentController {
         //LOGGER.info("Inside saveAppointment of AppointmentController");
         return appointmentService.saveAppointment(appointment);
     }
+    @PostMapping("/appointment/{patientID}")
+    public Appointment saveAppointmentByPatientID(@PathVariable("patientID") Long patientID,
+                                                  @RequestBody Appointment appointment){
+        return appointmentService.saveAppointmentByPatientID(appointment,patientID);
+    }
     @GetMapping("/appointment")
     public List<Appointment> fetchAppointmentList() {return appointmentRepository.findAll();}
 

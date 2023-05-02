@@ -43,7 +43,6 @@ public class Appointment {
     public void setDate(LocalDate date){
         this.date = date;
     }
-
     public void setPatient(Patient patient) {
         this.patient=  patient;
     }
