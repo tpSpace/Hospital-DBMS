@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditStaff = () => {
@@ -16,9 +16,13 @@ const EditStaff = () => {
 
     const { staffDoB, staffEmail,staffName, staffPassword,staffPhone  } = staff;
 
+    let { id } = useParams()
+
     useEffect(() => {
         const loadStaff = async () => {
-            const id = localStorage.getItem("id");
+            if(id === null){
+                id = localStorage.getItem("id");
+            }
             await axios.get(`http://localhost:8090/staff/${id}`)
             .then(response => {
                 setStaff(response.data);

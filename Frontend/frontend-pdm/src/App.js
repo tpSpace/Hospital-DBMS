@@ -9,6 +9,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Appointment from './pages/appointment/Appointment';
 import EditInfo from './pages/editUser/EditInfo';
 import Shift from './pages/shift/Shift';
+import Operation from './pages/operation/Operation';
 
 function App() {
   
@@ -23,7 +24,9 @@ function App() {
         <Route  path="*" element={<h1>404 Not Found</h1>} />
         <Route  path='/appointment' element={<Appointment/>}/>
         <Route  path='/edituser/:id' element={<EditInfo/>}/>
+        <Route  path='/operation/edituser/:id' element={<EditInfo/>}/>
         <Route  path='/shift' element={<Shift/>}/>
+        <Route path='/operation' element={<Operation/>}/>
      
       </Routes>
     </>
