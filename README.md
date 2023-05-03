@@ -7,6 +7,15 @@
 A project for principle of database management at HCMIU.
 - This is a simple web allows patients to view their personal profolio and make an appoiment with doctors. 
 - Beisde patients we also have pages for doctors, staffs and nurses. 
+# Team members
+
+| Order |         Name          |                      Task                      | Contribution |
+|:-----:|:---------------------:|:------------------------------------------------------------------------:|:------------:|
+|   1   | Nguyen Manh Viet Khoi | Fullstack, UI Designer, Project scheduling, Login Authorization, git     |      30      |
+|   2   |     Hồ Gia Khang      | Fullstack, UI Designer, Login Authentication                             |      30      |
+|   3   |    Phạm Gia Khang     | Backend, Data Standardization, Debugger,Database designer, Write reports |      20      |
+|   4   |   Nguyễn Tiến Hưng    | Backend                                                                  |      20      |
+|   5   |     Ngô Đức Huy       | N/A                                                                      |      0       |
 
 # Tech Stack
 - **Back-end**: Spring Boot, Spring Data JPA, RESTful API 
