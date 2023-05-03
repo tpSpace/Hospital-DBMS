@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditDoctor = () => {
@@ -17,13 +17,16 @@ const EditDoctor = () => {
     
     const { doctorName, doctorPhoneNum, doctorDob, doctorEmail, doctorPassword } = doctor;
 
+    let { id } = useParams();
+
     useEffect(() => {
         const loadDoctor = async () => {
-            const id = localStorage.getItem("id");
+            if(id === null){
+                id = localStorage.getItem("id");
+            }
             await axios.get(`http://localhost:8090/doctor/${id}`)
             .then(response => {
                 setDoctor(response.data);
-                console.log(response.data);
             })
             .catch(error => console.log(error));
         };
@@ -36,7 +39,9 @@ const EditDoctor = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const id = localStorage.getItem("id");
+        if(id === null){
+            id = localStorage.getItem("id");
+        }
         for (var k in doctor) {
             if (doctor.hasOwnProperty(k)) {
                 doctor[k] = String(doctor[k]);

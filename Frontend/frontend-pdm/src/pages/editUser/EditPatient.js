@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const EditPatient = () => {
+
+    let { id } = useParams();
+    let navigate = useNavigate();
 
     const [patient, setPatient] = useState({
         patientFirstName: "",
@@ -19,7 +22,9 @@ const EditPatient = () => {
 
     useEffect(() => {
         const loadPatient = async () => {
-            const id = localStorage.getItem("id");
+            if(id === null){
+                id = localStorage.getItem("id");
+            }
             await axios.get(`http://localhost:8090/patients/${id}`)
             .then(response => {
                 setPatient(response.data);
@@ -36,7 +41,9 @@ const EditPatient = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const id = localStorage.getItem("id");
+        if(id === null){
+            id = localStorage.getItem("id");
+        }
         for (var k in patient) {
             if (patient.hasOwnProperty(k)) {
                 patient[k] = String(patient[k]);
@@ -48,6 +55,8 @@ const EditPatient = () => {
             alert("Your information updated successfully!");
         })
         .catch(error => console.log(error));
+
+        navigate("/viewinfo");
     };
 
     return (

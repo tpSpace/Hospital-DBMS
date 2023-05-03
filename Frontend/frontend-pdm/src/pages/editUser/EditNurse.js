@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const EditNurse = () => {
     let navigate = useNavigate();
+    let { id } = useParams();
 
     const [nurse, setNurse] = useState({
         nurseName: "",
@@ -17,7 +18,9 @@ const EditNurse = () => {
 
     useEffect(() => {
         const loadNurse = async () => {
-            const id = localStorage.getItem("id");
+            if(id === null){
+                id = localStorage.getItem("id");
+            }
             await axios.get(`http://localhost:8090/nurse/${id}`)
             .then(response => {
                 setNurse(response.data);
@@ -34,7 +37,9 @@ const EditNurse = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const id = localStorage.getItem("id");
+        if(id === null){
+            id = localStorage.getItem("id");
+        }
         for (var k in nurse) {
             if (nurse.hasOwnProperty(k)) {
                 nurse[k] = String(nurse[k]);

@@ -1,0 +1,24 @@
+tr {
+    width: 90%;
+    display: inline-table;
+    table-layout: fixed;
+    left: 50px;
+}
+
+table{
+    height:300px;
+    overflow-y: auto;
+    display: -moz-groupbox;                
+}
+tbody{
+    overflow-y: auto;      
+    height: 200px;            
+    width: 100%;
+    position: absolute;
+}
+tbody button{
+    width: 100px;
+    margin-left: 20px;
+
+}
+    
