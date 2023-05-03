@@ -1,6 +1,6 @@
 A project for principle of database management at HCMIU.
-- This is a simple web allows patients to view their personal profolio and make an appoiment with doctor. 
-- Beisde patients we also have pages for doctor, staffs and nurces. 
+- This is a simple web allows patients to view their personal profolio and make an appoiment with doctors. 
+- Beisde patients we also have pages for doctors, staffs and nurses. 
 
 # Tech Stack
 - **Back-end**: Spring Boot, Spring Data JPA, RESTful API 
