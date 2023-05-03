@@ -23,7 +23,20 @@ A project for principle of database management at HCMIU.
 * **View rooms**: Nurces can view which rooms to serve.
 
 # Diagrams
-### ER Dagram
+### ER Diagram
 
+<img width="769" alt="erd" src="https://user-images.githubusercontent.com/96167875/235837513-e0f8229f-8589-40b2-8eef-4397d192f611.png"/>
+
+### Relational model
+<img widht="769" alt="Relational model" src="https://user-images.githubusercontent.com/96167875/235837755-07132b26-2b15-45df-af90-bc169f40d756.png"/>
+
+# How to run the project
+** 1. Clone the project**
+
+```bash
+git clone https://github.com/tpSpace/Hospital-DBMS
+```
+
+** 2. Setup your PostgresSQL database**
 
 
