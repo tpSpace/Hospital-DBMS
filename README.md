@@ -75,11 +75,11 @@ CREATE DATABASE hospital;
 + Type `npm` to run the project.
 
 
-[contributors-shield]: https://img.shields.io/github/contributors/tnphucccc/Bomberman.svg?style=for-the-badge
-[contributors-url]: https://github.com/tnphucccc/Bomberman-Adventure/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/tnphucccc/Bomberman.svg?style=for-the-badge
-[forks-url]: https://github.com/tnphucccc/Bomberman-Adventure/network/members
-[stars-shield]: https://img.shields.io/github/stars/tnphucccc/Bomberman.svg?style=for-the-badge
-[stars-url]: https://github.com/tnphucccc/Bomberman-Adventure/stargazers
-[issues-shield]: https://img.shields.io/github/issues/tnphucccc/Bomberman.svg?style=for-the-badge
-[issues-url]: https://github.com/tnphucccc/Bomberman-Adventure/issues
+[contributors-shield]: https://img.shields.io/github/contributors/tpSpace/Hospital-DBMS.svg?style=for-the-badge
+[contributors-url]: https://github.com/tpSpace/Hospital-DBMS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/tpSpace/Hospital-DBMS.svg?style=for-the-badge
+[forks-url]: https://github.com/tpSpace/Hospital-DBMS/network/members
+[stars-shield]: https://img.shields.io/github/stars/tpSpace/Hospital-DBMS.svg?style=for-the-badge
+[stars-url]: https://github.com/tpSpace/Hospital-DBMS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/tpSpace/Hospital-DBMS.svg?style=for-the-badge
+[issues-url]: https://github.com/tpSpace/Hospital-DBMS/issues
