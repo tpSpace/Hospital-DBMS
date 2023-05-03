@@ -20,7 +20,7 @@ A project for principle of database management at HCMIU.
 * **View rooms**: Staffs can view status of rooms.
 * **Add rooms**: Staffs can add new rooms.
 ### Nurces
-* **View rooms"": Nurces can view which rooms to serve.
+* **View rooms**: Nurces can view which rooms to serve.
 
 # Diagrams
 ### ER Dagram
