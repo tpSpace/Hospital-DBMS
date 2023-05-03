@@ -19,7 +19,7 @@ A project for principle of database management at HCMIU.
 ### Staffs 
 * **View rooms**: Staffs can view status of rooms.
 * **Add rooms**: Staffs can add new rooms.
-### Nurces
+### Nurses
 * **View rooms**: Nurces can view which rooms to serve.
 
 # Diagrams
