@@ -1,3 +1,9 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
+
 A project for principle of database management at HCMIU.
 - This is a simple web allows patients to view their personal profolio and make an appoiment with doctors. 
 - Beisde patients we also have pages for doctors, staffs and nurses. 
