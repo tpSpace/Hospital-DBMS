@@ -1,26 +1,63 @@
-A project for pdm (principle of database) at HCMIU.
-- This is a simple web allows patients to view their personal profolio and make an appoiment with doctor. 
-- Beisde patients we also have pages for doctor, staffs and nurces. 
+A project for principle of database management at HCMIU.
+- This is a simple web allows patients to view their personal profolio and make an appoiment with doctors. 
+- Beisde patients we also have pages for doctors, staffs and nurses. 
 
 # Tech Stack
-- **Back-end**: Spring Boot, Spring Data JPA 
+- **Back-end**: Spring Boot, Spring Data JPA, RESTful API 
 - **Front-end**: Reactjs, Bootstrap
 - **Database Management System**: PostgreSQL
 
 # Features
-## Basic feature
+### Basic feature
 * **Sign in**: User can sign in with their username and password if they have an existing account.
 * **Register**: User registers for a new username and password, add basic information like phone number, address.
 * **Edit user information**: User can edit their username and other information on their profile.
-## Patients 
+### Patients 
 * **Make an appointment**: Patients cant make and appointment with doctos.
-## Doctors
+### Doctors
 * **View appoinment**: Doctors can view appointments in the future.
-## Staffs 
+### Staffs 
 * **View rooms**: Staffs can view status of rooms.
 * **Add rooms**: Staffs can add new rooms.
-## Nurces
-* **View rooms"": Nurces can view which rooms to serve.
+### Nurses
+* **View rooms**: Nurces can view which rooms to serve.
+
+# Diagrams
+### ER Diagram
+<figure>
+<img width="769" alt="erd" src="https://user-images.githubusercontent.com/96167875/235837513-e0f8229f-8589-40b2-8eef-4397d192f611.png"/>
+<figcaption><i>Figure 1: ERD diagram for the Department, Doctor, Nurse, Staff, Room, Patient relationship.</i></figcaption>
+</figure>
+
+### Relational model
+<figure>
+<img widht="769" alt="Relational model" src="https://user-images.githubusercontent.com/96167875/235837755-07132b26-2b15-45df-af90-bc169f40d756.png"/>
+<figcaption><i>Figure 2: Relational model of the Department, Doctor, Nurse, Staff, Room, Patient relationship.</i></figcaption>
+</figure>
+</figure>
+
+# How to run the project
+
+**1. Clone the project**
+```bash
+git clone https://github.com/tpSpace/Hospital-DBMS
+```
+
+**2. Setup your PostgresSQL database**
++ Download PostgresSQL `https://www.postgresql.org/download/`
++ Create `/backend/src/main/resources/.env` file for username and password to connect to DB.
++ Login to psql and create the databse before we run the backend. 
+```sql 
+CREATE DATABASE hospital;
+```
+**3. Run backend**
++ Install openJDK 17
++ Recommend to use Intelij to run the project.
+
+**4. Run frontend**
++ Install nodejs 16
++ Install `npm` and run `npm i` to install necessary dependencies.
++ Type `npm` to run the project.
 
 
 
