@@ -1,6 +1,5 @@
 package com.application.HPDM.Staff;
 
-import com.application.HPDM.Department.Department;
 import com.application.HPDM.Department.DepartmentController;
 
 import org.springframework.boot.CommandLineRunner;

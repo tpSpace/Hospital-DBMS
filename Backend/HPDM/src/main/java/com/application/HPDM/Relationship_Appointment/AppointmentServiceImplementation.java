@@ -2,7 +2,6 @@ package com.application.HPDM.Relationship_Appointment;
 
 import com.application.HPDM.Doctor.Doctor;
 import com.application.HPDM.Doctor.DoctorRepository;
-import com.application.HPDM.Patient.Patient;
 import com.application.HPDM.Patient.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
