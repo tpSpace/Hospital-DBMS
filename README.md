@@ -50,5 +50,14 @@ git clone https://github.com/tpSpace/Hospital-DBMS
 ```sql 
 CREATE DATABASE hospital;
 ```
+**3. Run backend**
++ Install openJDK 17
++ Recommend to use Intelij to run the project.
+
+**4. Run frontend**
++ Install nodejs 16
++ Install `npm` and run `npm i` to install necessary dependencies.
++ Type `npm` to run the project.
+
 
 
