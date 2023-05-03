@@ -24,19 +24,31 @@ A project for principle of database management at HCMIU.
 
 # Diagrams
 ### ER Diagram
-
+<figure>
 <img width="769" alt="erd" src="https://user-images.githubusercontent.com/96167875/235837513-e0f8229f-8589-40b2-8eef-4397d192f611.png"/>
+<figcaption><i>Figure 1: ERD diagram for the Department, Doctor, Nurse, Staff, Room, Patient relationship.</i></figcaption>
+</figure>
 
 ### Relational model
+<figure>
 <img widht="769" alt="Relational model" src="https://user-images.githubusercontent.com/96167875/235837755-07132b26-2b15-45df-af90-bc169f40d756.png"/>
+<figcaption><i>Figure 2: Relational model of the Department, Doctor, Nurse, Staff, Room, Patient relationship.</i></figcaption>
+</figure>
+</figure>
 
 # How to run the project
-** 1. Clone the project**
 
+**1. Clone the project**
 ```bash
 git clone https://github.com/tpSpace/Hospital-DBMS
 ```
 
-** 2. Setup your PostgresSQL database**
+**2. Setup your PostgresSQL database**
++ Download PostgresSQL `https://www.postgresql.org/download/`
++ Create `/backend/src/main/resources/.env` file for username and password to connect to DB.
++ Login to psql and create the databse before we run the backend. 
+```sql 
+CREATE DATABASE hospital;
+```
 
 
