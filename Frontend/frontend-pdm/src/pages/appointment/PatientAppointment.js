@@ -88,17 +88,16 @@ const PatientAppointment = () => {
                             }
                         </tbody>
                     </table>
-                    <form className='appointment-picker' onSubmit={(e) => handleAddAppointment(e)}>
-                        <h2>Make a new appointment</h2>
-                        <input id="date-picker" type="date" onChange={() => onInputChange()} required></input>
-                        <button className='btn btn-primary mx-2' type='submit'>Add new appointment</button>
-                    </form>
                 </div>
                 
             ) : (
-                <h2 className="m-4">You have no appointment</h2>
+                <h2 className="text-center m-4">You have no appointment</h2>
             )}
-            
+            <form className='appointment-picker' onSubmit={(e) => handleAddAppointment(e)}>
+                <h2>Make a new appointment</h2>
+                <input id="date-picker" type="date" onChange={() => onInputChange()} required></input>
+                <button className='btn btn-primary mx-2' type='submit'>Add new appointment</button>
+            </form>
         </div>
     )
 }
