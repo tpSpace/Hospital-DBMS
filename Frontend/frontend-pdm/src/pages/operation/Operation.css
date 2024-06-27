@@ -8,7 +8,7 @@ tr {
 table{
     height:300px;
     overflow-y: auto;
-    display: -moz-groupbox;                
+    display: -moz-groupbox;             
 }
 tbody{
     overflow-y: auto;      
@@ -18,7 +18,5 @@ tbody{
 }
 tbody button{
     width: 100px;
-    margin-left: 20px;
-
 }
     
